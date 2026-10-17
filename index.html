@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Regline</title>
+<meta name="description" content="Regline : régressions, ajustements et incertitudes pour les labos de physique. Gratuit, pour Windows, Mac et Linux.">
+<link rel="icon" href="logo.png">
+<style>
+  :root {
+    --bg: #161618; --surface: #1f1f23; --raised: #2a2a30; --border: #34343b;
+    --text: #ececf1; --muted: #a1a1ad; --accent: #7c6cff; --accent-hover: #8f81ff; --accent-text: #b9afff;
+  }
+  @media (prefers-color-scheme: light) {
+    :root { --bg: #f4f4f8; --surface: #ffffff; --raised: #ececf2; --border: #dcdce5;
+            --text: #1d1d24; --muted: #5d5d6c; --accent: #5b4be8; --accent-hover: #4c3dd6; --accent-text: #4a3bd0; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 16px/1.55 "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; }
+  main { max-width: 960px; margin: 0 auto; padding: 48px 16px 32px; }
+  header { display: flex; align-items: center; gap: 16px; }
+  header img { width: 64px; height: 64px; border-radius: 16px; }
+  h1 { font-size: 40px; margin: 0; letter-spacing: -0.5px; }
+  .tagline { color: var(--muted); margin: 4px 0 0; font-size: 18px; }
+  .hero { margin: 36px 0 28px; }
+  .hero p { font-size: 18px; max-width: 640px; margin: 0 0 24px; }
+  .download { display: inline-flex; flex-direction: column; align-items: flex-start; gap: 2px;
+              background: var(--accent); color: #fff; text-decoration: none; border-radius: 14px;
+              padding: 14px 26px; font-weight: 600; font-size: 19px; transition: background .15s; }
+  .download:hover { background: var(--accent-hover); }
+  .download small { font-weight: 400; font-size: 13px; opacity: .85; }
+  .buttons { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .others { margin-top: 14px; color: var(--muted); font-size: 14px; }
+  .others a { color: var(--accent-text); margin-right: 14px; white-space: nowrap; }
+  .shot { width: 100%; border-radius: 14px; border: 1px solid var(--border); display: block; margin: 8px 0 40px; }
+  h2 { font-size: 24px; margin: 0 0 12px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 22px 24px; margin-bottom: 20px; }
+  .tabs { display: inline-flex; background: var(--raised); border-radius: 999px; padding: 4px; margin-bottom: 18px; flex-wrap: wrap; }
+  .tabs button { border: 0; background: transparent; color: var(--muted); font: inherit; font-size: 15px;
+                 padding: 7px 18px; border-radius: 999px; cursor: pointer; }
+  .tabs button[aria-selected="true"] { background: var(--accent); color: #fff; font-weight: 600; }
+  ol { margin: 0; padding-left: 22px; }
+  li { margin: 6px 0; }
+  code { background: var(--raised); border-radius: 6px; padding: 1px 6px; font-size: 14px; overflow-wrap: anywhere; }
+  .note { color: var(--muted); font-size: 14px; margin: 12px 0 0; }
+  .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 0 0 40px; }
+  .features div { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; }
+  .features b { display: block; margin-bottom: 4px; }
+  .features span { color: var(--muted); font-size: 15px; }
+  footer { color: var(--muted); font-size: 14px; border-top: 1px solid var(--border); margin-top: 40px; padding-top: 18px; }
+  footer a, .card a { color: var(--accent-text); }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <img src="logo.png" alt="">
+    <div>
+      <h1>Regline</h1>
+      <p class="tagline">Données et incertitudes pour les labos de physique</p>
+    </div>
+  </header>
+
+  <section class="hero">
+    <p>Saisis ou colle tes mesures, ajuste une droite ou ta propre formule, propage les incertitudes et exporte
+       des graphiques et des tableaux prêts pour ton rapport, y compris en LaTeX. Gratuit.</p>
+    <div class="buttons" id="primary"></div>
+    <p class="others" id="others"></p>
+  </section>
+
+  <img class="shot" src="capture.png" alt="Fenêtre de Regline : tableau de mesures, régression linéaire et graphique">
+
+  <section class="features">
+    <div><b>Ajustements</b><span>Régression linéaire, origine forcée ou formule libre, χ² et p-valeur.</span></div>
+    <div><b>Incertitudes</b><span>ΔX et ΔY, propagation par dérivées partielles, arrondis corrects.</span></div>
+    <div><b>Graphiques</b><span>Titres, couleurs, échelles log, police LaTeX, export PNG, SVG ou PDF.</span></div>
+    <div><b>Pour le rapport</b><span>Tableaux pour Word, Excel ou LaTeX, et le code Python du graphique.</span></div>
+  </section>
+
+  <section class="card" id="install">
+    <h2>Installation</h2>
+    <div class="tabs" role="tablist">
+      <button role="tab" data-os="windows">Windows</button>
+      <button role="tab" data-os="mac">Mac</button>
+      <button role="tab" data-os="linux">Linux</button>
+    </div>
+    <div data-panel="windows">
+      <ol>
+        <li>Télécharge <b>Regline pour Windows</b> et ouvre le fichier.</li>
+        <li>Si Windows affiche « Windows a protégé votre ordinateur », clique sur <b>Informations complémentaires</b>, puis <b>Exécuter quand même</b>.</li>
+        <li>Suis l'assistant. Regline apparaît ensuite dans le menu Démarrer.</li>
+      </ol>
+      <p class="note">Ce message apparaît parce que Regline est un logiciel indépendant non signé. Pas besoin de droits administrateur.</p>
+    </div>
+    <div data-panel="mac" hidden>
+      <ol>
+        <li>Télécharge la version de ton Mac. Pour la connaître : menu Pomme  → <b>À propos de ce Mac</b>. « Puce Apple M… » : Apple Silicon. « Processeur Intel » : Intel.</li>
+        <li>Ouvre le fichier <code>.dmg</code> et glisse Regline dans le dossier <b>Applications</b>.</li>
+        <li>Au premier lancement, macOS bloque l'app : ferme le message, ouvre <b>Réglages Système → Confidentialité et sécurité</b>, et clique sur <b>Ouvrir quand même</b> tout en bas.</li>
+      </ol>
+      <p class="note">Si macOS indique que l'app est « endommagée », ouvre le Terminal et tape :
+        <code>xattr -dr com.apple.quarantine /Applications/Regline.app</code></p>
+    </div>
+    <div data-panel="linux" hidden>
+      <ol>
+        <li>Télécharge l'archive Linux et extrais-la : <code>tar -xzf Regline-*-Linux-x86_64.tar.gz</code></li>
+        <li>Lance <code>Regline/Regline</code>.</li>
+      </ol>
+      <p class="note">Sur Ubuntu ou Debian, si rien ne s'ouvre : <code>sudo apt install libxcb-cursor0</code></p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Pourquoi Regline ?</h2>
+    <p>Je m'appelle Leandro, je suis étudiant en bachelor de physique à l'Université de Genève. Après une ou deux
+       expériences au labo, j'ai eu l'idée de développer Regline, avec l'aide de l'intelligence artificielle, pour
+       faciliter la vie des étudiantes et étudiants en sciences pendant leurs travaux pratiques.</p>
+    <p>Une idée de fonctionnalité, un bug, une question ? Écris-moi à
+       <a href="mailto:leandro.cstrm@proton.me">leandro.cstrm@proton.me</a>. J'espère que Regline te sera utile !</p>
+  </section>
+
+  <footer>
+    <span id="version"></span>
+    © 2026 Leandro. Tous droits réservés. Regline est gratuit et fourni sans garantie : vérifie toujours tes résultats.
+    · <a href="https://github.com/Leandro526-c/regline/releases">Toutes les versions</a>
+  </footer>
+</main>
+
+<script>
+// Les fichiers viennent de la dernière « Release » GitHub du dépôt : rien à modifier ici à chaque nouvelle version.
+const REPO = "Leandro526-c/regline";
+const RELEASES = `https://github.com/${REPO}/releases/latest`;
+const TARGETS = {
+  windows: { label: "Télécharger pour Windows", detail: "Windows 10 et 11", match: /Windows-Setup\.exe$/i },
+  macArm: { label: "Télécharger pour Mac (Apple Silicon)", detail: "Mac avec puce M1 à M4", match: /Darwin-arm64\.(dmg|zip)$/i },
+  macIntel: { label: "Télécharger pour Mac (Intel)", detail: "Mac Intel, avant 2021", match: /Darwin-x86_64\.(dmg|zip)$/i },
+  linux: { label: "Télécharger pour Linux", detail: "Archive 64 bits", match: /Linux-x86_64\.tar\.gz$/i },
+};
+
+function detectOS() {
+  const ua = navigator.userAgent;
+  if (/Windows/i.test(ua)) return "windows";
+  if (/Macintosh|Mac OS X/i.test(ua)) return "mac";
+  if (/Linux|X11/i.test(ua) && !/Android/i.test(ua)) return "linux";
+  return "windows";
+}
+
+function button(key, url, small) {
+  const t = TARGETS[key];
+  const a = document.createElement("a");
+  a.className = "download";
+  a.href = url || RELEASES;
+  a.innerHTML = `${t.label}<small>${t.detail}</small>`;
+  return a;
+}
+
+function showPanel(os) {
+  document.querySelectorAll("[data-os]").forEach(b => b.setAttribute("aria-selected", b.dataset.os === os));
+  document.querySelectorAll("[data-panel]").forEach(p => p.hidden = p.dataset.panel !== os);
+}
+
+async function render() {
+  const os = detectOS();
+  showPanel(os);
+  let assets = {};
+  try {
+    const response = await fetch(`https://api.github.com/repos/${REPO}/releases/latest`);
+    if (response.ok) {
+      const release = await response.json();
+      document.getElementById("version").textContent = `Version ${release.tag_name.replace(/^v/, "")} ·`;
+      for (const [key, target] of Object.entries(TARGETS)) {
+        const asset = release.assets.find(a => target.match.test(a.name));
+        if (asset) assets[key] = asset.browser_download_url;
+      }
+    }
+  } catch (error) { /* sans réseau ou quota GitHub atteint : les boutons mènent à la page des versions */ }
+  const primary = document.getElementById("primary");
+  const mainKeys = os === "mac" ? ["macArm", "macIntel"] : [os];
+  mainKeys.forEach(key => primary.appendChild(button(key, assets[key])));
+  const others = document.getElementById("others");
+  others.append("Autres systèmes : ");
+  Object.keys(TARGETS).filter(k => !mainKeys.includes(k)).forEach(key => {
+    const a = document.createElement("a");
+    a.href = assets[key] || RELEASES;
+    a.textContent = TARGETS[key].label.replace("Télécharger pour ", "");
+    others.appendChild(a);
+  });
+}
+
+document.querySelectorAll("[data-os]").forEach(b => b.addEventListener("click", () => showPanel(b.dataset.os)));
+render();
+</script>
+</body>
+</html>

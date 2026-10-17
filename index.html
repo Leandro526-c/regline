@@ -35,6 +35,7 @@
   .others a { color: var(--accent-text); margin-right: 14px; white-space: nowrap; }
   .shot { width: 100%; border-radius: 14px; border: 1px solid var(--border); display: block; margin: 8px 0 40px; }
   h2 { font-size: 24px; margin: 0 0 12px; }
+  h3 { font-size: 18px; margin: 22px 0 6px; }
   .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 22px 24px; margin-bottom: 20px; }
   .tabs { display: inline-flex; background: var(--raised); border-radius: 999px; padding: 4px; margin-bottom: 18px; flex-wrap: wrap; }
   .tabs button { border: 0; background: transparent; color: var(--muted); font: inherit; font-size: 15px;
@@ -44,12 +45,19 @@
   li { margin: 6px 0; }
   code { background: var(--raised); border-radius: 6px; padding: 1px 6px; font-size: 14px; overflow-wrap: anywhere; }
   .note { color: var(--muted); font-size: 14px; margin: 12px 0 0; }
-  .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 0 0 40px; }
+  .why { margin: 0 0 40px; }
+  .why h2 { margin-bottom: 16px; }
+  .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
   .features div { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; }
   .features b { display: block; margin-bottom: 4px; }
   .features span { color: var(--muted); font-size: 15px; }
   footer { color: var(--muted); font-size: 14px; border-top: 1px solid var(--border); margin-top: 40px; padding-top: 18px; }
   footer a, .card a { color: var(--accent-text); }
+  .support { display: inline-flex; align-items: center; gap: 8px; margin-top: 4px; padding: 9px 18px;
+             border: 1px solid var(--border); border-radius: 999px; background: var(--raised);
+             color: var(--text) !important; text-decoration: none; font-weight: 600; font-size: 15px; transition: border-color .15s; }
+  .support:hover { border-color: var(--accent); }
+  .support span { color: #ff5e7e; }
   [hidden] { display: none !important; }
 </style>
 </head>
@@ -72,11 +80,16 @@
 
   <img class="shot" src="capture.png" alt="Fenêtre de Regline : tableau de mesures, régression linéaire et graphique">
 
-  <section class="features">
-    <div><b>Ajustements</b><span>Régression linéaire, origine forcée ou formule libre, χ² et p-valeur.</span></div>
-    <div><b>Incertitudes</b><span>ΔX et ΔY, propagation par dérivées partielles, arrondis corrects.</span></div>
-    <div><b>Graphiques</b><span>Titres, couleurs, échelles log, police LaTeX, export PNG, SVG ou PDF.</span></div>
-    <div><b>Pour le rapport</b><span>Tableaux pour Word, Excel ou LaTeX, et le code Python du graphique.</span></div>
+  <section class="why">
+    <h2>Pourquoi Regline ?</h2>
+    <div class="features">
+      <div><b>Fait pour les TP</b><span>ΔX et ΔY, χ², propagation des incertitudes par dérivées partielles : tout ce que demandent les labos, sans bricoler Excel.</span></div>
+      <div><b>Des arrondis justes</b><span>Les résultats sont arrondis selon les chiffres significatifs de l'incertitude, et les valeurs complètes restent visibles.</span></div>
+      <div><b>Ajuste ce que tu veux</b><span>Droite, droite par l'origine ou ta propre formule, avec χ², p-valeur et incertitudes réajustées par √χ²<sub>réd</sub>.</span></div>
+      <div><b>Rapport en quelques clics</b><span>Tableaux LaTeX prêts à compiler, copie pour Word ou Excel, graphiques PNG, SVG ou PDF et code Python.</span></div>
+      <div><b>Pensé pour la Suisse</b><span>Virgule ou point décimal, valeurs ambiguës comme « 1,200 » signalées, log, ln et lettres grecques dans les formules.</span></div>
+      <div><b>Gratuit et léger</b><span>Pour Windows, Mac et Linux. Fonctionne hors ligne : tes mesures restent sur ton ordinateur.</span></div>
+    </div>
   </section>
 
   <section class="card" id="install">
@@ -113,18 +126,23 @@
   </section>
 
   <section class="card">
-    <h2>Pourquoi Regline ?</h2>
+    <h2>Qui est derrière Regline ?</h2>
     <p>Je m'appelle Leandro, je suis étudiant en bachelor de physique à l'Université de Genève. Après une ou deux
        expériences au labo, j'ai eu l'idée de développer Regline, avec l'aide de l'intelligence artificielle, pour
        faciliter la vie des étudiantes et étudiants en sciences pendant leurs travaux pratiques.</p>
     <p>Une idée de fonctionnalité, un bug, une question ? Écris-moi à
        <a href="mailto:leandro.cstrm@proton.me">leandro.cstrm@proton.me</a>. J'espère que Regline te sera utile !</p>
+    <h3>Soutenir le projet</h3>
+    <p>Regline est et restera gratuit. Si l'app t'aide et que tu veux soutenir son développement, un petit don
+       fait toujours plaisir, mais ce n'est jamais obligatoire.</p>
+    <a class="support" href="https://ko-fi.com/leandro526" target="_blank" rel="noopener"><span>♥</span> Soutenir Regline</a>
   </section>
 
   <footer>
     <span id="version"></span>
     © 2026 Leandro. Tous droits réservés. Regline est gratuit et fourni sans garantie : vérifie toujours tes résultats.
     · <a href="https://github.com/Leandro526-c/regline/releases">Toutes les versions</a>
+    · <a href="https://ko-fi.com/leandro526" target="_blank" rel="noopener">Soutenir le projet</a>
   </footer>
 </main>
 

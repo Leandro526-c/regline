@@ -9,6 +9,7 @@ sans réglage ni étape de compilation.
 | Fichier ou dossier | Rôle |
 |---|---|
 | `index.html` | la page |
+| `conditions.html` | les conditions d'utilisation (https://regline.ch/conditions.html) |
 | `confidentialite.html` | la politique de confidentialité (https://regline.ch/confidentialite.html, pour l'app et le Microsoft Store) |
 | `site.js` | boutons de téléchargement, langue, animations |
 | `langues.js` | tous les textes en anglais, allemand, italien et espagnol |
@@ -26,7 +27,7 @@ sans réglage ni étape de compilation.
 2. Supprime l'ancienne capture : clique sur `capture.png` → icône ⋯ → **Delete file** → **Commit changes**.
 3. Va sur **Add file → Upload files** : https://github.com/Leandro526-c/regline/upload/main
 4. Depuis l'Explorateur Windows, **glisse en une fois** le contenu du dossier `site` : les fichiers
-   `index.html`, `confidentialite.html`, `site.js`, `langues.js`, `polices.css`, `logo.png`, `CNAME`, `sitemap.xml` **et** les dossiers `polices` et `media`.
+   `index.html`, `confidentialite.html`, `conditions.html`, `site.js`, `langues.js`, `polices.css`, `logo.png`, `CNAME`, `sitemap.xml` **et** les dossiers `polices` et `media`.
    GitHub garde les sous-dossiers quand on glisse des dossiers (Chrome, Edge ou Firefox).
 5. Vérifie dans la liste que tu vois bien des chemins comme `media/fr/demo-coller.mp4` et
    `polices/IBMPlexSans-normal-400-latin.woff2`, puis clique sur **Commit changes**.

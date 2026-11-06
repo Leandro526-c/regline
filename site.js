@@ -56,6 +56,7 @@ const TARGETS = {
   macIntel: { match: /Darwin-x86_64\.(dmg|zip)$/i },
   linux: { match: /Linux-x86_64\.tar\.gz$/i },
 };
+const STORE = "https://apps.microsoft.com/detail/9NDTFSHNBRNZ";
 let release = null;
 const assets = {};
 
@@ -85,13 +86,14 @@ const CHIP = OS === "mac" ? macChip() : "";
 function mainKeys() {
   if (OS === "mac") return CHIP === "intel" ? ["macIntel", "macArm"] : ["macArm", "macIntel"];
   if (OS === "linux") return ["linux"];
-  return ["windows"];
+  return ["store"];
 }
 
 function downloadButton(key, secondary) {
   const a = document.createElement("a");
   a.className = "download" + (secondary ? " secondary" : "");
-  a.href = assets[key] || RELEASES;
+  a.href = key === "store" ? STORE : (assets[key] || RELEASES);
+  if (key === "store") { a.target = "_blank"; a.rel = "noopener"; }
   a.innerHTML = `${T("dl." + key)}<small>${T("dl." + key + ".s")}</small>`;
   return a;
 }
@@ -104,15 +106,23 @@ function renderDownloads() {
   others.textContent = "";
   const keys = mainKeys();
   keys.forEach((key, i) => primary.appendChild(downloadButton(key, i > 0 && OS === "mac" && CHIP !== "")));
+  if (keys.includes("store")) {
+    // Le Store en premier ; l'installateur reste proposé (PC où le Store est bloqué).
+    const exe = document.createElement("a");
+    exe.className = "exe-link";
+    exe.href = assets.windows || RELEASES;
+    exe.textContent = T("dl.exe");
+    primary.appendChild(exe);
+  }
   others.append(T("dl.others"));
-  Object.keys(TARGETS).filter(k => !keys.includes(k)).forEach(key => {
+  Object.keys(TARGETS).filter(k => !keys.includes(k) && !(k === "windows" && keys.includes("store"))).forEach(key => {
     const a = document.createElement("a");
-    a.href = assets[key] || RELEASES;
+    a.href = key === "windows" ? STORE : (assets[key] || RELEASES);
     a.textContent = T("dl." + key + ".short");
     others.appendChild(a);
   });
   // Un fichier manque dans la version publiée : on le dit plutôt que d'envoyer vers une page sans explication.
-  const missing = release ? keys.filter(k => !assets[k]) : [];
+  const missing = release ? keys.filter(k => k !== "store" && !assets[k]) : [];
   notice.hidden = missing.length === 0;
   if (missing.length) notice.innerHTML = T("dl.missing").replace("{name}", missing.map(k => T("dl." + k + ".short")).join(", ")).replace("{url}", RELEASES);
   const version = document.getElementById("version");

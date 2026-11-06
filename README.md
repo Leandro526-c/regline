@@ -55,13 +55,13 @@ Tu peux aussi choisir le fichier dans les [releases](https://github.com/Leandro5
 
 | Système | Fichier |
 |---|---|
-| Windows 10 / 11 | `Regline-…-Windows-Setup.exe` |
+| Windows 10 / 11 | **[Microsoft Store](https://apps.microsoft.com/detail/9NDTFSHNBRNZ)** (conseillé, mises à jour automatiques) ou `Regline-…-Windows-Setup.exe` |
 | macOS, puce Apple (M1, M2…) | `Regline-…-Darwin-arm64.dmg` |
 | macOS, processeur Intel | `Regline-…-Darwin-x86_64.dmg` |
 | Linux (x86_64) | `Regline-…-Linux-x86_64.tar.gz` |
 
-Regline est développé par un étudiant, sans certificat d'éditeur payant. Au premier lancement, Windows (SmartScreen)
-ou macOS peuvent donc afficher un avertissement. La page [regline.ch](https://regline.ch) explique comment l'ouvrir
+Regline est développé par un étudiant, sans certificat d'éditeur payant. Au premier lancement de l'installateur, Windows
+(SmartScreen) ou macOS peuvent donc afficher un avertissement (pas avec le Microsoft Store). La page [regline.ch](https://regline.ch) explique comment l'ouvrir
 quand même.
 
 Une fois installé, Regline vérifie au plus une fois par jour s'il existe une nouvelle version (désactivable dans
@@ -101,7 +101,8 @@ paste a table, get a fit with uncertainties (on X and/or Y, χ², residuals), pr
 check your own result with *Check my calculation*, and export report-ready graphs and LaTeX/Word tables.
 Available in English, French, German, Italian and Spanish.
 
-- **Download:** [regline.ch](https://regline.ch) (picks the right file for your computer) or the
+- **Download:** [regline.ch](https://regline.ch) (picks the right file for your computer), the
+  [Microsoft Store](https://apps.microsoft.com/detail/9NDTFSHNBRNZ) on Windows, or the
   [latest release](https://github.com/Leandro526-c/regline/releases/latest).
 - **Privacy:** no account, no data collected, your files stay on your computer.
   [Privacy policy](https://regline.ch/confidentialite.html#english).

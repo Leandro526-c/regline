@@ -132,6 +132,8 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .download small { font: 400 13px var(--body); opacity: .85; }
 .download.secondary { background: var(--raised); color: var(--text); box-shadow: none; border: 1px solid var(--line); }
 .download.secondary:hover { border-color: var(--accent); background: var(--raised); }
+.exe-link { flex-basis: 100%; font-size: 14px; color: var(--muted); }
+.exe-link:hover { color: var(--text); }
 .others { margin-top: 16px; color: var(--muted); font-size: 15px; display: flex; flex-wrap: wrap; gap: 6px 16px; }
 .others a { color: var(--accent-strong); }
 .meta { margin-top: 10px; color: var(--faint); font: 13px var(--mono); }
@@ -534,11 +536,11 @@ footer a { color: var(--muted); }
         </div>
         <div data-panel="windows">
           <ol>
-            <li data-i18n="win.1">Télécharge <b>Regline pour Windows</b> et ouvre le fichier.</li>
-            <li data-i18n="win.2">Si Windows affiche « Windows a protégé votre ordinateur », clique sur <b>Informations complémentaires</b>, puis <b>Exécuter quand même</b>.</li>
-            <li data-i18n="win.3">Suis l'assistant. Regline apparaît ensuite dans le menu Démarrer.</li>
+            <li data-i18n="win.1">Le plus simple : ouvre <a href="https://apps.microsoft.com/detail/9NDTFSHNBRNZ" target="_blank" rel="noopener">Regline sur le Microsoft Store</a> et clique sur <b>Installer</b>. Aucun avertissement, et les mises à jour se font toutes seules.</li>
+            <li data-i18n="win.2">Si le Store est bloqué (par exemple sur un PC de l'université), télécharge plutôt l'installateur et ouvre-le. Si Windows affiche « Windows a protégé votre ordinateur », clique sur <b>Informations complémentaires</b>, puis <b>Exécuter quand même</b>.</li>
+            <li data-i18n="win.3">Regline apparaît ensuite dans le menu Démarrer.</li>
           </ol>
-          <p class="note" data-i18n="win.note">Ce message apparaît parce que Regline est un logiciel indépendant, non signé par un éditeur. Pas besoin de droits administrateur.</p>
+          <p class="note" data-i18n="win.note">L'avertissement de l'installateur apparaît parce que Regline est un logiciel indépendant, non signé par un éditeur. Pas besoin de droits administrateur.</p>
         </div>
         <div data-panel="mac" hidden>
           <ol>

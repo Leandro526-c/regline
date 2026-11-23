@@ -85,7 +85,7 @@ Regline est et restera gratuit. Si l'app t'aide, tu peux soutenir son développe
 ## Licence
 
 Regline est gratuit, mais son code source n'est pas public. Ce dépôt contient uniquement le site
-[regline.ch](https://regline.ch) et les fichiers d'installation. © 2026 Leandro, tous droits réservés.
+[regline.ch](https://regline.ch) et les fichiers d'installation. © 2026 Leandro Castro Moreira, tous droits réservés.
 Regline utilise des logiciels libres (dont Qt / PySide6 sous LGPL v3), dont les licences sont fournies avec l'app.
 
 Regline est fourni sans garantie : vérifie toujours tes résultats.
@@ -107,4 +107,4 @@ Available in English, French, German, Italian and Spanish.
 - **Privacy:** no account, no data collected, your files stay on your computer.
   [Privacy policy](https://regline.ch/confidentialite.html#english).
 - **Contact:** [contact@regline.ch](mailto:contact@regline.ch)
-- **License:** free to use; source code is not public. © 2026 Leandro. Provided without warranty.
+- **License:** free to use; source code is not public. © 2026 Leandro Castro Moreira. Provided without warranty.

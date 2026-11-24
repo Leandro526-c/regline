@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" data-root="">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -15,21 +15,22 @@
 <meta property="og:site_name" content="Regline">
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:url" content="https://regline.ch/">
+<meta property="og:locale" content="fr_CH">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#121116">
 <link rel="icon" href="logo.png">
 <link rel="canonical" href="https://regline.ch/">
-<link rel="alternate" hreflang="fr" href="https://regline.ch/?lang=fr">
-<link rel="alternate" hreflang="en" href="https://regline.ch/?lang=en">
-<link rel="alternate" hreflang="de" href="https://regline.ch/?lang=de">
-<link rel="alternate" hreflang="it" href="https://regline.ch/?lang=it">
-<link rel="alternate" hreflang="es" href="https://regline.ch/?lang=es">
+<link rel="alternate" hreflang="fr" href="https://regline.ch/">
+<link rel="alternate" hreflang="en" href="https://regline.ch/en/">
+<link rel="alternate" hreflang="de" href="https://regline.ch/de/">
+<link rel="alternate" hreflang="it" href="https://regline.ch/it/">
+<link rel="alternate" hreflang="es" href="https://regline.ch/es/">
 <link rel="alternate" hreflang="x-default" href="https://regline.ch/">
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Regline",
- "alternateName": "Regline – logiciel de données de labo",
+ "alternateName": "Regline · logiciel gratuit pour les données de labo",
  "url": "https://regline.ch/", "image": "https://regline.ch/logo.png",
- "description": "Logiciel gratuit pour les données de laboratoire : ajustements, incertitudes, statistiques et graphiques pour le rapport.",
+ "description": "Regline : le logiciel gratuit pour les données de labo. Ajustements, incertitudes, statistiques et graphiques prêts pour le rapport. Windows, Mac et Linux.",
  "applicationCategory": "EducationalApplication", "operatingSystem": "Windows, macOS, Linux",
  "inLanguage": ["fr", "en", "de", "it", "es"],
  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "CHF"},
@@ -78,6 +79,18 @@
 }
 
 * { box-sizing: border-box; }
+#lang-hint { position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%); z-index: 60; display: flex; align-items: center; gap: 6px;
+  max-width: calc(100% - 32px); background: var(--raised); border: 1px solid var(--line); border-radius: 999px;
+  padding: 6px 6px 6px 18px; box-shadow: var(--shadow); font-size: 15px; }
+#lang-hint[hidden] { display: none; }
+#lang-hint a { color: var(--text); font-weight: 600; text-decoration: none; }
+#lang-hint a::after { content: " →"; color: var(--accent-strong); }
+#lang-hint button { border: 0; background: transparent; color: var(--muted); font-size: 20px; line-height: 1; width: 34px; height: 34px; border-radius: 50%; cursor: pointer; }
+#lang-hint button:hover { background: var(--accent-soft); color: var(--text); }
+
+.features.news { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 980px) { .features.news { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .features.news { grid-template-columns: minmax(0, 1fr); } }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.6 var(--body);
        -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
@@ -311,9 +324,10 @@ footer a { color: var(--muted); }
 <header class="top" id="top">
   <div class="wrap">
     <a class="brand" href="#"><img src="logo.png" alt="">Regline</a>
-    <nav class="nav" aria-label="Sections">
+    <nav class="nav" data-i18n-label="aria.sections" aria-label="Sections">
       <a href="#demo" data-i18n="nav.demo">En action</a>
       <a href="#fonctions" data-i18n="nav.features">Fonctionnalités</a>
+      <a href="#nouveau" data-i18n="nav.new">Nouveautés</a>
       <a href="#precision" data-i18n="nav.precision">Précision</a>
       <a href="#installation" data-i18n="nav.install">Installation</a>
       <a href="#questions" data-i18n="nav.faq">Questions</a>
@@ -417,6 +431,38 @@ footer a { color: var(--muted); }
     </div>
   </section>
 
+  <section id="nouveau" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="new.eyebrow">Nouveau dans la 4.1</p>
+        <h2 data-i18n="new.title">Tes labos, bien rangés et vérifiés.</h2>
+        <p class="lead" data-i18n="new.lead">La 4.1 range tes expériences comme des documents et surveille tes ajustements pour toi.</p>
+      </div>
+      <div class="features news">
+        <div class="feature reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-5h4v5"/></svg>
+          <h3 data-i18n="n1.t">Mes labos</h3>
+          <p data-i18n="n1.p">Un écran d'accueil avec tous tes fichiers : un aperçu des mesures, la date, la recherche et les épingles.</p>
+        </div>
+        <div class="feature reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 15l2 2 4-4"/></svg>
+          <h3 data-i18n="n2.t">Un fichier par expérience</h3>
+          <p data-i18n="n2.p">Enregistrer et Enregistrer sous, comme dans Word : chaque onglet a son propre fichier .regline.</p>
+        </div>
+        <div class="feature reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9h7l2-2.5h9"/></svg>
+          <h3 data-i18n="n3.t">Sous-expériences</h3>
+          <p data-i18n="n3.p">Partie 1, Partie 2… dans la même expérience. Un résultat calculé dans une partie s'utilise dans l'autre, avec son incertitude.</p>
+        </div>
+        <div class="feature reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.2" fill="currentColor"/></svg>
+          <h3 data-i18n="n4.t">Un voyant de fiabilité</h3>
+          <p data-i18n="n4.p">Regline essaie d'autres valeurs de départ et allume un voyant orange ou rouge quand un ajustement est douteux.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="formules" style="padding-top:0">
     <div class="wrap form-split">
       <div class="form-text">
@@ -430,7 +476,7 @@ footer a { color: var(--muted); }
           <li><span data-i18n="form.l2"><b>Aperçu mathématique en direct :</b> tu vois tout de suite si la formule est celle que tu voulais.</span></li>
           <li><span data-i18n="form.l3"><b>Les erreurs pendant la frappe :</b> parenthèse oubliée, paramètre inconnu, angle en degrés au lieu de radians.</span></li>
         </ul>
-        <div class="examples-row" aria-label="Exemples">
+        <div class="examples-row" data-i18n-label="aria.examples" aria-label="Exemples">
           <code>U0*EXP(-x/tau)+c</code><code>A·sin(ωx+φ)</code><code>Vmax*x/(Km+x)</code>
         </div>
         </div>
@@ -462,7 +508,7 @@ footer a { color: var(--muted); }
             <div class="unc">± 2,7070</div>
           </div>
           <div class="row">
-            <div class="who">Regline 4.0<small data-i18n="prec.regline.s">ajustement personnalisé</small></div>
+            <div class="who">Regline 4.1<small data-i18n="prec.regline.s">ajustement personnalisé</small></div>
             <div class="digits" data-value="238.94212918" data-ref="238.94212918">238,94212918</div>
             <div class="unc">± 2,7070</div>
           </div>
@@ -476,10 +522,10 @@ footer a { color: var(--muted); }
 
       <div class="facts">
         <div class="fact reveal"><div class="big">12 <small data-i18n="prec.f1.u">chiffres</small></div><p data-i18n="prec.f1">Pour une droite, Regline donne exactement les mêmes résultats que DROITEREG d'Excel, même sur des données difficiles.</p></div>
-        <div class="fact reveal"><div class="big">26 <small data-i18n="prec.f2.u">problèmes NIST</small></div><p data-i18n="prec.f2">Au moins 5 chiffres justes sur chaque paramètre, en général 7 à 11, du niveau « facile » à « difficile ».</p></div>
+        <div class="fact reveal"><div class="big">26 <small data-i18n="prec.f2.u">problèmes NIST</small></div><p data-i18n="prec.f2">Les valeurs certifiées retrouvées dans 50 essais sur 52, avec 5 à 11 chiffres justes. Les 2 autres sont signalés par le voyant rouge, jamais en silence.</p></div>
         <div class="fact reveal"><div class="big">68 <small>%</small></div><p data-i18n="prec.f3">Des incertitudes honnêtes : sur des milliers de simulations, la vraie valeur tombe dans ±1σ environ 68 % du temps, comme le veut la théorie.</p></div>
       </div>
-      <p class="footnote" data-i18n="prec.note">Essais du 30 octobre 2026 sur Regline 4.0 et Excel 365 (Solveur GRG non linéaire). Pour deux problèmes NIST dont le point de départ est volontairement très éloigné, Regline s'arrête avec un message et propose de meilleures valeurs de départ ; avec le second départ du NIST, tout est juste.</p>
+      <p class="footnote"><span data-i18n="prec.note">Excel 365 (Solveur GRG non linéaire) : essai du 30 octobre 2026. Regline 4.1 : vérifié le 23 novembre 2026. Quand le point de départ du NIST est volontairement très éloigné, Regline essaie d'autres départs ; s'il ne trouve pas la bonne solution, le voyant rouge « Douteux » le dit.</span> <a href="verification.html" data-i18n="prec.more">Voir toute la vérification →</a></p>
     </div>
   </section>
 
@@ -490,7 +536,7 @@ footer a { color: var(--muted); }
         <h2 style="margin-top:14px" data-i18n="hon.title">Regline ne fait pas le TP à ta place.</h2>
         <p class="lead" style="margin-top:18px" data-i18n="hon.lead">Il t'évite les calculs répétitifs, sans jamais cacher la méthode. Chaque résultat a son « Détail du calcul » : la formule, les valeurs, les dérivées partielles et le texte LaTeX à copier dans ton rapport.</p>
       </div>
-      <div class="latex reveal" aria-label="Exemple de détail du calcul en LaTeX"><span class="k">\begin</span>{align*}
+      <div class="latex reveal" data-i18n-label="aria.latex" aria-label="Exemple de détail du calcul en LaTeX"><span class="k">\begin</span>{align*}
   g &amp;= \frac{4\pi^2 L}{T^2}
      = <span class="v">9{,}806</span> \ \mathrm{m/s^2} \\
   \frac{\partial g}{\partial L} &amp;= \frac{4\pi^2}{T^2},\quad
@@ -506,7 +552,7 @@ footer a { color: var(--muted); }
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow" data-i18n="gal.eyebrow">Exemples inclus</p>
-        <h2 data-i18n="gal.title">Onze expériences prêtes à explorer.</h2>
+        <h2 data-i18n="gal.title">Dix-neuf expériences prêtes à explorer.</h2>
         <p class="lead" data-i18n="gal.lead">Chaque exemple s'ouvre avec ses notes : ce qui est mesuré, comment c'est ajusté, et ce qu'il faut regarder.</p>
       </div>
       <div class="tabs" role="tablist" id="gal-tabs"></div>
@@ -574,7 +620,7 @@ footer a { color: var(--muted); }
         <details><summary data-i18n="q4">Ça remplace Excel ?</summary><p data-i18n="a4">Pour les TP, oui : tableau, formules dans les cellules, tri, filtres, graphiques et ajustements avec incertitudes. Tu peux toujours exporter tes données en .xlsx.</p></details>
         <details><summary data-i18n="q5">Ça marche en chimie ou en biologie ?</summary><p data-i18n="a5">Oui. La bibliothèque contient Michaelis-Menten, Hill, Arrhenius, croissance logistique, Beer-Lambert et d'autres, et les tests statistiques servent dans toutes les sciences.</p></details>
         <details><summary data-i18n="q6">Pourquoi Windows ou macOS m'avertit-il ?</summary><p data-i18n="a6">Regline est développé par un étudiant, sans certificat payant d'éditeur. Les étapes de la section Installation expliquent comment l'ouvrir quand même.</p></details>
-        <details><summary data-i18n="q7">Mes anciens fichiers .regline s'ouvrent-ils ?</summary><p data-i18n="a7">Oui. Les fichiers des versions précédentes s'ouvrent dans la 4.0, tels quels.</p></details>
+        <details><summary data-i18n="q7">Mes anciens fichiers .regline s'ouvrent-ils ?</summary><p data-i18n="a7">Oui. Les fichiers des versions précédentes s'ouvrent dans la 4.1, tels quels.</p></details>
         <details><summary data-i18n="q8">J'ai trouvé un bug ou j'ai une idée.</summary><p data-i18n="a8">Écris-moi à l'adresse en bas de la page, avec si possible une capture d'écran ou ton fichier .regline. Chaque message est lu.</p></details>
       </div>
     </div>
@@ -604,10 +650,11 @@ footer a { color: var(--muted); }
 <footer>
   <div class="wrap">
     <span><span id="foot-version"></span><span data-i18n="foot.c">© 2026 Leandro Castro Moreira. Regline est gratuit et fourni sans garantie : vérifie toujours tes résultats.</span></span>
-    <span><a href="https://github.com/Leandro526-c/regline/releases" data-i18n="foot.all">Toutes les versions</a> · <a href="https://ko-fi.com/leandro526" target="_blank" rel="noopener" data-i18n="foot.sup">Soutenir le projet</a> · <a href="confidentialite.html" data-i18n="foot.priv">Confidentialité</a> · <a href="conditions.html" data-i18n="foot.cgu">Conditions</a> · <a href="licences.html" data-i18n="foot.ecoles">Écoles et entreprises</a> · <a href="mailto:contact@regline.ch">contact@regline.ch</a></span>
+    <span><a href="https://github.com/Leandro526-c/regline/releases" data-i18n="foot.all">Toutes les versions</a> · <a href="https://ko-fi.com/leandro526" target="_blank" rel="noopener" data-i18n="foot.sup">Soutenir le projet</a> · <a href="verification.html" data-i18n="foot.verif">Vérification</a> · <a href="bibliotheques.html" data-i18n="foot.libs">Logiciels libres</a> · <a href="confidentialite.html" data-i18n="foot.priv">Confidentialité</a> · <a href="conditions.html" data-i18n="foot.cgu">Conditions</a> · <a href="licences.html" data-i18n="foot.ecoles">Écoles et entreprises</a> · <a href="mailto:contact@regline.ch">contact@regline.ch</a></span>
   </div>
 </footer>
 
+<div id="lang-hint" hidden></div>
 <script src="langues.js"></script>
 <script src="site.js"></script>
 </body>

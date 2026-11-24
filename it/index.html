@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="it" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Regline · dati di laboratorio, fit e incertezze</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Regline: il software gratuito per i dati di laboratorio. Fit, incertezze, statistica e grafici pronti per la relazione. Windows, Mac e Linux.">
+<meta property="og:title" content="Regline">
+<meta property="og:description" content="Le tue misure di laboratorio, dalla tabella alla relazione. Gratuito, per Windows, Mac e Linux.">
+<meta property="og:image" content="https://regline.ch/apercu-lien.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Logo di Regline">
+<meta property="og:site_name" content="Regline">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:url" content="https://regline.ch/it/">
+<meta property="og:locale" content="it_CH">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#121116">
+<link rel="icon" href="../logo.png">
+<link rel="canonical" href="https://regline.ch/it/">
+<link rel="alternate" hreflang="fr" href="https://regline.ch/">
+<link rel="alternate" hreflang="en" href="https://regline.ch/en/">
+<link rel="alternate" hreflang="de" href="https://regline.ch/de/">
+<link rel="alternate" hreflang="it" href="https://regline.ch/it/">
+<link rel="alternate" hreflang="es" href="https://regline.ch/es/">
+<link rel="alternate" hreflang="x-default" href="https://regline.ch/">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Regline",
+ "alternateName": "Regline · dati di laboratorio, fit e incertezze",
+ "url": "https://regline.ch/it/", "image": "https://regline.ch/logo.png",
+ "description": "Regline: il software gratuito per i dati di laboratorio. Fit, incertezze, statistica e grafici pronti per la relazione. Windows, Mac e Linux.",
+ "applicationCategory": "EducationalApplication", "operatingSystem": "Windows, macOS, Linux",
+ "inLanguage": ["fr", "en", "de", "it", "es"],
+ "offers": {"@type": "Offer", "price": "0", "priceCurrency": "CHF"},
+ "author": {"@type": "Person", "name": "Leandro Castro Moreira"}}
+</script>
+
+<link rel="stylesheet" href="../polices.css">
+<style>
+/* Mise en page : une page de cahier de labo (papier millimétré discret), texte aligné à gauche,
+   l'app filmée en grand au centre de chaque section. Violet du logo, chiffres en police « instrument ». */
+:root {
+  --bg: #121116; --bg-2: #18171e; --surface: #1d1c24; --raised: #26252f; --line: #2f2d3a;
+  --grid: rgba(150, 140, 255, .055);
+  --text: #ecebf3; --muted: #a3a1b4; --faint: #75738a;
+  --accent: #7c6cff; --accent-strong: #9a8dff; --accent-soft: rgba(124, 108, 255, .16); --on-accent: #ffffff;
+  --good: #3fcf9a; --good-soft: rgba(63, 207, 154, .14); --bad: #ff7a85; --bad-soft: rgba(255, 122, 133, .13);
+  --fit: #f2a65a;
+  --shadow: 0 30px 80px -30px rgba(0, 0, 0, .75);
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --radius: 18px;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f6f5fa; --bg-2: #efedf7; --surface: #ffffff; --raised: #eceaf5; --line: #dcd9ea;
+    --grid: rgba(91, 75, 232, .07);
+    --text: #1b1a24; --muted: #5c5a6e; --faint: #85839a;
+    --accent: #5b4be8; --accent-strong: #4a3bd0; --accent-soft: rgba(91, 75, 232, .1); --on-accent: #ffffff;
+    --good: #12895f; --good-soft: rgba(18, 137, 95, .1); --bad: #c8323f; --bad-soft: rgba(200, 50, 63, .08);
+    --fit: #d9781f;
+    --shadow: 0 30px 70px -34px rgba(40, 30, 110, .45);
+    color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #f6f5fa; --bg-2: #efedf7; --surface: #ffffff; --raised: #eceaf5; --line: #dcd9ea;
+  --grid: rgba(91, 75, 232, .07);
+  --text: #1b1a24; --muted: #5c5a6e; --faint: #85839a;
+  --accent: #5b4be8; --accent-strong: #4a3bd0; --accent-soft: rgba(91, 75, 232, .1); --on-accent: #ffffff;
+  --good: #12895f; --good-soft: rgba(18, 137, 95, .1); --bad: #c8323f; --bad-soft: rgba(200, 50, 63, .08);
+  --fit: #d9781f;
+  --shadow: 0 30px 70px -34px rgba(40, 30, 110, .45);
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+#lang-hint { position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%); z-index: 60; display: flex; align-items: center; gap: 6px;
+  max-width: calc(100% - 32px); background: var(--raised); border: 1px solid var(--line); border-radius: 999px;
+  padding: 6px 6px 6px 18px; box-shadow: var(--shadow); font-size: 15px; }
+#lang-hint[hidden] { display: none; }
+#lang-hint a { color: var(--text); font-weight: 600; text-decoration: none; }
+#lang-hint a::after { content: " →"; color: var(--accent-strong); }
+#lang-hint button { border: 0; background: transparent; color: var(--muted); font-size: 20px; line-height: 1; width: 34px; height: 34px; border-radius: 50%; cursor: pointer; }
+#lang-hint button:hover { background: var(--accent-soft); color: var(--text); }
+
+.features.news { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 980px) { .features.news { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .features.news { grid-template-columns: minmax(0, 1fr); } }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.6 var(--body);
+       -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+img, video { max-width: 100%; display: block; }
+a { color: var(--accent-strong); }
+:focus-visible { outline: 2px solid var(--accent-strong); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 1180px; margin: 0 auto;
+        padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--display); letter-spacing: -0.02em; text-wrap: balance; margin: 0; }
+h2 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.08; font-weight: 700; }
+h3 { font-size: 20px; line-height: 1.25; font-weight: 650; }
+p { margin: 0; }
+.eyebrow { font: 500 13px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent-strong); }
+.lead { font-size: 19px; color: var(--muted); max-width: 62ch; }
+section { padding-block: clamp(64px, 9vw, 112px); }
+.section-head { display: grid; gap: 14px; margin-bottom: 40px; max-width: 760px; }
+
+/* ── Barre du haut ── */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; backdrop-filter: blur(14px) saturate(1.4);
+       -webkit-backdrop-filter: blur(14px) saturate(1.4);
+       background: color-mix(in srgb, var(--bg) 78%, transparent); border-bottom: 1px solid transparent; transition: border-color .2s; }
+.top.scrolled { border-bottom-color: var(--line); }
+.top .wrap { display: flex; align-items: center; gap: 20px; height: 64px; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font: 700 21px var(--display); letter-spacing: -0.02em; }
+.brand img { width: 32px; height: 32px; border-radius: 9px; }
+.nav { display: flex; gap: 4px; margin-left: auto; }
+.nav a { color: var(--muted); text-decoration: none; font-size: 15px; padding: 8px 12px; border-radius: 10px; }
+.nav a:hover { color: var(--text); background: var(--raised); }
+.lang { position: relative; }
+.lang select { appearance: none; -webkit-appearance: none; font: 500 14px var(--body); color: var(--text); background: var(--raised);
+               border: 1px solid var(--line); border-radius: 999px; padding: 7px 32px 7px 14px; cursor: pointer; }
+.lang::after { content: ""; position: absolute; right: 13px; top: 50%; width: 7px; height: 7px; margin-top: -5px;
+               border-right: 1.5px solid var(--muted); border-bottom: 1.5px solid var(--muted); transform: rotate(45deg); pointer-events: none; }
+.top-dl { font: 600 14px var(--body); color: var(--on-accent); background: var(--accent); text-decoration: none; padding: 8px 16px; border-radius: 999px; white-space: nowrap; }
+.top-dl:hover { background: var(--accent-strong); }
+
+/* ── Héros ── */
+.hero { position: relative; padding-block: clamp(40px, 7vw, 84px) 0; overflow: hidden; }
+.paper { position: absolute; inset: 0; pointer-events: none;
+         background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+         background-size: 24px 24px; -webkit-mask-image: linear-gradient(#000 40%, transparent 92%); mask-image: linear-gradient(#000 40%, transparent 92%); }
+.hero-grid { position: relative; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 40px; align-items: center; }
+.hero h1 { font-size: clamp(42px, 6.6vw, 80px); line-height: .98; font-weight: 750; letter-spacing: -0.035em; }
+.hero h1 em { font-style: normal; color: var(--accent-strong); }
+.hero .lead { margin-top: 22px; font-size: clamp(18px, 1.7vw, 21px); }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; align-items: stretch; }
+.download { display: inline-flex; flex-direction: column; justify-content: center; gap: 2px; background: var(--accent); color: var(--on-accent);
+            text-decoration: none; border-radius: 16px; padding: 14px 26px; font: 650 18px/1.2 var(--body);
+            box-shadow: 0 10px 30px -10px var(--accent); transition: transform .15s, background .15s; }
+.download:hover { background: var(--accent-strong); transform: translateY(-1px); }
+.download small { font: 400 13px var(--body); opacity: .85; }
+.download.secondary { background: var(--raised); color: var(--text); box-shadow: none; border: 1px solid var(--line); }
+.download.secondary:hover { border-color: var(--accent); background: var(--raised); }
+.exe-link { flex-basis: 100%; font-size: 14px; color: var(--muted); }
+.exe-link:hover { color: var(--text); }
+.others { margin-top: 16px; color: var(--muted); font-size: 15px; display: flex; flex-wrap: wrap; gap: 6px 16px; }
+.others a { color: var(--accent-strong); }
+.meta { margin-top: 10px; color: var(--faint); font: 13px var(--mono); }
+.notice { margin-top: 14px; font-size: 14.5px; color: var(--muted); border-left: 3px solid var(--fit); padding: 6px 0 6px 12px; max-width: 56ch; }
+
+/* Courbe d'ajustement qui se dessine (signature du héros) */
+.plot { width: 100%; height: auto; overflow: visible; }
+.plot .axis { stroke: var(--faint); stroke-width: 1.2; fill: none; }
+.plot .tick { fill: var(--faint); font: 12px var(--mono); }
+.plot .bar { stroke: var(--accent-strong); stroke-width: 1.5; fill: none; }
+.plot .pt { fill: var(--accent); stroke: var(--bg); stroke-width: 2; }
+.plot .fit { stroke: var(--fit); stroke-width: 3; fill: none; stroke-linecap: round; stroke-dasharray: 700; stroke-dashoffset: 0; }
+.plot .band { fill: var(--fit); opacity: .12; }
+.plot .lab { fill: var(--text); font: 600 15px var(--mono); }
+.plot .lab2 { fill: var(--muted); font: 13px var(--mono); }
+.plot .chip { fill: var(--good-soft); }
+.plot .chiptext { fill: var(--good); font: 600 13px var(--mono); }
+@media (prefers-reduced-motion: no-preference) {
+  .plot.play .pt { animation: pop .45s cubic-bezier(.3, 1.6, .5, 1) backwards; }
+  .plot.play .bar { animation: fade .4s ease backwards; }
+  .plot.play .fit { animation: draw 1.4s 1.3s cubic-bezier(.6, 0, .3, 1) backwards; }
+  .plot.play .band, .plot.play .res { animation: fade .8s 2.4s ease backwards; }
+}
+@keyframes pop { from { transform: scale(0); } }
+@keyframes fade { from { opacity: 0; } }
+@keyframes draw { from { stroke-dashoffset: 700; } }
+.plot .pt, .plot .bar { transform-box: fill-box; transform-origin: center; }
+
+/* Fenêtre de l'app (vidéos et captures) */
+.window { border-radius: 14px; background: #19181e; border: 1px solid var(--line); box-shadow: var(--shadow); overflow: hidden; position: relative; }
+.window video, .window img { width: 100%; height: auto; }
+.showcase { position: relative; margin-top: clamp(40px, 6vw, 72px); }
+.showcase::before { content: ""; position: absolute; inset: 8% 10% -4%; background: radial-gradient(closest-side, var(--accent-soft), transparent); filter: blur(30px); z-index: -1; }
+.replay { position: absolute; right: 14px; bottom: 14px; font: 500 13px var(--body); color: #fff; background: rgba(20, 19, 26, .78);
+          border: 1px solid rgba(255, 255, 255, .14); border-radius: 999px; padding: 6px 12px; cursor: pointer; backdrop-filter: blur(6px); }
+.replay:hover { background: rgba(20, 19, 26, .92); }
+.caption { margin-top: 14px; color: var(--faint); font-size: 14px; }
+
+/* ── Étapes ── */
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 34px; }
+.step { display: grid; gap: 8px; padding-top: 18px; border-top: 2px solid var(--line); }
+.step b { font: 500 13px var(--mono); color: var(--accent-strong); }
+.step p { color: var(--muted); font-size: 16px; }
+
+/* ── Fonctionnalités ── */
+.features { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.feature { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 20px 24px; display: grid; gap: 10px; align-content: start;
+           transition: transform .2s, border-color .2s; }
+.feature:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); }
+.feature svg { width: 30px; height: 30px; color: var(--accent-strong); }
+.feature p { color: var(--muted); font-size: 15.5px; line-height: 1.55; }
+
+/* ── Formules ── */
+.split { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
+.ticks { list-style: none; padding: 0; margin: 26px 0 0; display: grid; gap: 14px; }
+.ticks li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; color: var(--muted); }
+.ticks li::before { content: ""; width: 20px; height: 20px; margin-top: 3px; border-radius: 50%; background: var(--accent-soft)
+                    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3 6-7' fill='none' stroke='%239a8dff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat; }
+.ticks b { color: var(--text); font-weight: 600; }
+.examples-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.examples-row code { font: 14px var(--mono); background: var(--raised); border: 1px solid var(--line); padding: 4px 10px; border-radius: 8px; color: var(--text); }
+
+.form-split { display: grid; gap: clamp(28px, 4vw, 44px); }
+.form-text { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 24px clamp(28px, 5vw, 64px); align-items: start; }
+
+/* ── Précision ── */
+.precision { background: var(--bg-2); border-block: 1px solid var(--line); }
+.compare { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(18px, 3vw, 32px); }
+.compare-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 20px; align-items: baseline; margin-bottom: 18px; }
+.compare-head span { color: var(--faint); font-size: 14px; }
+.rows { display: grid; gap: 10px; }
+.row { display: grid; grid-template-columns: minmax(150px, 1.1fr) minmax(0, 1.5fr) minmax(0, 1fr); gap: 16px; align-items: center; padding: 14px 16px; border-radius: 12px; background: var(--raised); }
+.row .who { font-weight: 600; font-size: 15.5px; }
+.row .who small { display: block; color: var(--faint); font-weight: 400; font-size: 13px; }
+.digits { font: 500 clamp(18px, 2.3vw, 26px)/1.2 var(--mono); font-variant-numeric: tabular-nums; letter-spacing: .02em; white-space: nowrap; overflow-x: auto; }
+.digits .ok { color: var(--good); }
+.digits .ko { color: var(--bad); text-decoration: underline wavy; text-decoration-thickness: 1px; text-underline-offset: 5px; }
+.unc { font: 14px var(--mono); color: var(--muted); }
+.unc.none { color: var(--bad); }
+.row.ref { background: transparent; border: 1px dashed var(--line); }
+.row.ref .digits { color: var(--text); }
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+.fact { border-radius: var(--radius); border: 1px solid var(--line); padding: 22px; display: grid; gap: 8px; align-content: start; background: var(--surface); }
+.fact .big { font: 700 clamp(34px, 4vw, 46px)/1 var(--display); letter-spacing: -0.03em; color: var(--text); }
+.fact .big small { font-size: .5em; color: var(--muted); font-weight: 600; letter-spacing: 0; }
+.fact p { color: var(--muted); font-size: 15.5px; }
+.footnote { margin-top: 18px; color: var(--faint); font-size: 14px; max-width: 90ch; }
+
+/* ── Transparence ── */
+.honest { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
+.latex { font: 14px/1.7 var(--mono); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px; overflow-x: auto; color: var(--muted); white-space: pre; }
+.latex .k { color: var(--accent-strong); }
+.latex .v { color: var(--text); }
+
+/* ── Galerie ── */
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.tabs button { font: 500 15px var(--body); color: var(--muted); background: transparent; border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px; cursor: pointer; position: relative; overflow: hidden; }
+.tabs button:hover { color: var(--text); border-color: var(--faint); }
+.tabs button[aria-selected="true"] { color: var(--on-accent); background: var(--accent); border-color: var(--accent); }
+.tabs button[aria-selected="true"]::after { content: ""; position: absolute; left: 0; bottom: 0; height: 3px; width: 100%; background: rgba(255, 255, 255, .55); transform-origin: left; animation: timer var(--slide, 6s) linear; }
+.gallery.paused .tabs button::after { animation-play-state: paused; }
+@keyframes timer { from { transform: scaleX(0); } }
+.stage { position: relative; aspect-ratio: 1200 / 1159; max-width: 100%; }
+.stage figure { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity .6s ease; }
+.stage figure.on { opacity: 1; }
+.stage img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.gallery-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(24px, 4vw, 48px); align-items: start; }
+.gal-text { display: grid; gap: 12px; position: sticky; top: 100px; }
+.gal-text .field { font: 500 13px var(--mono); color: var(--accent-strong); text-transform: uppercase; letter-spacing: .08em; }
+.gal-text p { color: var(--muted); }
+
+/* ── Installation ── */
+.install { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(20px, 3vw, 32px); }
+.install ol { margin: 0; padding-left: 22px; display: grid; gap: 10px; }
+.install code { font: 14px var(--mono); background: var(--raised); border-radius: 6px; padding: 2px 7px; overflow-wrap: anywhere; }
+.install .note { color: var(--faint); font-size: 15px; margin-top: 16px; }
+
+/* ── FAQ ── */
+.faq { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 40px; }
+.faq details { border-top: 1px solid var(--line); padding: 18px 0; }
+.faq summary { cursor: pointer; font: 600 17.5px/1.4 var(--body); list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font: 400 24px/1 var(--mono); color: var(--accent-strong); transition: transform .2s; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { color: var(--muted); margin-top: 10px; font-size: 16px; }
+
+/* ── À propos ── */
+.about { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: clamp(24px, 5vw, 64px); align-items: start; }
+.about p + p { margin-top: 14px; }
+.about .text p { color: var(--muted); }
+.support-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; display: grid; gap: 14px; }
+.support-card p { color: var(--muted); font-size: 16px; }
+.support { justify-self: start; display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 999px; font-weight: 600;
+           background: var(--raised); color: var(--text); text-decoration: none; border: 1px solid var(--line); transition: border-color .15s; }
+.support:hover { border-color: var(--accent); }
+.support span { color: #ff5e7e; }
+.support-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.support-main { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.support-main:hover { background: var(--accent-strong); border-color: var(--accent-strong); }
+.support-main span:first-child { color: var(--on-accent); }
+.mail { font: 15px var(--mono); }
+
+footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var(--faint); font-size: 14px; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+footer a { color: var(--muted); }
+
+/* Apparition douce : visible au repos, seulement un léger glissement */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal.in { animation: rise .7s cubic-bezier(.2, .7, .2, 1) backwards; }
+}
+@keyframes rise { from { transform: translateY(18px); opacity: .001; } }
+
+@media (max-width: 1000px) {
+  .features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .nav { display: none; }
+  .lang { margin-left: auto; }
+}
+@media (max-width: 860px) {
+  .form-text, .hero-grid, .split, .honest, .gallery-grid, .about { grid-template-columns: minmax(0, 1fr); }
+  .gal-text { position: static; }
+  .facts, .steps { grid-template-columns: minmax(0, 1fr); }
+  .faq { grid-template-columns: minmax(0, 1fr); }
+  .row { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .hero .plot-box { max-width: 520px; }
+}
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .features { grid-template-columns: minmax(0, 1fr); }
+  .top-dl { display: none; }
+  .download { width: 100%; }
+}
+</style>
+</head>
+<body>
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#"><img src="../logo.png" alt="">Regline</a>
+    <nav class="nav" data-i18n-label="aria.sections" aria-label="Sezioni">
+      <a href="#demo" data-i18n="nav.demo">In azione</a>
+      <a href="#fonctions" data-i18n="nav.features">Funzioni</a>
+      <a href="#nouveau" data-i18n="nav.new">Novità</a>
+      <a href="#precision" data-i18n="nav.precision">Precisione</a>
+      <a href="#installation" data-i18n="nav.install">Installazione</a>
+      <a href="#questions" data-i18n="nav.faq">Domande</a>
+    </nav>
+    <label class="lang">
+      <select id="lang" aria-label="Langue / Language">
+        <option value="fr">Français</option>
+        <option value="en">English</option>
+        <option value="de">Deutsch</option>
+        <option value="it">Italiano</option>
+        <option value="es">Español</option>
+      </select>
+    </label>
+    <a class="top-dl" href="#telecharger" data-i18n="nav.download">Scarica</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="telecharger">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow" data-i18n="hero.eyebrow">Gratuito · Windows, Mac, Linux</p>
+          <h1 style="margin-top:18px" data-i18n="hero.title">Le tue misure di laboratorio, <em>dalla tabella alla relazione.</em></h1>
+          <p class="lead" data-i18n="hero.lead">Incolla le tue misure, adatta una retta o la tua formula, propaga le incertezze ed esporta grafici pronti per la relazione. Senza arrangiarti con Excel, senza programmare.</p>
+          <div class="cta" id="primary"></div>
+          <p class="others" id="others"></p>
+          <p class="notice" id="notice" hidden></p>
+          <p class="meta" id="version"></p>
+        </div>
+        <div class="plot-box" aria-hidden="true">
+          <svg class="plot" id="plot" viewBox="0 0 520 380"></svg>
+        </div>
+      </div>
+
+      <div class="showcase reveal" id="demo">
+        <div class="window">
+          <video id="v-coller" autoplay muted loop playsinline preload="metadata" data-i18n-label="video.a1" aria-label="Demo: incollare una tabella Excel in Regline, appare il fit"></video>
+          <button class="replay" type="button" data-video="v-coller" data-i18n="video.pause">Pausa</button>
+        </div>
+        <p class="caption" data-i18n="hero.caption">La vera app, filmata così com'è: una tabella copiata da Excel diventa in pochi secondi un grafico con fit, incertezze e χ².</p>
+      </div>
+
+      <div class="steps">
+        <div class="step reveal"><b>1</b><h3 data-i18n="step1.t">Incolla o scrivi le misure</h3><p data-i18n="step1.p">Da Excel, da un file CSV, TXT o .xlsx, o direttamente nella tabella. Le colonne ΔX e ΔY vengono riconosciute da sole, e anche un file un po' disordinato si importa lo stesso.</p></div>
+        <div class="step reveal"><b>2</b><h3 data-i18n="step2.t">Scegli il modello</h3><p data-i18n="step2.p">Retta, retta per l'origine, un modello della libreria o la tua formula. Il fit si ricalcola a ogni modifica.</p></div>
+        <div class="step reveal"><b>3</b><h3 data-i18n="step3.t">Tutto per la relazione</h3><p data-i18n="step3.p">Parametri arrotondati secondo le incertezze, χ², grafico in PNG, SVG o PDF, tabella LaTeX pronta da compilare.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fonctions">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="feat.eyebrow">Tutto il laboratorio in una sola finestra</p>
+        <h2 data-i18n="feat.title">Pensato per i laboratori, dal liceo all'università.</h2>
+        <p class="lead" data-i18n="feat.lead">Fisica, chimica, biologia o scienze della Terra: Regline fa i calcoli ripetitivi e ti lascia capire ciò che misuri.</p>
+      </div>
+      <div class="features">
+        <div class="feature reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9h18M3 14.5h18M9 4v16M15 4v16"/></svg>
+          <h3 data-i18n="f1.t">Una tabella come in Excel</h3>
+          <p data-i18n="f1.p">Incolla da Excel, scrivi «=1/2» in una cella, ordina e filtra senza cancellare nulla. Una tabella può alimentare più grafici: un valore corretto lo è ovunque.</p>
+        </div>
+        <div class="feature reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 20h18M4 20V4"/><path d="M5 17c4-1 6-9 15-12"/><circle cx="8" cy="14" r="1.2" fill="currentColor"/><circle cx="12" cy="9.6" r="1.2" fill="currentColor"/><circle cx="17" cy="6.6" r="1.2" fill="currentColor"/></svg>
+          <h3 data-i18n="f2.t">Adatta qualsiasi modello</h3>
+          <p data-i18n="f2.p">Rette, la tua formula, una libreria di modelli (fisica, chimica, biologia), equazioni differenziali e fit globale di più curve.</p>
+        </div>
+        <div class="feature reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 3v18M8 3h8M8 21h8"/><circle cx="12" cy="12" r="3"/></svg>
+          <h3 data-i18n="f3.t">Incertezze fatte bene</h3>
+          <p data-i18n="f3.p">ΔX e ΔY, propagazione con le derivate parziali, controllo Monte Carlo, bilancio delle incertezze. Risultati arrotondati alle cifre significative.</p>
+        </div>
+        <div class="feature reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 12h3l3 7 4-14h6"/></svg>
+          <h3 data-i18n="f4.t">Formule leggibili</h3>
+          <p data-i18n="f4.p">Scrivi come in Excel o sulla calcolatrice. Regline mostra la formula in vera matematica e segnala gli errori mentre scrivi, anche i gradi dimenticati.</p>
+        </div>
+        <div class="feature reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 20h18"/><rect x="5" y="11" width="3.5" height="9" rx="1"/><rect x="10.25" y="6" width="3.5" height="14" rx="1"/><rect x="15.5" y="13" width="3.5" height="7" rx="1"/></svg>
+          <h3 data-i18n="f5.t">Test statistici spiegati</h3>
+          <p data-i18n="f5.p">χ², scarto normalizzato, Welch, ANOVA, Mann-Whitney, χ² di contingenza. Un glossario spiega ogni test con parole semplici.</p>
+        </div>
+        <div class="feature reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><path d="M14 20l2.5-4 2 2.5L21 14"/></svg>
+          <h3 data-i18n="f6.t">Tutti i grafici del laboratorio</h3>
+          <p data-i18n="f6.p">Residui, banda ±1σ, due assi Y, diagrammi di Bode, istogrammi, box plot, barre ± SEM, più pannelli e annotazioni.</p>
+        </div>
+        <div class="feature reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 14h8M8 17.5h5"/></svg>
+          <h3 data-i18n="f7.t">La relazione, più in fretta</h3>
+          <p data-i18n="f7.p">Tabelle LaTeX pronte da compilare, pgfplots, immagini PNG, SVG o PDF, copia per Word ed Excel e, se vuoi, il codice Python matplotlib.</p>
+        </div>
+        <div class="feature reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18"/></svg>
+          <h3 data-i18n="f8.t">Leggero, offline, in 5 lingue</h3>
+          <p data-i18n="f8.p">Le tue misure restano sul tuo computer. In Français, English, Deutsch, Italiano ed Español, su Windows, Mac e Linux.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="nouveau" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="new.eyebrow">Novità della 4.1</p>
+        <h2 data-i18n="new.title">I tuoi laboratori, in ordine e verificati.</h2>
+        <p class="lead" data-i18n="new.lead">La 4.1 tiene i tuoi esperimenti come documenti e controlla i tuoi fit al posto tuo.</p>
+      </div>
+      <div class="features news">
+        <div class="feature reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-5h4v5"/></svg>
+          <h3 data-i18n="n1.t">I miei laboratori</h3>
+          <p data-i18n="n1.p">Una schermata iniziale con tutti i tuoi file: anteprima delle misure, data, ricerca e file fissati.</p>
+        </div>
+        <div class="feature reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 15l2 2 4-4"/></svg>
+          <h3 data-i18n="n2.t">Un file per esperimento</h3>
+          <p data-i18n="n2.p">Salva e Salva con nome, come in Word: ogni scheda ha il suo file .regline.</p>
+        </div>
+        <div class="feature reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9h7l2-2.5h9"/></svg>
+          <h3 data-i18n="n3.t">Sotto-esperimenti</h3>
+          <p data-i18n="n3.p">Parte 1, Parte 2… nello stesso esperimento. Un risultato calcolato in una parte si usa nell'altra, con la sua incertezza.</p>
+        </div>
+        <div class="feature reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.2" fill="currentColor"/></svg>
+          <h3 data-i18n="n4.t">Una spia di affidabilità</h3>
+          <p data-i18n="n4.p">Regline prova altri valori iniziali e accende una spia arancione o rossa quando un fit è dubbio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="formules" style="padding-top:0">
+    <div class="wrap form-split">
+      <div class="form-text">
+        <div>
+          <p class="eyebrow" data-i18n="form.eyebrow">Formule</p>
+          <h2 style="margin-top:14px" data-i18n="form.title">Scrivi la formula come la pensi.</h2>
+        </div>
+        <div>
+        <ul class="ticks" style="margin-top:0">
+          <li><span data-i18n="form.l1"><b>Come in Excel o sulla calcolatrice:</b> EXP, SQRT, x², 0,5, √ e le lettere greche vengono capiti.</span></li>
+          <li><span data-i18n="form.l2"><b>Anteprima matematica in tempo reale:</b> vedi subito se la formula è quella che volevi.</span></li>
+          <li><span data-i18n="form.l3"><b>Errori segnalati mentre scrivi:</b> parentesi dimenticata, parametro sconosciuto, angolo in gradi invece che in radianti.</span></li>
+        </ul>
+        <div class="examples-row" data-i18n-label="aria.examples" aria-label="Esempi">
+          <code>U0*EXP(-x/tau)+c</code><code>A·sin(ωx+φ)</code><code>Vmax*x/(Km+x)</code>
+        </div>
+        </div>
+      </div>
+      <div class="window reveal">
+        <video id="v-formule" autoplay muted loop playsinline preload="metadata" data-i18n-label="video.a2" aria-label="Demo: una formula scritta come in Excel, l&#x27;anteprima matematica e il fit"></video>
+        <button class="replay" type="button" data-video="v-formule" data-i18n="video.pause">Pausa</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="precision" id="precision">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="prec.eyebrow">Precisione</p>
+        <h2 data-i18n="prec.title">Affidabile quanto Excel. Spesso più preciso.</h2>
+        <p class="lead" data-i18n="prec.lead">Regline è stato verificato con i set di riferimento del NIST, l'istituto di metrologia statunitense, che pubblica risultati certificati a 11 cifre. Ecco uno di questi problemi, risolto da Regline e dal Risolutore di Excel.</p>
+      </div>
+
+      <div class="compare reveal" id="compare">
+        <div class="compare-head">
+          <h3 data-i18n="prec.case">Fit non lineare «Misra1a»: parametro b₁</h3>
+          <span data-i18n="prec.legend">In verde le cifre corrette</span>
+        </div>
+        <div class="rows">
+          <div class="row ref">
+            <div class="who"><span data-i18n="prec.ref">Valore certificato</span><small>NIST StRD</small></div>
+            <div class="digits" data-value="238.94212918">238,94212918</div>
+            <div class="unc">± 2,7070</div>
+          </div>
+          <div class="row">
+            <div class="who">Regline 4.1<small data-i18n="prec.regline.s">fit personalizzato</small></div>
+            <div class="digits" data-value="238.94212918" data-ref="238.94212918">238,94212918</div>
+            <div class="unc">± 2,7070</div>
+          </div>
+          <div class="row">
+            <div class="who">Excel 365<small data-i18n="prec.excel.s">Risolutore, impostazioni predefinite</small></div>
+            <div class="digits" data-value="238.868566" data-ref="238.94212918">238,868566</div>
+            <div class="unc none" data-i18n="prec.none">nessuna incertezza</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="facts">
+        <div class="fact reveal"><div class="big">12 <small data-i18n="prec.f1.u">cifre</small></div><p data-i18n="prec.f1">Per una retta, Regline dà esattamente gli stessi risultati di REGR.LIN di Excel, anche su dati difficili.</p></div>
+        <div class="fact reveal"><div class="big">26 <small data-i18n="prec.f2.u">problemi NIST</small></div><p data-i18n="prec.f2">I valori certificati ritrovati in 50 prove su 52, con da 5 a 11 cifre corrette. Le altre 2 sono segnalate dalla spia rossa, mai in silenzio.</p></div>
+        <div class="fact reveal"><div class="big">68 <small>%</small></div><p data-i18n="prec.f3">Incertezze oneste: su migliaia di simulazioni, il valore vero cade entro ±1σ circa il 68 % delle volte, come vuole la teoria.</p></div>
+      </div>
+      <p class="footnote"><span data-i18n="prec.note">Excel 365 (Risolutore GRG non lineare): prova del 30 ottobre 2026. Regline 4.1: verificato il 23 novembre 2026. Quando il punto di partenza del NIST è volutamente molto lontano, Regline prova altri punti di partenza; se non trova la soluzione giusta, la spia rossa «Dubbio» lo dice.</span> <a href="verification.html" data-i18n="prec.more">Vedi tutta la verifica →</a></p>
+    </div>
+  </section>
+
+  <section id="transparence">
+    <div class="wrap honest">
+      <div>
+        <p class="eyebrow" data-i18n="hon.eyebrow">Trasparente</p>
+        <h2 style="margin-top:14px" data-i18n="hon.title">Regline non fa il laboratorio al posto tuo.</h2>
+        <p class="lead" style="margin-top:18px" data-i18n="hon.lead">Ti evita i calcoli ripetitivi senza mai nascondere il metodo. Ogni risultato ha il suo «Dettaglio del calcolo»: la formula, i valori, le derivate parziali e il testo LaTeX da copiare nella relazione.</p>
+      </div>
+      <div class="latex reveal" data-i18n-label="aria.latex" aria-label="Esempio di dettaglio del calcolo in LaTeX"><span class="k">\begin</span>{align*}
+  g &amp;= \frac{4\pi^2 L}{T^2}
+     = <span class="v">9{,}806</span> \ \mathrm{m/s^2} \\
+  \frac{\partial g}{\partial L} &amp;= \frac{4\pi^2}{T^2},\quad
+  \frac{\partial g}{\partial T} = -\frac{8\pi^2 L}{T^3} \\
+  \Delta g &amp;= \sqrt{\left(\frac{\partial g}{\partial L}\Delta L\right)^2
+     + \left(\frac{\partial g}{\partial T}\Delta T\right)^2}
+     = <span class="v">0{,}039</span> \ \mathrm{m/s^2}
+<span class="k">\end</span>{align*}</div>
+    </div>
+  </section>
+
+  <section class="gallery" id="galerie" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="gal.eyebrow">Esempi inclusi</p>
+        <h2 data-i18n="gal.title">Diciannove esperimenti pronti da esplorare.</h2>
+        <p class="lead" data-i18n="gal.lead">Ogni esempio si apre con le sue note: cosa si misura, come si adatta e cosa osservare.</p>
+      </div>
+      <div class="tabs" role="tablist" id="gal-tabs"></div>
+      <div class="gallery-grid">
+        <div class="gal-text" aria-live="polite">
+          <span class="field" id="gal-field"></span>
+          <h3 id="gal-title"></h3>
+          <p id="gal-desc"></p>
+        </div>
+        <div class="window"><div class="stage" id="stage"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="installation" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="inst.eyebrow">Installazione</p>
+        <h2 data-i18n="inst.title">Installato in un minuto.</h2>
+        <p class="lead" data-i18n="inst.lead">Poi Regline si aggiorna da solo, al massimo una volta al giorno (puoi disattivarlo nelle Impostazioni).</p>
+      </div>
+      <div class="install">
+        <div class="tabs" role="tablist" id="os-tabs">
+          <button type="button" role="tab" data-os="windows">Windows</button>
+          <button type="button" role="tab" data-os="mac">Mac</button>
+          <button type="button" role="tab" data-os="linux">Linux</button>
+        </div>
+        <div data-panel="windows">
+          <ol>
+            <li data-i18n="win.1">Il modo più semplice: apri <a href="https://apps.microsoft.com/detail/9NDTFSHNBRNZ" target="_blank" rel="noopener">Regline sul Microsoft Store</a> e clicca su <b>Installa</b>. Nessun avviso, e gli aggiornamenti sono automatici.</li>
+            <li data-i18n="win.2">Se lo Store è bloccato (per esempio su un PC dell'università), scarica invece il programma di installazione e aprilo. Se Windows mostra «Windows ha protetto il PC», clicca su <b>Ulteriori informazioni</b>, poi su <b>Esegui comunque</b>.</li>
+            <li data-i18n="win.3">Regline appare poi nel menu Start.</li>
+          </ol>
+          <p class="note" data-i18n="win.note">L'avviso del programma di installazione appare perché Regline è un software indipendente, non firmato da un editore. Non servono diritti di amministratore.</p>
+        </div>
+        <div data-panel="mac" hidden>
+          <ol>
+            <li data-i18n="mac.1">Scarica la versione per il tuo Mac. Per saperlo: menu Apple → <b>Informazioni su questo Mac</b>. «Chip Apple M…»: Apple Silicon. «Processore Intel»: Intel.</li>
+            <li data-i18n="mac.2">Apri il file <code>.dmg</code> e trascina Regline nella cartella <b>Applicazioni</b>.</li>
+            <li data-i18n="mac.3">Al primo avvio macOS blocca l'app: chiudi il messaggio, apri <b>Impostazioni di Sistema → Privacy e sicurezza</b> e clicca su <b>Apri comunque</b> in fondo.</li>
+          </ol>
+          <p class="note"><span data-i18n="mac.note">Se macOS dice che l'app è «danneggiata», apri il Terminale e digita:</span> <code>xattr -dr com.apple.quarantine /Applications/Regline.app</code></p>
+        </div>
+        <div data-panel="linux" hidden>
+          <ol>
+            <li><span data-i18n="lin.1">Scarica l'archivio Linux ed estrailo:</span> <code>tar -xzf Regline-*-Linux-x86_64.tar.gz</code></li>
+            <li><span data-i18n="lin.2">Avvia</span> <code>Regline/Regline</code></li>
+          </ol>
+          <p class="note"><span data-i18n="lin.note">Su Ubuntu o Debian, se non si apre nulla:</span> <code>sudo apt install libxcb-cursor0</code></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="questions" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="faq.eyebrow">Domande</p>
+        <h2 data-i18n="faq.title">Quello che mi chiedono spesso.</h2>
+      </div>
+      <div class="faq">
+        <details><summary data-i18n="q1">È davvero gratuito?</summary><p data-i18n="a1">Sì. Niente pubblicità, niente account, nessuna versione a pagamento. Se Regline ti aiuta, puoi sostenere il progetto con una donazione, ma non è mai obbligatorio.</p></details>
+        <details><summary data-i18n="q2">Le mie misure lasciano il computer?</summary><p data-i18n="a2">No. Regline funziona completamente offline. L'unica connessione è la ricerca di aggiornamenti, al massimo una volta al giorno, che puoi disattivare.</p></details>
+        <details><summary data-i18n="q3">Bisogna saper programmare?</summary><p data-i18n="a3">No, tutto si fa con mouse e tastiera. Se vuoi andare oltre, Regline può generare il codice Python matplotlib del tuo grafico.</p></details>
+        <details><summary data-i18n="q4">Sostituisce Excel?</summary><p data-i18n="a4">Per il laboratorio sì: tabella, formule nelle celle, ordinamento, filtri, grafici e fit con incertezze. Puoi sempre esportare i dati in .xlsx.</p></details>
+        <details><summary data-i18n="q5">Funziona in chimica o in biologia?</summary><p data-i18n="a5">Sì. La libreria contiene Michaelis-Menten, Hill, Arrhenius, crescita logistica, Beer-Lambert e altri, e i test statistici servono in tutte le scienze.</p></details>
+        <details><summary data-i18n="q6">Perché Windows o macOS mi avvisa?</summary><p data-i18n="a6">Regline è sviluppato da uno studente, senza un certificato di editore a pagamento. La sezione Installazione spiega come aprirlo comunque.</p></details>
+        <details><summary data-i18n="q7">I miei vecchi file .regline si aprono?</summary><p data-i18n="a7">Sì. I file delle versioni precedenti si aprono nella 4.1 così come sono.</p></details>
+        <details><summary data-i18n="q8">Ho trovato un bug o ho un'idea.</summary><p data-i18n="a8">Scrivimi all'indirizzo in fondo alla pagina, se possibile con uno screenshot o il tuo file .regline. Ogni messaggio viene letto.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="apropos" style="padding-top:0">
+    <div class="wrap about">
+      <div class="text">
+        <p class="eyebrow" data-i18n="about.eyebrow">Chi c'è dietro Regline?</p>
+        <h2 style="margin:14px 0 20px" data-i18n="about.title">Uno studente, per gli studenti.</h2>
+        <p data-i18n="about.p1">Mi chiamo Leandro e studio fisica (bachelor) all'Università di Ginevra. Dopo una o due esperienze in laboratorio ho avuto l'idea di sviluppare Regline, con l'aiuto dell'intelligenza artificiale, per semplificare la vita a chi studia scienze durante i laboratori.</p>
+        <p data-i18n="about.p2">Un'idea, un bug, una domanda? Scrivimi, spero che Regline ti sia utile!</p>
+        <p class="mail" style="margin-top:14px"><a href="mailto:contact@regline.ch">contact@regline.ch</a></p>
+      </div>
+      <div class="support-card">
+        <h3 data-i18n="sup.title">Sostieni il progetto</h3>
+        <p data-i18n="sup.p">Regline è e resterà gratuito. Se l'app ti aiuta e vuoi sostenerne lo sviluppo, una piccola donazione fa sempre piacere.</p>
+        <div class="support-row">
+          <a class="support support-main" href="https://donate.stripe.com/7sY8wI6k4b3g1N2dV5ak000" target="_blank" rel="noopener"><span>♥</span> <span data-i18n="sup.twint" style="color:inherit">Carta, Apple Pay, Google Pay</span></a>
+          <a class="support" href="https://ko-fi.com/leandro526" target="_blank" rel="noopener"><span data-i18n="sup.kofi" style="color:inherit">Ko-fi (PayPal)</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span><span id="foot-version"></span><span data-i18n="foot.c">© 2026 Leandro Castro Moreira. Regline è gratuito e fornito senza garanzia: verifica sempre i tuoi risultati.</span></span>
+    <span><a href="https://github.com/Leandro526-c/regline/releases" data-i18n="foot.all">Tutte le versioni</a> · <a href="https://ko-fi.com/leandro526" target="_blank" rel="noopener" data-i18n="foot.sup">Sostieni il progetto</a> · <a href="verification.html" data-i18n="foot.verif">Verifica</a> · <a href="bibliotheques.html" data-i18n="foot.libs">Software open source</a> · <a href="confidentialite.html" data-i18n="foot.priv">Privacy</a> · <a href="conditions.html" data-i18n="foot.cgu">Condizioni</a> · <a href="licences.html" data-i18n="foot.ecoles">Scuole e aziende</a> · <a href="mailto:contact@regline.ch">contact@regline.ch</a></span>
+  </div>
+</footer>
+
+<div id="lang-hint" hidden></div>
+<script src="../langues.js"></script>
+<script src="../site.js"></script>
+</body>
+</html>

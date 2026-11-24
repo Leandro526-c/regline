@@ -1,7 +1,243 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://regline.ch/</loc><changefreq>weekly</changefreq></url>
-  <url><loc>https://regline.ch/confidentialite.html</loc><changefreq>yearly</changefreq></url>
-  <url><loc>https://regline.ch/conditions.html</loc><changefreq>yearly</changefreq></url>
-  <url><loc>https://regline.ch/licences.html</loc><changefreq>yearly</changefreq></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://regline.ch/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://regline.ch/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regline.ch/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://regline.ch/de/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://regline.ch/it/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://regline.ch/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regline.ch/"/>
+  </url>
+  <url><loc>https://regline.ch/en/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://regline.ch/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regline.ch/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://regline.ch/de/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://regline.ch/it/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://regline.ch/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regline.ch/"/>
+  </url>
+  <url><loc>https://regline.ch/de/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://regline.ch/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regline.ch/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://regline.ch/de/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://regline.ch/it/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://regline.ch/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regline.ch/"/>
+  </url>
+  <url><loc>https://regline.ch/it/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://regline.ch/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regline.ch/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://regline.ch/de/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://regline.ch/it/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://regline.ch/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regline.ch/"/>
+  </url>
+  <url><loc>https://regline.ch/es/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://regline.ch/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regline.ch/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://regline.ch/de/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://regline.ch/it/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://regline.ch/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regline.ch/"/>
+  </url>
+  <url><loc>https://regline.ch/verification.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://regline.ch/verification.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regline.ch/en/verification.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://regline.ch/de/verification.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://regline.ch/it/verification.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://regline.ch/es/verification.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regline.ch/verification.html"/>
+  </url>
+  <url><loc>https://regline.ch/en/verification.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://regline.ch/verification.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regline.ch/en/verification.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://regline.ch/de/verification.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://regline.ch/it/verification.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://regline.ch/es/verification.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regline.ch/verification.html"/>
+  </url>
+  <url><loc>https://regline.ch/de/verification.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://regline.ch/verification.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regline.ch/en/verification.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://regline.ch/de/verification.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://regline.ch/it/verification.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://regline.ch/es/verification.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regline.ch/verification.html"/>
+  </url>
+  <url><loc>https://regline.ch/it/verification.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://regline.ch/verification.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regline.ch/en/verification.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://regline.ch/de/verification.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://regline.ch/it/verification.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://regline.ch/es/verification.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regline.ch/verification.html"/>
+  </url>
+  <url><loc>https://regline.ch/es/verification.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://regline.ch/verification.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regline.ch/en/verification.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://regline.ch/de/verification.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://regline.ch/it/verification.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://regline.ch/es/verification.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regline.ch/verification.html"/>
+  </url>
+  <url><loc>https://regline.ch/bibliotheques.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://regline.ch/bibliotheques.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regline.ch/en/bibliotheques.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://regline.ch/de/bibliotheques.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://regline.ch/it/bibliotheques.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://regline.ch/es/bibliotheques.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regline.ch/bibliotheques.html"/>
+  </url>
+  <url><loc>https://regline.ch/en/bibliotheques.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://regline.ch/bibliotheques.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regline.ch/en/bibliotheques.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://regline.ch/de/bibliotheques.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://regline.ch/it/bibliotheques.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://regline.ch/es/bibliotheques.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regline.ch/bibliotheques.html"/>
+  </url>
+  <url><loc>https://regline.ch/de/bibliotheques.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://regline.ch/bibliotheques.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regline.ch/en/bibliotheques.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://regline.ch/de/bibliotheques.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://regline.ch/it/bibliotheques.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://regline.ch/es/bibliotheques.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regline.ch/bibliotheques.html"/>
+  </url>
+  <url><loc>https://regline.ch/it/bibliotheques.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://regline.ch/bibliotheques.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regline.ch/en/bibliotheques.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://regline.ch/de/bibliotheques.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://regline.ch/it/bibliotheques.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://regline.ch/es/bibliotheques.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regline.ch/bibliotheques.html"/>
+  </url>
+  <url><loc>https://regline.ch/es/bibliotheques.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://regline.ch/bibliotheques.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regline.ch/en/bibliotheques.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://regline.ch/de/bibliotheques.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://regline.ch/it/bibliotheques.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://regline.ch/es/bibliotheques.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regline.ch/bibliotheques.html"/>
+  </url>
+  <url><loc>https://regline.ch/confidentialite.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://regline.ch/confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regline.ch/en/confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://regline.ch/de/confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://regline.ch/it/confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://regline.ch/es/confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regline.ch/confidentialite.html"/>
+  </url>
+  <url><loc>https://regline.ch/en/confidentialite.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://regline.ch/confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regline.ch/en/confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://regline.ch/de/confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://regline.ch/it/confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://regline.ch/es/confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regline.ch/confidentialite.html"/>
+  </url>
+  <url><loc>https://regline.ch/de/confidentialite.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://regline.ch/confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regline.ch/en/confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://regline.ch/de/confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://regline.ch/it/confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://regline.ch/es/confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regline.ch/confidentialite.html"/>
+  </url>
+  <url><loc>https://regline.ch/it/confidentialite.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://regline.ch/confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regline.ch/en/confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://regline.ch/de/confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://regline.ch/it/confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://regline.ch/es/confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regline.ch/confidentialite.html"/>
+  </url>
+  <url><loc>https://regline.ch/es/confidentialite.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://regline.ch/confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regline.ch/en/confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://regline.ch/de/confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://regline.ch/it/confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://regline.ch/es/confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regline.ch/confidentialite.html"/>
+  </url>
+  <url><loc>https://regline.ch/conditions.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://regline.ch/conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regline.ch/en/conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://regline.ch/de/conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://regline.ch/it/conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://regline.ch/es/conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regline.ch/conditions.html"/>
+  </url>
+  <url><loc>https://regline.ch/en/conditions.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://regline.ch/conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regline.ch/en/conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://regline.ch/de/conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://regline.ch/it/conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://regline.ch/es/conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regline.ch/conditions.html"/>
+  </url>
+  <url><loc>https://regline.ch/de/conditions.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://regline.ch/conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regline.ch/en/conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://regline.ch/de/conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://regline.ch/it/conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://regline.ch/es/conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regline.ch/conditions.html"/>
+  </url>
+  <url><loc>https://regline.ch/it/conditions.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://regline.ch/conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regline.ch/en/conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://regline.ch/de/conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://regline.ch/it/conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://regline.ch/es/conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regline.ch/conditions.html"/>
+  </url>
+  <url><loc>https://regline.ch/es/conditions.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://regline.ch/conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regline.ch/en/conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://regline.ch/de/conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://regline.ch/it/conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://regline.ch/es/conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regline.ch/conditions.html"/>
+  </url>
+  <url><loc>https://regline.ch/licences.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://regline.ch/licences.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regline.ch/en/licences.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://regline.ch/de/licences.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://regline.ch/it/licences.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://regline.ch/es/licences.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regline.ch/licences.html"/>
+  </url>
+  <url><loc>https://regline.ch/en/licences.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://regline.ch/licences.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regline.ch/en/licences.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://regline.ch/de/licences.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://regline.ch/it/licences.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://regline.ch/es/licences.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regline.ch/licences.html"/>
+  </url>
+  <url><loc>https://regline.ch/de/licences.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://regline.ch/licences.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regline.ch/en/licences.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://regline.ch/de/licences.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://regline.ch/it/licences.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://regline.ch/es/licences.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regline.ch/licences.html"/>
+  </url>
+  <url><loc>https://regline.ch/it/licences.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://regline.ch/licences.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regline.ch/en/licences.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://regline.ch/de/licences.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://regline.ch/it/licences.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://regline.ch/es/licences.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regline.ch/licences.html"/>
+  </url>
+  <url><loc>https://regline.ch/es/licences.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://regline.ch/licences.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://regline.ch/en/licences.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://regline.ch/de/licences.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://regline.ch/it/licences.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://regline.ch/es/licences.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://regline.ch/licences.html"/>
+  </url>
 </urlset>

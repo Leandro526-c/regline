@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="fr" data-root="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Regline · Les calculs de Regline sont-ils justes ?</title>
+<meta name="description" content="Regline 4.1 vérifié sur les 26 problèmes certifiés du NIST, comparé à Excel, à SciPy et à des simulations Monte-Carlo. Tous les résultats, même ceux qui ne sont pas parfaits.">
+<link rel="canonical" href="https://regline.ch/verification.html">
+<link rel="alternate" hreflang="fr" href="https://regline.ch/verification.html">
+<link rel="alternate" hreflang="en" href="https://regline.ch/en/verification.html">
+<link rel="alternate" hreflang="de" href="https://regline.ch/de/verification.html">
+<link rel="alternate" hreflang="it" href="https://regline.ch/it/verification.html">
+<link rel="alternate" hreflang="es" href="https://regline.ch/es/verification.html">
+<link rel="alternate" hreflang="x-default" href="https://regline.ch/verification.html">
+<meta property="og:title" content="Regline · Les calculs de Regline sont-ils justes ?">
+<meta property="og:description" content="Regline 4.1 vérifié sur les 26 problèmes certifiés du NIST, comparé à Excel, à SciPy et à des simulations Monte-Carlo. Tous les résultats, même ceux qui ne sont pas parfaits.">
+<meta property="og:image" content="https://regline.ch/apercu-lien.png">
+<meta property="og:url" content="https://regline.ch/verification.html">
+<meta property="og:locale" content="fr_CH">
+<link rel="icon" href="logo.png">
+<meta name="theme-color" content="#121116">
+<link rel="stylesheet" href="polices.css">
+<link rel="stylesheet" href="pages.css">
+<script>if (location.hash === "#english") location.replace("en/" + location.pathname.split("/").pop());</script>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="./"><img src="logo.png" alt="" width="30" height="30">Regline</a>
+    <nav class="langs" aria-label="Langue"><a href="verification.html" hreflang="fr" lang="fr" aria-current="page" data-lang="fr">FR</a> <a href="en/verification.html" hreflang="en" lang="en" data-lang="en">EN</a> <a href="de/verification.html" hreflang="de" lang="de" data-lang="de">DE</a> <a href="it/verification.html" hreflang="it" lang="it" data-lang="it">IT</a> <a href="es/verification.html" hreflang="es" lang="es" data-lang="es">ES</a></nav>
+  </div>
+</header>
+
+<main class="wrap wide">
+<h1>Les calculs de Regline sont-ils justes ?</h1>
+<p class="meta">Vérifié le 23 novembre 2026 sur Regline 4.1.0</p>
+<p class="lead">Un logiciel de labo doit donner des résultats justes, et dire quand il n'est pas sûr. Voici comment
+  Regline a été mis à l'épreuve, avec tous les résultats, y compris ceux qui ne sont pas parfaits.</p>
+
+<div class="stats">
+  <div class="stat"><b>52</b><p>ajustements de référence du NIST : 26 problèmes, chacun depuis 2 points de départ.</p></div>
+  <div class="stat good"><b>50</b><p>retrouvent les valeurs certifiées, avec 5 à 11 chiffres justes (en général 7 à 11).</p></div>
+  <div class="stat bad"><b>2</b><p>donnent un résultat faux, et Regline allume alors le voyant rouge « Douteux ».</p></div>
+  <div class="stat good"><b>0</b><p>résultat faux affiché sans avertissement.</p></div>
+</div>
+
+<h2>Les problèmes de référence du NIST</h2>
+<p>Le NIST, l'institut américain de métrologie, publie des jeux de données de référence (« StRD ») pour tester les
+  logiciels de statistique. Pour les <a href="https://www.itl.nist.gov/div898/strd/nls/nls_main.shtml" rel="noopener">ajustements
+  non linéaires</a>, chaque problème donne les mesures, la formule, deux points de départ (le premier loin de la
+  solution, le second plus proche) et les valeurs certifiées des paramètres et de leurs écarts-types, avec 11 chiffres.
+  Les problèmes vont de « facile » à « difficile ».</p>
+<p>Les formules ont été tapées comme dans le document du NIST, comme le ferait un étudiant, puis ajustées par Regline
+  sans aucun réglage particulier. Le tableau donne le nombre de chiffres justes sur le moins bon des paramètres,
+  pour les valeurs et pour les écarts-types, et le voyant de fiabilité affiché par Regline.</p>
+
+<div class="table-scroll"><table class="nist"><thead><tr><th scope="col">Problème</th><th scope="col">Difficulté</th><th scope="col">Départ 1</th><th scope="col">Départ 2</th></tr></thead><tbody><tr><th scope="row">Misra1a<small>2 paramètres · 14 points</small></th><td>facile</td><td><div class="cell"><span class="bar ok"><i style="width:93%"></i></span><span class="num ok">11,2</span><span class="sd">écarts-types 10,9</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td><td><div class="cell"><span class="bar ok"><i style="width:84%"></i></span><span class="num ok">10,1</span><span class="sd">écarts-types 7,3</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td></tr><tr><th scope="row">Chwirut2<small>3 paramètres · 54 points</small></th><td>facile</td><td><div class="cell"><span class="bar ok"><i style="width:62%"></i></span><span class="num ok">7,5</span><span class="sd">écarts-types 6,6</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td><td><div class="cell"><span class="bar ok"><i style="width:60%"></i></span><span class="num ok">7,2</span><span class="sd">écarts-types 6,3</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td></tr><tr><th scope="row">Chwirut1<small>3 paramètres · 214 points</small></th><td>facile</td><td><div class="cell"><span class="bar ok"><i style="width:71%"></i></span><span class="num ok">8,5</span><span class="sd">écarts-types 7,4</span><span class="light warn" title="À vérifier">À vérifier</span></div></td><td><div class="cell"><span class="bar ok"><i style="width:62%"></i></span><span class="num ok">7,5</span><span class="sd">écarts-types 6,2</span><span class="light warn" title="À vérifier">À vérifier</span></div></td></tr><tr><th scope="row">Lanczos3<small>6 paramètres · 24 points</small></th><td>facile</td><td><div class="cell"><span class="bar ok"><i style="width:68%"></i></span><span class="num ok">8,2</span><span class="sd">écarts-types 8,2</span><span class="light bad" title="Douteux">Douteux</span></div></td><td><div class="cell"><span class="bar ok"><i style="width:53%"></i></span><span class="num ok">6,4</span><span class="sd">écarts-types 6,4</span><span class="light bad" title="Douteux">Douteux</span></div></td></tr><tr><th scope="row">Gauss1<small>8 paramètres · 250 points</small></th><td>facile</td><td><div class="cell"><span class="bar ok"><i style="width:72%"></i></span><span class="num ok">8,7</span><span class="sd">écarts-types 6,7</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td><td><div class="cell"><span class="bar ok"><i style="width:88%"></i></span><span class="num ok">10,6</span><span class="sd">écarts-types 8,4</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td></tr><tr><th scope="row">Gauss2<small>8 paramètres · 250 points</small></th><td>facile</td><td><div class="cell"><span class="bar ok"><i style="width:83%"></i></span><span class="num ok">10,0</span><span class="sd">écarts-types 8,1</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td><td><div class="cell"><span class="bar ok"><i style="width:82%"></i></span><span class="num ok">9,9</span><span class="sd">écarts-types 8,1</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td></tr><tr><th scope="row">DanWood<small>2 paramètres · 6 points</small></th><td>facile</td><td><div class="cell"><span class="bar ok"><i style="width:83%"></i></span><span class="num ok">10,0</span><span class="sd">écarts-types 8,1</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td><td><div class="cell"><span class="bar ok"><i style="width:72%"></i></span><span class="num ok">8,7</span><span class="sd">écarts-types 8,8</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td></tr><tr><th scope="row">Misra1b<small>2 paramètres · 14 points</small></th><td>facile</td><td><div class="cell"><span class="bar ok"><i style="width:92%"></i></span><span class="num ok">11,0</span><span class="sd">écarts-types 10,8</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td><td><div class="cell"><span class="bar ok"><i style="width:78%"></i></span><span class="num ok">9,3</span><span class="sd">écarts-types 9,1</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td></tr><tr><th scope="row">Kirby2<small>5 paramètres · 151 points</small></th><td>moyen</td><td><div class="cell"><span class="bar ok"><i style="width:62%"></i></span><span class="num ok">7,4</span><span class="sd">écarts-types 6,7</span><span class="light warn" title="À vérifier">À vérifier</span></div></td><td><div class="cell"><span class="bar ok"><i style="width:67%"></i></span><span class="num ok">8,0</span><span class="sd">écarts-types 7,2</span><span class="light warn" title="À vérifier">À vérifier</span></div></td></tr><tr><th scope="row">Hahn1<small>7 paramètres · 236 points</small></th><td>moyen</td><td><div class="cell"><span class="bar ok"><i style="width:62%"></i></span><span class="num ok">7,5</span><span class="sd">écarts-types 7,1</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td><td><div class="cell"><span class="bar ok"><i style="width:68%"></i></span><span class="num ok">8,2</span><span class="sd">écarts-types 7,5</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td></tr><tr><th scope="row">MGH17<small>5 paramètres · 33 points</small></th><td>moyen</td><td><div class="cell"><span class="bar bad"><i style="width:0%"></i></span><span class="num bad">faux</span><span class="sd">écarts-types –</span><span class="light bad" title="Douteux">Douteux</span></div></td><td><div class="cell"><span class="bar ok"><i style="width:68%"></i></span><span class="num ok">8,1</span><span class="sd">écarts-types 6,2</span><span class="light bad" title="Douteux">Douteux</span></div></td></tr><tr><th scope="row">Lanczos1<small>6 paramètres · 24 points</small></th><td>moyen</td><td><div class="cell"><span class="bar bad"><i style="width:0%"></i></span><span class="num bad">faux</span><span class="sd">écarts-types –</span><span class="light bad" title="Douteux">Douteux</span></div></td><td><div class="cell"><span class="bar ok"><i style="width:88%"></i></span><span class="num ok">10,6</span><span class="sd">écarts-types 3,2</span><span class="light bad" title="Douteux">Douteux</span></div></td></tr><tr><th scope="row">Lanczos2<small>6 paramètres · 24 points</small></th><td>moyen</td><td><div class="cell"><span class="bar ok"><i style="width:87%"></i></span><span class="num ok">10,4</span><span class="sd">écarts-types 10,2</span><span class="light bad" title="Douteux">Douteux</span></div></td><td><div class="cell"><span class="bar ok"><i style="width:87%"></i></span><span class="num ok">10,4</span><span class="sd">écarts-types 10,3</span><span class="light bad" title="Douteux">Douteux</span></div></td></tr><tr><th scope="row">Gauss3<small>8 paramètres · 250 points</small></th><td>moyen</td><td><div class="cell"><span class="bar ok"><i style="width:77%"></i></span><span class="num ok">9,2</span><span class="sd">écarts-types 8,6</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td><td><div class="cell"><span class="bar ok"><i style="width:79%"></i></span><span class="num ok">9,5</span><span class="sd">écarts-types 7,5</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td></tr><tr><th scope="row">Misra1c<small>2 paramètres · 14 points</small></th><td>moyen</td><td><div class="cell"><span class="bar ok"><i style="width:69%"></i></span><span class="num ok">8,3</span><span class="sd">écarts-types 8,0</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td><td><div class="cell"><span class="bar ok"><i style="width:84%"></i></span><span class="num ok">10,1</span><span class="sd">écarts-types 7,3</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td></tr><tr><th scope="row">Misra1d<small>2 paramètres · 14 points</small></th><td>moyen</td><td><div class="cell"><span class="bar ok"><i style="width:72%"></i></span><span class="num ok">8,7</span><span class="sd">écarts-types 8,5</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td><td><div class="cell"><span class="bar ok"><i style="width:74%"></i></span><span class="num ok">8,9</span><span class="sd">écarts-types 8,7</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td></tr><tr><th scope="row">Roszman1<small>4 paramètres · 25 points</small></th><td>moyen</td><td><div class="cell"><span class="bar ok"><i style="width:58%"></i></span><span class="num ok">7,0</span><span class="sd">écarts-types 7,5</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td><td><div class="cell"><span class="bar ok"><i style="width:72%"></i></span><span class="num ok">8,6</span><span class="sd">écarts-types 7,6</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td></tr><tr><th scope="row">ENSO<small>9 paramètres · 168 points</small></th><td>moyen</td><td><div class="cell"><span class="bar ok"><i style="width:42%"></i></span><span class="num ok">5,1</span><span class="sd">écarts-types 6,1</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td><td><div class="cell"><span class="bar ok"><i style="width:43%"></i></span><span class="num ok">5,2</span><span class="sd">écarts-types 6,1</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td></tr><tr><th scope="row">MGH09<small>4 paramètres · 11 points</small></th><td>difficile</td><td><div class="cell"><span class="bar ok"><i style="width:51%"></i></span><span class="num ok">6,1</span><span class="sd">écarts-types 6,1</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td><td><div class="cell"><span class="bar ok"><i style="width:50%"></i></span><span class="num ok">6,0</span><span class="sd">écarts-types 5,9</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td></tr><tr><th scope="row">Thurber<small>7 paramètres · 37 points</small></th><td>difficile</td><td><div class="cell"><span class="bar ok"><i style="width:56%"></i></span><span class="num ok">6,7</span><span class="sd">écarts-types 5,9</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td><td><div class="cell"><span class="bar ok"><i style="width:55%"></i></span><span class="num ok">6,6</span><span class="sd">écarts-types 5,8</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td></tr><tr><th scope="row">BoxBOD<small>2 paramètres · 6 points</small></th><td>difficile</td><td><div class="cell"><span class="bar ok"><i style="width:58%"></i></span><span class="num ok">7,0</span><span class="sd">écarts-types 6,3</span><span class="light warn" title="À vérifier">À vérifier</span></div></td><td><div class="cell"><span class="bar ok"><i style="width:59%"></i></span><span class="num ok">7,1</span><span class="sd">écarts-types 6,4</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td></tr><tr><th scope="row">Rat42<small>3 paramètres · 9 points</small></th><td>difficile</td><td><div class="cell"><span class="bar ok"><i style="width:77%"></i></span><span class="num ok">9,2</span><span class="sd">écarts-types 7,6</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td><td><div class="cell"><span class="bar ok"><i style="width:69%"></i></span><span class="num ok">8,3</span><span class="sd">écarts-types 6,8</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td></tr><tr><th scope="row">MGH10<small>3 paramètres · 16 points</small></th><td>difficile</td><td><div class="cell"><span class="bar ok"><i style="width:73%"></i></span><span class="num ok">8,8</span><span class="sd">écarts-types 8,9</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td><td><div class="cell"><span class="bar ok"><i style="width:75%"></i></span><span class="num ok">9,0</span><span class="sd">écarts-types 9,0</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td></tr><tr><th scope="row">Eckerle4<small>3 paramètres · 35 points</small></th><td>difficile</td><td><div class="cell"><span class="bar ok"><i style="width:81%"></i></span><span class="num ok">9,7</span><span class="sd">écarts-types 8,4</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td><td><div class="cell"><span class="bar ok"><i style="width:80%"></i></span><span class="num ok">9,6</span><span class="sd">écarts-types 8,3</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td></tr><tr><th scope="row">Rat43<small>4 paramètres · 15 points</small></th><td>difficile</td><td><div class="cell"><span class="bar ok"><i style="width:62%"></i></span><span class="num ok">7,5</span><span class="sd">écarts-types 6,6</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td><td><div class="cell"><span class="bar ok"><i style="width:58%"></i></span><span class="num ok">7,0</span><span class="sd">écarts-types 6,3</span><span class="light ok" title="Calcul stable">Calcul stable</span></div></td></tr><tr><th scope="row">Bennett5<small>3 paramètres · 154 points</small></th><td>difficile</td><td><div class="cell"><span class="bar ok"><i style="width:92%"></i></span><span class="num ok">11,0</span><span class="sd">écarts-types 10,5</span><span class="light bad" title="Douteux">Douteux</span></div></td><td><div class="cell"><span class="bar ok"><i style="width:92%"></i></span><span class="num ok">11,0</span><span class="sd">écarts-types 10,4</span><span class="light bad" title="Douteux">Douteux</span></div></td></tr></tbody></table></div>
+<p class="small muted">Chiffres justes : nombre de chiffres significatifs identiques à la valeur certifiée (« log relative
+  error » du NIST), pour le moins bon des paramètres. 5 chiffres justes, c'est déjà bien plus précis que n'importe quelle
+  mesure de laboratoire.</p>
+
+<h2>Le voyant de fiabilité</h2>
+<p>Depuis la 4.1, chaque ajustement a un voyant : vert « Calcul stable », orange « À vérifier » ou rouge « Douteux ».
+  Regline relance discrètement l'ajustement depuis d'autres points de départ, et contrôle les paramètres et les résidus.
+  Il ne modifie jamais la valeur affichée : il ajoute seulement une explication et propose quoi faire.</p>
+
+<h2>Ce qui n'est pas parfait</h2>
+<ul>
+  <li><strong>MGH17 et Lanczos1, départ 1</strong> : depuis ce départ volontairement très éloigné, Regline ne retrouve
+    pas la bonne solution. Le voyant rouge « Douteux » s'allume (« Deux solutions aussi bonnes » ou « Paramètres non
+    identifiables »). Avec le second départ du NIST, les valeurs sont justes.</li>
+  <li><strong>Lanczos1, départ 2</strong> : les paramètres sont justes à 10 chiffres, mais les écarts-types à 3 seulement.
+    Ce problème a des écarts de l'ordre de 10⁻¹¹ entre les mesures et la courbe, à la limite de ce qu'un ordinateur peut
+    calculer ; la plupart des logiciels échouent ici.</li>
+  <li><strong>ENSO</strong> : 5 chiffres justes, largement assez pour un laboratoire.</li>
+  <li><strong>Un voyant prudent</strong> : sur 8 essais justes (Lanczos2, Lanczos3, Bennett5, et Lanczos1 et MGH17
+    depuis le second départ), le voyant est quand même rouge. Ces problèmes sont construits pour que des paramètres se compensent
+    presque parfaitement, et Regline le dit. Une alerte de trop vaut mieux qu'un résultat faux en silence.</li>
+  <li><strong>BoxBOD, départ 1</strong> : depuis ce départ, l'ajustement seul n'aboutit pas. Regline trouve la bonne solution
+    depuis un autre départ, l'affiche et le signale en orange (« Valeurs initiales corrigées »).</li>
+</ul>
+
+<h2>Face à Excel</h2>
+<p>Le même problème Misra1a (départ 1), résolu par Regline et par le Solveur d'Excel 365 avec ses réglages par défaut.
+  En vert, les chiffres justes.</p>
+<div class="table-scroll"><table>
+  <thead><tr><th scope="col"></th><th scope="col">b₁</th><th scope="col">b₂</th><th scope="col">Incertitudes</th></tr></thead>
+  <tbody>
+    <tr><th scope="row">Valeurs certifiées (NIST)</th><td class="mono">238,94212918</td><td class="mono">5,5015643181·10⁻⁴</td><td class="mono">2,7070 et 7,2669·10⁻⁶</td></tr>
+    <tr><th scope="row">Regline 4.1</th><td class="mono digits"><span class="ok">238,94212918</span></td><td class="mono digits"><span class="ok">5,5015643181</span>·10⁻⁴</td><td class="mono digits"><span class="ok">2,7070</span> et <span class="ok">7,2669</span>·10⁻⁶</td></tr>
+    <tr><th scope="row">Excel 365, Solveur</th><td class="mono digits"><span class="ok">238,</span><span class="ko">868566</span></td><td class="mono digits"><span class="ok">5,50</span><span class="ko">34736</span>·10⁻⁴</td><td>aucune</td></tr>
+  </tbody>
+</table></div>
+<p>Le Solveur affiche « a convergé » mais s'arrête trop tôt, avec 3 chiffres justes, et ne donne aucune incertitude. La
+  courbe de tendance d'Excel ne sait pas ajuster ce modèle. Pour une droite, Regline et la fonction DROITEREG d'Excel
+  donnent les mêmes valeurs à 12 chiffres, même sur des données difficiles. Essai d'Excel du 30 octobre 2026.</p>
+
+<h2>Autres vérifications</h2>
+<div class="table-scroll"><table>
+  <thead><tr><th scope="col">Calcul</th><th scope="col">Regline 4.1</th><th scope="col">Référence</th></tr></thead>
+  <tbody>
+    <tr><th scope="row">Droite, X de 1 000 000 à 1 000 009 (mal conditionnée)</th><td>15 chiffres justes</td><td>calcul exact en fractions</td></tr>
+    <tr><th scope="row">Droite avec ΔX et ΔY</th><td class="mono">1,55430962 ± 0,044562</td><td>SciPy (ODR) : <span class="mono">1,55430918 ± 0,044562</span></td></tr>
+    <tr><th scope="row">Propagation g = 4π²L/T²</th><td class="mono">9,80586 ± 0,03925</td><td>Monte-Carlo, 400 000 tirages : <span class="mono">9,80601 ± 0,03923</span></td></tr>
+    <tr><th scope="row">Propagation corrélée a/b (ρ = 0,6)</th><td class="mono">2,50000 ± 0,01505</td><td>Monte-Carlo : <span class="mono">2,50006 ± 0,01506</span></td></tr>
+    <tr><th scope="row">Test de Welch</th><td class="mono">t = 0,651771 ; p = 0,524413</td><td>SciPy : identique</td></tr>
+    <tr><th scope="row">Moyenne pondérée</th><td class="mono">9,799796 ± 0,008571</td><td>formule en 1/σ² : identique</td></tr>
+  </tbody>
+</table></div>
+
+<h2>Les incertitudes annoncées sont-elles honnêtes ?</h2>
+<p>Une incertitude « à 1σ » doit contenir la vraie valeur environ 68 fois sur 100. Pour le vérifier, on simule des
+  mesures avec un bruit connu, on les ajuste, et on compte combien de fois la vraie valeur tombe dans l'intervalle
+  annoncé par Regline.</p>
+<div class="table-scroll"><table>
+  <thead><tr><th scope="col">Situation</th><th scope="col">Vraie valeur dans ±1σ (attendu : 68,3 %)</th><th scope="col">χ² réduit moyen (attendu : 1)</th></tr></thead>
+  <tbody>
+    <tr><th scope="row">Droite avec ΔY<small>1500 simulations</small></th><td>pente 70,5 %, ordonnée 70,0 %</td><td class="mono">1,009</td></tr>
+    <tr><th scope="row">a·exp(−b·x) + c avec ΔY<small>1500 simulations</small></th><td>a 67,8 %, b 66,8 %, c 69,9 %</td><td class="mono">0,989</td></tr>
+    <tr><th scope="row">Droite avec ΔX et ΔY<small>800 simulations</small></th><td>pente 68,8 %, ordonnée 67,5 %</td><td class="mono">1,003</td></tr>
+  </tbody>
+</table></div>
+
+<h2>Refaire la vérification</h2>
+<p>Tu peux refaire n'importe lequel de ces essais : télécharge un jeu de données sur le
+  <a href="https://www.itl.nist.gov/div898/strd/nls/nls_main.shtml" rel="noopener">site du NIST</a>, colle les colonnes
+  x et y dans Regline, tape la formule et les valeurs de départ du document dans un ajustement avec ta propre formule,
+  et compare avec les valeurs certifiées.</p>
+<p class="small muted">Ces vérifications sont faites par l'auteur de Regline avec des scripts automatiques, relancés à
+  chaque version importante. Elles ne remplacent pas un audit indépendant, et ne dispensent pas de vérifier que le
+  modèle choisi convient à ton expérience.</p>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Leandro Castro Moreira · <a href="./">Accueil</a> · <a href="bibliotheques.html">Logiciels libres</a> · <a href="confidentialite.html">Confidentialité</a> · <a href="conditions.html">Conditions</a> · <a href="licences.html">Écoles et entreprises</a> · <a href="mailto:contact@regline.ch">contact@regline.ch</a></div>
+</footer>
+<div id="lang-hint" hidden></div>
+<script src="pages.js"></script>
+</body>
+</html>

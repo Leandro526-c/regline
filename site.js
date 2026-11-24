@@ -8,34 +8,57 @@ const LANGS = ["fr", "en", "de", "it", "es"];
 const DICT = window.REGLINE_I18N || {};
 
 // ── Langue ───────────────────────────────────────────────────────────────
-const FR = {};  // le texte français est celui de la page
+// 4.1 : une page par langue (/, /en/, /de/, /it/, /es/), déjà traduite par le script de fabrication.
+// Google lit ainsi le bon titre dans chaque langue ; la page française reste celle de regline.ch.
+const FR = {};  // textes de la page (déjà dans sa langue) : secours si une clé manque dans langues.js
 document.querySelectorAll("[data-i18n]").forEach(el => { FR[el.dataset.i18n] = el.innerHTML; });
 Object.assign(FR, (DICT.fr || {}));
-let lang = "fr";
+const ROOT = document.documentElement.dataset.root || "";  // "../" dans /en/, /de/…
+const PAGE = location.pathname.split("/").pop() || "";
+let lang = LANGS.includes(document.documentElement.lang) ? document.documentElement.lang : "fr";
 
 function T(key) {
   return (DICT[lang] && DICT[lang][key]) || FR[key] || key;
 }
 
-function pickLanguage() {
+function pageIn(l) {
+  return ROOT + (l === "fr" ? "" : l + "/") + PAGE + location.hash;
+}
+
+function readSaved() {
+  try { const saved = localStorage.getItem("regline-lang"); return LANGS.includes(saved) ? saved : ""; } catch (e) { return ""; }
+}
+
+// Anciennes adresses « ?lang=de » et choix déjà fait sur ce navigateur : on va sur la bonne page.
+(function goToChosenLanguage() {
   const asked = new URLSearchParams(location.search).get("lang");
-  if (LANGS.includes(asked)) return asked;
-  try { const saved = localStorage.getItem("regline-lang"); if (LANGS.includes(saved)) return saved; } catch (e) { /* stockage bloqué */ }
+  const fromOutside = !document.referrer || new URL(document.referrer).host !== location.host;
+  const wanted = LANGS.includes(asked) ? asked : (fromOutside && lang === "fr" ? readSaved() : "");
+  if (wanted && wanted !== lang) location.replace(pageIn(wanted));
+})();
+
+function browserLanguage() {
   for (const l of navigator.languages || [navigator.language || "fr"]) {
     const short = String(l).slice(0, 2).toLowerCase();
     if (LANGS.includes(short)) return short;
   }
-  return "en";
+  return "";
 }
 
-function applyLanguage(next) {
-  lang = next;
-  document.documentElement.lang = lang;
-  document.querySelectorAll("[data-i18n]").forEach(el => { el.innerHTML = T(el.dataset.i18n); });
-  document.querySelectorAll("[data-i18n-label]").forEach(el => el.setAttribute("aria-label", T(el.dataset.i18nLabel)));
-  document.title = T("meta.title");
-  const description = document.querySelector('meta[name="description"]');
-  if (description) description.content = T("meta.description");
+// Sans choix enregistré, on propose la langue du navigateur au lieu de rediriger (Google déconseille les redirections).
+function suggestLanguage() {
+  const bar = document.getElementById("lang-hint");
+  const other = browserLanguage();
+  if (!bar || readSaved() || !other || other === lang) return;
+  const label = (DICT[other] && DICT[other]["lang.hint"]) || "";
+  if (!label) return;
+  bar.innerHTML = `<a href="${pageIn(other)}" lang="${other}">${label}</a><button type="button" aria-label="×">×</button>`;
+  bar.querySelector("a").addEventListener("click", () => { try { localStorage.setItem("regline-lang", other); } catch (e) { /* stockage bloqué */ } });
+  bar.querySelector("button").addEventListener("click", () => { bar.hidden = true; try { localStorage.setItem("regline-lang", lang); } catch (e) { /* stockage bloqué */ } });
+  bar.hidden = false;
+}
+
+function applyLanguage() {
   document.getElementById("lang").value = lang;
   setVideos();
   renderDownloads();
@@ -45,8 +68,9 @@ function applyLanguage(next) {
 }
 
 document.getElementById("lang").addEventListener("change", event => {
-  try { localStorage.setItem("regline-lang", event.target.value); } catch (e) { /* stockage bloqué */ }
-  applyLanguage(event.target.value);
+  const next = event.target.value;
+  try { localStorage.setItem("regline-lang", next); } catch (e) { /* stockage bloqué */ }
+  location.href = pageIn(next);
 });
 
 // ── Téléchargement ───────────────────────────────────────────────────────
@@ -169,7 +193,7 @@ const VIDEOS = { "v-coller": "demo-coller", "v-formule": "demo-formule" };
 function setVideos() {
   for (const [id, name] of Object.entries(VIDEOS)) {
     const video = document.getElementById(id);
-    const base = `media/${lang}/${name}`;
+    const base = `${ROOT}media/${lang}/${name}`;
     if (video.dataset.base === base) continue;
     video.dataset.base = base;
     video.poster = base + "-poster.jpg";
@@ -282,7 +306,7 @@ function renderGallery() {
     b.addEventListener("click", () => { userStopped = true; show(i); });
     tabs.appendChild(b);
     const fig = document.createElement("figure");
-    fig.innerHTML = `<img src="media/${lang}/galerie-${key}.webp" alt="${T(`gal.${key}.t`)}" loading="${i ? "lazy" : "eager"}" width="1200" height="1159">`;
+    fig.innerHTML = `<img src="${ROOT}media/${lang}/galerie-${key}.webp" alt="${T(`gal.${key}.t`)}" loading="${i ? "lazy" : "eager"}" width="1200" height="1159">`;
     stage.appendChild(fig);
   });
   show(current);
@@ -324,6 +348,7 @@ const topBar = document.getElementById("top");
 addEventListener("scroll", () => topBar.classList.toggle("scrolled", scrollY > 8), { passive: true });
 
 // ── Démarrage ────────────────────────────────────────────────────────────
-applyLanguage(pickLanguage());
+applyLanguage();
+suggestLanguage();
 drawPlot(true);
 loadRelease();

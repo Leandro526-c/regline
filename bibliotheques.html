@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="fr" data-root="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Regline · Logiciels libres utilisés</title>
+<meta name="description" content="Les logiciels libres dont Regline est fait (Qt, NumPy, SciPy, SymPy, matplotlib…), leurs licences et tes droits.">
+<link rel="canonical" href="https://regline.ch/bibliotheques.html">
+<link rel="alternate" hreflang="fr" href="https://regline.ch/bibliotheques.html">
+<link rel="alternate" hreflang="en" href="https://regline.ch/en/bibliotheques.html">
+<link rel="alternate" hreflang="de" href="https://regline.ch/de/bibliotheques.html">
+<link rel="alternate" hreflang="it" href="https://regline.ch/it/bibliotheques.html">
+<link rel="alternate" hreflang="es" href="https://regline.ch/es/bibliotheques.html">
+<link rel="alternate" hreflang="x-default" href="https://regline.ch/bibliotheques.html">
+<meta property="og:title" content="Regline · Logiciels libres utilisés">
+<meta property="og:description" content="Les logiciels libres dont Regline est fait (Qt, NumPy, SciPy, SymPy, matplotlib…), leurs licences et tes droits.">
+<meta property="og:image" content="https://regline.ch/apercu-lien.png">
+<meta property="og:url" content="https://regline.ch/bibliotheques.html">
+<meta property="og:locale" content="fr_CH">
+<link rel="icon" href="logo.png">
+<meta name="theme-color" content="#121116">
+<link rel="stylesheet" href="polices.css">
+<link rel="stylesheet" href="pages.css">
+<script>if (location.hash === "#english") location.replace("en/" + location.pathname.split("/").pop());</script>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="./"><img src="logo.png" alt="" width="30" height="30">Regline</a>
+    <nav class="langs" aria-label="Langue"><a href="bibliotheques.html" hreflang="fr" lang="fr" aria-current="page" data-lang="fr">FR</a> <a href="en/bibliotheques.html" hreflang="en" lang="en" data-lang="en">EN</a> <a href="de/bibliotheques.html" hreflang="de" lang="de" data-lang="de">DE</a> <a href="it/bibliotheques.html" hreflang="it" lang="it" data-lang="it">IT</a> <a href="es/bibliotheques.html" hreflang="es" lang="es" data-lang="es">ES</a></nav>
+  </div>
+</header>
+
+<main class="wrap">
+<h1>Logiciels libres utilisés</h1>
+<p class="meta">Regline 4.1 · Windows, Mac et Linux</p>
+<p class="lead">Regline est construit avec des logiciels libres de grande qualité, utilisés par les scientifiques du
+  monde entier. Merci à leurs auteurs.</p>
+
+<div class="summary">
+  <strong>En bref</strong>
+  <ul>
+    <li>Ces logiciels gardent leur propre licence. Le contrat de licence de Regline ne limite aucun des droits qu'elles te donnent.</li>
+    <li>Les textes complets sont dans l'app (menu <strong>Aide → Licences et logiciels libres</strong>) et, sous Windows, dans le dossier <code>licences-tierces</code> de l'application.</li>
+    <li>Regline lui-même n'est pas un logiciel libre : il est gratuit pour les élèves, les étudiants et l'usage personnel (voir les <a href="conditions.html">conditions d'utilisation</a>).</li>
+  </ul>
+</div>
+
+<h2>Dans l'application</h2>
+<div class="table-scroll"><table class="libs">
+  <thead><tr><th scope="col">Logiciel</th><th scope="col">Licence</th><th scope="col">À quoi il sert dans Regline</th></tr></thead>
+  <tbody>
+    <tr><th scope="row">Qt 6 et Qt for Python<small>PySide6, Shiboken6 · 6.11</small></th><td>GNU LGPL v3</td><td>Fenêtres, tableaux, boutons, impression. <a href="https://www.qt.io" rel="noopener">qt.io</a></td></tr>
+    <tr><th scope="row">Python<small>3.13</small></th><td>PSF License</td><td>Le langage dans lequel Regline est écrit. <a href="https://www.python.org" rel="noopener">python.org</a></td></tr>
+    <tr><th scope="row">NumPy<small>2.1</small></th><td>BSD-3-Clause</td><td>Calcul numérique sur les colonnes de mesures. <a href="https://numpy.org" rel="noopener">numpy.org</a></td></tr>
+    <tr><th scope="row">SciPy<small>1.16</small></th><td>BSD-3-Clause</td><td>Ajustements, tests statistiques, équations différentielles. <a href="https://scipy.org" rel="noopener">scipy.org</a></td></tr>
+    <tr><th scope="row">SymPy et mpmath<small>1.13 · 1.3</small></th><td>BSD-3-Clause</td><td>Dérivées exactes des formules, propagation des incertitudes, aperçu mathématique. <a href="https://www.sympy.org" rel="noopener">sympy.org</a></td></tr>
+    <tr><th scope="row">matplotlib<small>3.10</small></th><td>Licence matplotlib (de type PSF)</td><td>Graphiques et exports PNG, SVG et PDF. <a href="https://matplotlib.org" rel="noopener">matplotlib.org</a></td></tr>
+    <tr><th scope="row">Bibliothèques de matplotlib</th><td>BSD, MIT, Apache 2.0, MIT-CMU</td><td>contourpy, cycler, kiwisolver (BSD-3-Clause) ; fonttools, pyparsing (MIT) ; Pillow (MIT-CMU) ; python-dateutil (Apache 2.0 ou BSD-3-Clause) ; packaging (Apache 2.0 ou BSD-2-Clause).</td></tr>
+    <tr><th scope="row">OpenBLAS et LAPACK</th><td>BSD-3-Clause</td><td>Algèbre linéaire, inclus dans NumPy et SciPy.</td></tr>
+    <tr><th scope="row">Bibliothèques d'exécution de GCC</th><td>GPL v3 avec l'exception « GCC Runtime Library », LGPL</td><td>Selon le système, incluses dans NumPy et SciPy (libgfortran, libquadmath).</td></tr>
+    <tr><th scope="row">Polices des graphiques</th><td>Bitstream Vera (DejaVu), SIL OFL 1.1 (STIX), licence BaKoMa</td><td>Polices DejaVu, STIX et Computer Modern livrées avec matplotlib.</td></tr>
+    <tr><th scope="row">Nuitka</th><td>Apache 2.0</td><td>Transforme Regline en application qu'on installe. <a href="https://nuitka.net" rel="noopener">nuitka.net</a></td></tr>
+    <tr><th scope="row">Inno Setup</th><td>Licence Inno Setup</td><td>Installateur Windows (.exe). <a href="https://jrsoftware.org/isinfo.php" rel="noopener">jrsoftware.org</a></td></tr>
+  </tbody>
+</table></div>
+<p class="small muted">Les versions exactes des bibliothèques de chaque version de Regline sont listées dans l'app, menu Aide → Licences et logiciels libres.</p>
+
+<h2>Qt et la LGPL : tes droits</h2>
+<p>Les bibliothèques Qt sont livrées comme fichiers séparés dans le dossier de l'application (par exemple les fichiers
+  <code>Qt6*.dll</code> sous Windows). La licence GNU LGPL v3 te permet de les remplacer par une version modifiée de Qt,
+  compatible, et de faire l'ingénierie inverse nécessaire pour déboguer ces modifications. Le contrat de licence de
+  Regline ne l'interdit pas. Pour remplacer facilement ces fichiers, utilise l'installateur téléchargé sur regline.ch
+  plutôt que la version du Microsoft Store, dont Windows protège le dossier.</p>
+<p>Le code source de Qt et de Qt for Python est disponible sur <a href="https://download.qt.io" rel="noopener">download.qt.io</a>
+  et <a href="https://code.qt.io" rel="noopener">code.qt.io</a>. Sur simple demande à
+  <a href="mailto:contact@regline.ch">contact@regline.ch</a>, je t'envoie aussi une copie du code source exact des
+  versions de Qt utilisées, sans frais autres que ceux de l'envoi, pendant au moins trois ans après la dernière
+  distribution de la version concernée de Regline.</p>
+
+<h2>Ce site</h2>
+<p>Le site regline.ch utilise les polices Bricolage Grotesque, IBM Plex Sans et IBM Plex Mono, sous licence SIL Open
+  Font License 1.1. Elles sont hébergées sur regline.ch : aucune requête n'est envoyée à un autre service.</p>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Leandro Castro Moreira · <a href="./">Accueil</a> · <a href="verification.html">Vérification</a> · <a href="confidentialite.html">Confidentialité</a> · <a href="conditions.html">Conditions</a> · <a href="licences.html">Écoles et entreprises</a> · <a href="mailto:contact@regline.ch">contact@regline.ch</a></div>
+</footer>
+<div id="lang-hint" hidden></div>
+<script src="pages.js"></script>
+</body>
+</html>

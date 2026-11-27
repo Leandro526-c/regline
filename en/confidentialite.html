@@ -32,7 +32,7 @@
 
 <main class="wrap">
 <h1>Privacy</h1>
-<p class="meta">Last updated: 23 November 2026 · Regline 4.1</p>
+<p class="meta">Last updated: 27 November 2026 · Regline 4.3</p>
 <p class="note-lang">Translation of the French version, which prevails in case of difference.</p>
 
 <div class="summary">
@@ -41,8 +41,8 @@
     <li>Regline needs no account and collects no personal data.</li>
     <li>Your measurements, tables and files stay on your computer. Nothing is sent anywhere else.</li>
     <li>No ads, no usage analytics, no trackers.</li>
-    <li>The only internet connection is the update check, which you can turn off.</li>
-    <li>"Enter on phone" uses only your local network, and only while you have it open.</li>
+    <li>Regline connects to the internet for two things only: the update check, which you can turn off, and downloading the video module, once and only if you ask for it.</li>
+    <li>The phone (measurements, photos, videos) uses only your local network, and only while you have its window open.</li>
   </ul>
 </div>
 
@@ -65,13 +65,30 @@
   browser or mail app (for example <a href="https://regline.ch/en/#apropos">regline.ch</a>, where the donation links
   are). The app itself handles no payment and sends no data; what happens on the website is described below.</p>
 
-<h2>Enter on phone</h2>
-<p>The <strong>Enter on phone</strong> window lets you send measurements typed or scanned on your phone to your
-  computer. Only while that window is open, Regline runs a small server on your local network (your Wi-Fi), at a
-  random secret address shared through the QR code. Transfers are limited to 1 MB and the server stops as soon as you
-  close the window.</p>
-<p>Data stays between your phone and your computer: nothing goes through the internet or an external server. Nothing
-  is kept except the text you choose to import into your table.</p>
+<h2>The phone</h2>
+<p>The <strong>Enter on phone</strong> and <strong>Photo from the phone</strong> windows (in notes and “Read an image”), and
+  the “from the phone” video of <strong>Analyse a video</strong>, let you send measurements, a photo or a video from
+  your phone to your computer. Only while the window is open, Regline runs a small server on your local network (your
+  Wi-Fi), at a secret random address passed on by the QR code. Uploads are limited (1 MB for text, 12 MB for a photo,
+  2 GB for a video) and the server stops as soon as you close the window.</p>
+<p>The exchange stays between your phone and your computer: nothing goes through the internet or an external server.
+  Text and photos only go where you import them (your table, your note). A received video is kept in Regline's data
+  folder, on your computer, for the analysis; it is deleted when you send the next video from the phone.</p>
+
+<h2>The video module</h2>
+<p>To read a video, Regline uses the open-source program FFmpeg (see <a href="bibliotheques.html">Open-source software
+  used</a>). In the version downloaded from regline.ch, if it is not already on your computer, Regline offers to
+  download it the first time you open a video. Nothing is downloaded until you click <strong>Download the video
+  module</strong>.</p>
+<p>The module comes from GitHub (GitHub, Inc., a Microsoft subsidiary, in the United States), which then receives your IP address and basic technical information,
+  as for the update check. Its fingerprint (SHA-256) is checked before installation. Your videos never leave your
+  computer: FFmpeg reads them locally.</p>
+
+<h2>Measuring instruments</h2>
+<p><strong>Live measurement</strong> reads an Arduino over its USB cable. Acquisition with lab instruments (VISA) or
+  National Instruments boards goes through the drivers installed on your computer. An instrument connected over a
+  network is reached only at the address you enter, usually on the lab network. Measurements arrive in your table and
+  are sent nowhere else.</p>
 
 <h2>Update check</h2>
 <p>In the version downloaded from regline.ch, Regline checks at most once a day whether a new version exists. To do
@@ -81,9 +98,8 @@
   this information.</p>
 <p>You can turn the check off at any time in <strong>Settings</strong>. If you accept an update, the installer is
   downloaded from GitHub and its SHA-256 checksum is verified before installation.</p>
-<p>The Microsoft Store version does not check for updates: the Store handles them. It therefore never connects to the
-  internet; it only uses your local network for "Enter on phone", and only when you open that window. The Microsoft
-  Store applies its own <a href="https://privacy.microsoft.com/en-gb/privacystatement" rel="noopener">privacy statement</a>.</p>
+<p>The Microsoft Store version does not check for updates: the Store handles them. It already contains the video module, so it downloads nothing. It never connects to the internet; it only uses your local network for the phone and for a networked measuring instrument, and only when you open those windows. The Microsoft Store applies its own
+  <a href="https://privacy.microsoft.com/en-gb/privacystatement" rel="noopener">privacy statement</a>.</p>
 
 <h2>The regline.ch website</h2>
 <p>The website is hosted on GitHub Pages. Like any host, GitHub logs visitors' IP addresses for security and operation
@@ -115,6 +131,7 @@
 <ul>
   <li><strong>Update check and website hosting:</strong> legitimate interest in providing an up-to-date app and a safe,
     working website. Regline stores nothing; GitHub keeps its technical logs under its own policy.</li>
+  <li><strong>Video module download:</strong> done at your request, for the feature you are using. Regline keeps nothing; GitHub keeps its technical logs under its own rules.</li>
   <li><strong>Language chosen on the website:</strong> stored only in your browser; you can clear it at any time.</li>
   <li><strong>Emails:</strong> your message is used to reply to you (legitimate interest, or handling your request).
     I keep it for the conversation, then at most two years for bug follow-up, before deleting it.</li>

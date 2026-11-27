@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Regline · Are Regline&#x27;s calculations correct?</title>
-<meta name="description" content="Regline 4.1 checked against the 26 certified NIST problems, compared with Excel, SciPy and Monte Carlo simulations. All the results, including the imperfect ones.">
+<meta name="description" content="Regline 4.3 checked against the 26 certified NIST problems, compared with Excel, SciPy and Monte Carlo simulations. All the results, including the imperfect ones.">
 <link rel="canonical" href="https://regline.ch/en/verification.html">
 <link rel="alternate" hreflang="fr" href="https://regline.ch/verification.html">
 <link rel="alternate" hreflang="en" href="https://regline.ch/en/verification.html">
@@ -13,7 +13,7 @@
 <link rel="alternate" hreflang="es" href="https://regline.ch/es/verification.html">
 <link rel="alternate" hreflang="x-default" href="https://regline.ch/verification.html">
 <meta property="og:title" content="Regline · Are Regline&#x27;s calculations correct?">
-<meta property="og:description" content="Regline 4.1 checked against the 26 certified NIST problems, compared with Excel, SciPy and Monte Carlo simulations. All the results, including the imperfect ones.">
+<meta property="og:description" content="Regline 4.3 checked against the 26 certified NIST problems, compared with Excel, SciPy and Monte Carlo simulations. All the results, including the imperfect ones.">
 <meta property="og:image" content="https://regline.ch/apercu-lien.png">
 <meta property="og:url" content="https://regline.ch/en/verification.html">
 <meta property="og:locale" content="en_GB">
@@ -32,7 +32,7 @@
 
 <main class="wrap wide">
 <h1>Are Regline's calculations correct?</h1>
-<p class="meta">Checked on 23 November 2026 with Regline 4.1.0</p>
+<p class="meta">Checked on 27 November 2026 with Regline 4.3.0</p>
 <p class="lead">Lab software must give correct results, and say when it is not sure. Here is how Regline was put to the test, with all the results, including the imperfect ones.</p>
 
 <div class="stats">
@@ -59,6 +59,7 @@
   <li><strong>ENSO</strong>: 5 correct digits, plenty for a lab.</li>
   <li><strong>A cautious light</strong>: on 8 correct runs (Lanczos2, Lanczos3, Bennett5, and Lanczos1 and MGH17 from the second start), the light is still red. These problems are built so that parameters compensate each other almost perfectly, and Regline says so. One alarm too many is better than a wrong result in silence.</li>
   <li><strong>BoxBOD, start 1</strong>: from this start, the fit alone does not succeed. Regline finds the right solution from another start, shows it and flags it in orange (“Initial values corrected”).</li>
+  <li><strong>A time-limited search</strong>: the other starting points are tried for half a second at most. On a fast computer, Regline 4.3 sometimes also finds the right solution of Lanczos1 from start 1. The table keeps the worse result of the runs.</li>
 </ul>
 
 <h2>Compared with Excel</h2>
@@ -67,7 +68,7 @@
   <thead><tr><th scope="col"></th><th scope="col">b₁</th><th scope="col">b₂</th><th scope="col">Uncertainties</th></tr></thead>
   <tbody>
     <tr><th scope="row">Certified values (NIST)</th><td class="mono">238.94212918</td><td class="mono">5.5015643181·10⁻⁴</td><td class="mono">2.7070 and 7.2669·10⁻⁶</td></tr>
-    <tr><th scope="row">Regline 4.1</th><td class="mono digits"><span class="ok">238.94212918</span></td><td class="mono digits"><span class="ok">5.5015643181</span>·10⁻⁴</td><td class="mono digits"><span class="ok">2.7070</span> and <span class="ok">7.2669</span>·10⁻⁶</td></tr>
+    <tr><th scope="row">Regline 4.3</th><td class="mono digits"><span class="ok">238.94212918</span></td><td class="mono digits"><span class="ok">5.5015643181</span>·10⁻⁴</td><td class="mono digits"><span class="ok">2.7070</span> and <span class="ok">7.2669</span>·10⁻⁶</td></tr>
     <tr><th scope="row">Excel 365, Solver</th><td class="mono digits"><span class="ok">238.</span><span class="ko">868566</span></td><td class="mono digits"><span class="ok">5.50</span><span class="ko">34736</span>·10⁻⁴</td><td>none</td></tr>
   </tbody>
 </table></div>
@@ -75,10 +76,10 @@
 
 <h2>Other checks</h2>
 <div class="table-scroll"><table>
-  <thead><tr><th scope="col">Calculation</th><th scope="col">Regline 4.1</th><th scope="col">Reference</th></tr></thead>
+  <thead><tr><th scope="col">Calculation</th><th scope="col">Regline 4.3</th><th scope="col">Reference</th></tr></thead>
   <tbody>
     <tr><th scope="row">Straight line, X from 1 000 000 to 1 000 009 (ill-conditioned)</th><td>15 correct digits</td><td>exact calculation with fractions</td></tr>
-    <tr><th scope="row">Straight line with ΔX and ΔY</th><td class="mono">1.55430962 ± 0.044562</td><td>SciPy (ODR): <span class="mono">1.55430918 ± 0.044562</span></td></tr>
+    <tr><th scope="row">Straight line with ΔX and ΔY</th><td class="mono">1.55430963 ± 0.044562</td><td>SciPy (ODR): <span class="mono">1.55430918 ± 0.044562</span></td></tr>
     <tr><th scope="row">Propagation g = 4π²L/T²</th><td class="mono">9.80586 ± 0.03925</td><td>Monte Carlo, 400 000 draws: <span class="mono">9.80601 ± 0.03923</span></td></tr>
     <tr><th scope="row">Correlated propagation a/b (ρ = 0.6)</th><td class="mono">2.50000 ± 0.01505</td><td>Monte Carlo: <span class="mono">2.50006 ± 0.01506</span></td></tr>
     <tr><th scope="row">Welch's test</th><td class="mono">t = 0.651771; p = 0.524413</td><td>SciPy: identical</td></tr>
@@ -99,6 +100,7 @@
 
 <h2>Redo the check</h2>
 <p>You can redo any of these tests: download a dataset from the <a href="https://www.itl.nist.gov/div898/strd/nls/nls_main.shtml" rel="noopener">NIST website</a>, paste the x and y columns into Regline, type the formula and starting values from the document into a fit with your own formula, and compare with the certified values.</p>
+<p>Or, more simply: in Regline 4.3, the menu <strong>Help → Validation (NIST certified datasets)</strong> reruns the 26 problems on your computer and compares each result with the certified values.</p>
 <p class="small muted">These checks are run by Regline's author with automatic scripts, rerun for every major version. They do not replace an independent audit, and do not spare you from checking that the chosen model suits your experiment.</p>
 </main>
 

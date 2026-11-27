@@ -32,7 +32,7 @@
 
 <main class="wrap">
 <h1>Datenschutz</h1>
-<p class="meta">Zuletzt aktualisiert: 23. November 2026 · Regline 4.1</p>
+<p class="meta">Zuletzt aktualisiert: 27. November 2026 · Regline 4.3</p>
 <p class="note-lang">Übersetzung der französischen Fassung, die bei Abweichungen massgebend ist.</p>
 
 <div class="summary">
@@ -41,8 +41,8 @@
     <li>Regline braucht kein Konto und sammelt keine Personendaten.</li>
     <li>Deine Messwerte, Tabellen und Dateien bleiben auf deinem Computer. Nichts wird anderswohin gesendet.</li>
     <li>Keine Werbung, keine Nutzungsstatistik, keine Tracker.</li>
-    <li>Die einzige Internetverbindung ist die Suche nach Updates, und du kannst sie abschalten.</li>
-    <li>«Am Handy eingeben» läuft nur über dein lokales Netz, und nur solange das Fenster offen ist.</li>
+    <li>Regline verbindet sich nur für zwei Dinge mit dem Internet: für die Suche nach Updates, die du abschalten kannst, und für das Herunterladen des Videomoduls, einmalig und nur wenn du es verlangst.</li>
+    <li>Das Handy (Messwerte, Fotos, Videos) läuft nur über dein lokales Netz, und nur solange sein Fenster offen ist.</li>
   </ul>
 </div>
 
@@ -67,13 +67,32 @@
   wo die Spendenlinks sind). Die App selbst bezahlt nichts, kassiert nichts und sendet keine Daten; was danach auf der
   Website geschieht, steht weiter unten.</p>
 
-<h2>Am Handy eingeben</h2>
-<p>Mit dem Fenster <strong>Am Handy eingeben</strong> kannst du auf dem Handy getippte oder gescannte Messwerte an deinen
-  Computer senden. Nur solange dieses Fenster offen ist, betreibt Regline einen kleinen Server in deinem lokalen Netz
-  (deinem WLAN), unter einer geheimen, zufälligen Adresse, die über den QR-Code übermittelt wird. Übertragungen sind
-  auf 1 MB begrenzt, und der Server stoppt, sobald du das Fenster schliesst.</p>
-<p>Die Daten bleiben zwischen deinem Handy und deinem Computer: Nichts läuft über das Internet oder einen externen
-  Server. Nichts wird aufbewahrt, ausser dem Text, den du in deine Tabelle importierst.</p>
+<h2>Das Handy</h2>
+<p>Die Fenster <strong>Am Handy eingeben</strong> und <strong>Foto vom Handy</strong> (in den Notizen und in «Bild
+  auslesen») sowie das Video «vom Handy» bei <strong>Video analysieren</strong> senden Messwerte, ein Foto oder ein
+  Video von deinem Handy an deinen Computer. Nur solange das Fenster offen ist, betreibt Regline einen kleinen Server in
+  deinem lokalen Netz (deinem WLAN), unter einer geheimen, zufälligen Adresse, die der QR-Code weitergibt. Die
+  Übertragungen sind begrenzt (1 MB für Text, 12 MB für ein Foto, 2 GB für ein Video), und der Server stoppt, sobald du
+  das Fenster schliesst.</p>
+<p>Der Austausch bleibt zwischen deinem Handy und deinem Computer: Nichts läuft über das Internet oder einen externen
+  Server. Text und Fotos landen nur dort, wo du sie importierst (deine Tabelle, deine Notiz). Ein empfangenes Video wird
+  für die Analyse im Datenordner von Regline auf deinem Computer aufbewahrt; es wird gelöscht, wenn du das nächste Video
+  vom Handy sendest.</p>
+
+<h2>Das Videomodul</h2>
+<p>Um ein Video zu lesen, verwendet Regline das freie Programm FFmpeg (siehe <a href="bibliotheques.html">Verwendete
+  Open-Source-Software</a>). In der von regline.ch heruntergeladenen Version bietet Regline beim ersten Öffnen eines
+  Videos an, es herunterzuladen, falls es nicht schon auf deinem Computer ist. Es wird nichts heruntergeladen, bevor du
+  auf <strong>Videomodul herunterladen</strong> klickst.</p>
+<p>Das Modul kommt von GitHub (GitHub, Inc., eine Tochter von Microsoft, in den USA), das dabei deine IP-Adresse und grundlegende technische Angaben erhält, wie
+  bei der Suche nach Updates. Sein Fingerabdruck (SHA-256) wird vor der Installation geprüft. Deine Videos verlassen
+  deinen Computer nie: FFmpeg liest sie direkt vor Ort.</p>
+
+<h2>Messgeräte</h2>
+<p><strong>Live-Messung</strong> liest einen Arduino über sein USB-Kabel. Die Erfassung mit Laborgeräten (VISA) oder
+  Karten von National Instruments läuft über die Treiber, die auf deinem Computer installiert sind. Ein Gerät im Netzwerk
+  wird nur unter der Adresse angesprochen, die du angibst, meist im Netz des Labors. Die Messwerte landen in deiner
+  Tabelle und werden nirgendwohin sonst gesendet.</p>
 
 <h2>Suche nach Updates</h2>
 <p>In der von regline.ch heruntergeladenen Version prüft Regline höchstens einmal pro Tag, ob es eine neue Version
@@ -83,9 +102,7 @@
   Regline selbst erhält oder speichert diese Angaben nicht.</p>
 <p>Du kannst diese Prüfung jederzeit in den <strong>Einstellungen</strong> abschalten. Wenn du ein Update annimmst,
   wird die Installationsdatei von GitHub heruntergeladen und ihre Prüfsumme (SHA-256) vor der Installation kontrolliert.</p>
-<p>Die Version aus dem Microsoft Store sucht nicht nach Updates: Das erledigt der Store. Sie verbindet sich deshalb nie
-  mit dem Internet; sie nutzt nur dein lokales Netz für «Am Handy eingeben», und nur wenn du dieses Fenster öffnest.
-  Für den Microsoft Store gilt dessen eigene
+<p>Die Version aus dem Microsoft Store sucht nicht nach Updates: Das erledigt der Store. Sie enthält das Videomodul bereits und lädt deshalb nichts herunter. Sie verbindet sich nie mit dem Internet; sie nutzt nur dein lokales Netz für das Handy und für ein Messgerät im Netzwerk, und nur wenn du diese Fenster öffnest. Für den Microsoft Store gilt dessen eigene
   <a href="https://privacy.microsoft.com/de-ch/privacystatement" rel="noopener">Datenschutzerklärung</a>.</p>
 
 <h2>Die Website regline.ch</h2>
@@ -123,6 +140,7 @@
   <li><strong>Suche nach Updates und Hosting der Website:</strong> berechtigtes Interesse an einer aktuellen App und
     einer sicheren, funktionierenden Website. Regline speichert nichts; GitHub bewahrt seine technischen Protokolle
     nach eigenen Regeln auf.</li>
+  <li><strong>Herunterladen des Videomoduls:</strong> auf deinen Wunsch, für die Funktion, die du verwendest. Regline speichert nichts; GitHub bewahrt seine technischen Protokolle nach eigenen Regeln auf.</li>
   <li><strong>Auf der Website gewählte Sprache:</strong> nur in deinem Browser gespeichert, jederzeit löschbar.</li>
   <li><strong>E-Mails:</strong> Deine Nachricht dient dazu, dir zu antworten (berechtigtes Interesse oder Bearbeitung
     deiner Anfrage). Ich bewahre sie für die Dauer des Austauschs auf, danach höchstens zwei Jahre für die

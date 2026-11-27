@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Regline · ¿Son correctos los cálculos de Regline?</title>
-<meta name="description" content="Regline 4.1 verificado con los 26 problemas certificados del NIST, comparado con Excel, SciPy y simulaciones de Monte Carlo. Todos los resultados, también los que no son perfectos.">
+<meta name="description" content="Regline 4.3 verificado con los 26 problemas certificados del NIST, comparado con Excel, SciPy y simulaciones de Monte Carlo. Todos los resultados, también los que no son perfectos.">
 <link rel="canonical" href="https://regline.ch/es/verification.html">
 <link rel="alternate" hreflang="fr" href="https://regline.ch/verification.html">
 <link rel="alternate" hreflang="en" href="https://regline.ch/en/verification.html">
@@ -13,7 +13,7 @@
 <link rel="alternate" hreflang="es" href="https://regline.ch/es/verification.html">
 <link rel="alternate" hreflang="x-default" href="https://regline.ch/verification.html">
 <meta property="og:title" content="Regline · ¿Son correctos los cálculos de Regline?">
-<meta property="og:description" content="Regline 4.1 verificado con los 26 problemas certificados del NIST, comparado con Excel, SciPy y simulaciones de Monte Carlo. Todos los resultados, también los que no son perfectos.">
+<meta property="og:description" content="Regline 4.3 verificado con los 26 problemas certificados del NIST, comparado con Excel, SciPy y simulaciones de Monte Carlo. Todos los resultados, también los que no son perfectos.">
 <meta property="og:image" content="https://regline.ch/apercu-lien.png">
 <meta property="og:url" content="https://regline.ch/es/verification.html">
 <meta property="og:locale" content="es_ES">
@@ -32,7 +32,7 @@
 
 <main class="wrap wide">
 <h1>¿Son correctos los cálculos de Regline?</h1>
-<p class="meta">Verificado el 23 de noviembre de 2026 con Regline 4.1.0</p>
+<p class="meta">Verificado el 27 de noviembre de 2026 con Regline 4.3.0</p>
 <p class="lead">Un programa de laboratorio debe dar resultados correctos, y decir cuando no está seguro. Así se ha puesto a prueba Regline, con todos los resultados, también los que no son perfectos.</p>
 
 <div class="stats">
@@ -59,6 +59,7 @@
   <li><strong>ENSO</strong>: 5 cifras correctas, más que suficiente para un laboratorio.</li>
   <li><strong>Un indicador prudente</strong>: en 8 pruebas correctas (Lanczos2, Lanczos3, Bennett5, y Lanczos1 y MGH17 desde el segundo inicio), el indicador sigue en rojo. Estos problemas están construidos para que algunos parámetros se compensen casi perfectamente, y Regline lo dice. Más vale una alerta de más que un resultado incorrecto en silencio.</li>
   <li><strong>BoxBOD, inicio 1</strong>: desde este inicio, el ajuste por sí solo no lo consigue. Regline encuentra la solución correcta desde otro inicio, la muestra y lo señala en naranja («Valores iniciales corregidos»).</li>
+  <li><strong>Una búsqueda limitada en el tiempo</strong>: los otros puntos de inicio se prueban durante medio segundo como máximo. En un ordenador rápido, Regline 4.3 a veces también encuentra la solución correcta de Lanczos1 desde el inicio 1. La tabla muestra el peor resultado de las pruebas.</li>
 </ul>
 
 <h2>Frente a Excel</h2>
@@ -67,7 +68,7 @@
   <thead><tr><th scope="col"></th><th scope="col">b₁</th><th scope="col">b₂</th><th scope="col">Incertidumbres</th></tr></thead>
   <tbody>
     <tr><th scope="row">Valores certificados (NIST)</th><td class="mono">238,94212918</td><td class="mono">5,5015643181·10⁻⁴</td><td class="mono">2,7070 y 7,2669·10⁻⁶</td></tr>
-    <tr><th scope="row">Regline 4.1</th><td class="mono digits"><span class="ok">238,94212918</span></td><td class="mono digits"><span class="ok">5,5015643181</span>·10⁻⁴</td><td class="mono digits"><span class="ok">2,7070</span> y <span class="ok">7,2669</span>·10⁻⁶</td></tr>
+    <tr><th scope="row">Regline 4.3</th><td class="mono digits"><span class="ok">238,94212918</span></td><td class="mono digits"><span class="ok">5,5015643181</span>·10⁻⁴</td><td class="mono digits"><span class="ok">2,7070</span> y <span class="ok">7,2669</span>·10⁻⁶</td></tr>
     <tr><th scope="row">Excel 365, Solver</th><td class="mono digits"><span class="ok">238,</span><span class="ko">868566</span></td><td class="mono digits"><span class="ok">5,50</span><span class="ko">34736</span>·10⁻⁴</td><td>ninguna</td></tr>
   </tbody>
 </table></div>
@@ -75,10 +76,10 @@
 
 <h2>Otras verificaciones</h2>
 <div class="table-scroll"><table>
-  <thead><tr><th scope="col">Cálculo</th><th scope="col">Regline 4.1</th><th scope="col">Referencia</th></tr></thead>
+  <thead><tr><th scope="col">Cálculo</th><th scope="col">Regline 4.3</th><th scope="col">Referencia</th></tr></thead>
   <tbody>
     <tr><th scope="row">Recta, X de 1 000 000 a 1 000 009 (mal condicionada)</th><td>15 cifras correctas</td><td>cálculo exacto con fracciones</td></tr>
-    <tr><th scope="row">Recta con ΔX y ΔY</th><td class="mono">1,55430962 ± 0,044562</td><td>SciPy (ODR): <span class="mono">1,55430918 ± 0,044562</span></td></tr>
+    <tr><th scope="row">Recta con ΔX y ΔY</th><td class="mono">1,55430963 ± 0,044562</td><td>SciPy (ODR): <span class="mono">1,55430918 ± 0,044562</span></td></tr>
     <tr><th scope="row">Propagación g = 4π²L/T²</th><td class="mono">9,80586 ± 0,03925</td><td>Monte Carlo, 400 000 sorteos: <span class="mono">9,80601 ± 0,03923</span></td></tr>
     <tr><th scope="row">Propagación correlacionada a/b (ρ = 0,6)</th><td class="mono">2,50000 ± 0,01505</td><td>Monte Carlo: <span class="mono">2,50006 ± 0,01506</span></td></tr>
     <tr><th scope="row">Prueba de Welch</th><td class="mono">t = 0,651771; p = 0,524413</td><td>SciPy: idéntico</td></tr>
@@ -99,6 +100,7 @@
 
 <h2>Repetir la verificación</h2>
 <p>Puedes repetir cualquiera de estas pruebas: descarga un conjunto de datos del <a href="https://www.itl.nist.gov/div898/strd/nls/nls_main.shtml" rel="noopener">sitio del NIST</a>, pega las columnas x e y en Regline, escribe la fórmula y los valores de partida del documento en un ajuste con tu propia fórmula y compara con los valores certificados.</p>
+<p>O, más sencillo: en Regline 4.3, el menú <strong>Ayuda → Validación (conjuntos certificados del NIST)</strong> rehace los 26 problemas en tu ordenador y compara cada resultado con los valores certificados.</p>
 <p class="small muted">Estas verificaciones las hace el autor de Regline con scripts automáticos, que se vuelven a ejecutar en cada versión importante. No sustituyen una auditoría independiente ni eximen de comprobar que el modelo elegido conviene a tu experimento.</p>
 </main>
 

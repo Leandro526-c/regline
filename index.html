@@ -372,7 +372,7 @@ footer a { color: var(--muted); }
       </div>
 
       <div class="steps">
-        <div class="step reveal"><b>1</b><h3 data-i18n="step1.t">Colle ou tape tes mesures</h3><p data-i18n="step1.p">Depuis Excel, un fichier CSV, TXT ou .xlsx, ou directement dans le tableau. Les colonnes ΔX et ΔY sont reconnues toutes seules, et un fichier un peu désordonné s'importe quand même.</p></div>
+        <div class="step reveal"><b>1</b><h3 data-i18n="step1.t">Colle ou tape tes mesures</h3><p data-i18n="step1.p">Depuis Excel, un fichier CSV, TXT, .xlsx ou .xls, un fichier LabVIEW, ou directement dans le tableau. Les colonnes ΔX et ΔY sont reconnues toutes seules, et un fichier un peu désordonné s'importe quand même.</p></div>
         <div class="step reveal"><b>2</b><h3 data-i18n="step2.t">Choisis ton modèle</h3><p data-i18n="step2.p">Droite, droite par l'origine, modèle de la bibliothèque ou ta propre formule. L'ajustement se recalcule à chaque modification.</p></div>
         <div class="step reveal"><b>3</b><h3 data-i18n="step3.t">Récupère tout pour le rapport</h3><p data-i18n="step3.p">Paramètres arrondis selon leurs incertitudes, χ², graphique en PNG, SVG ou PDF, tableau LaTeX prêt à compiler.</p></div>
       </div>
@@ -420,7 +420,7 @@ footer a { color: var(--muted); }
         <div class="feature reveal">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 14h8M8 17.5h5"/></svg>
           <h3 data-i18n="f7.t">Ton rapport, plus vite</h3>
-          <p data-i18n="f7.p">Tableaux LaTeX prêts à compiler, pgfplots, images PNG, SVG ou PDF, copie pour Word et Excel, et le code Python matplotlib si tu le veux.</p>
+          <p data-i18n="f7.p">Notes exportées en PDF ou en LaTeX, tableaux LaTeX prêts à compiler, pgfplots, images PNG, SVG ou PDF, copie pour Word et Excel, et le code Python matplotlib ou un carnet Jupyter si tu le veux.</p>
         </div>
         <div class="feature reveal">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18"/></svg>
@@ -434,30 +434,50 @@ footer a { color: var(--muted); }
   <section id="nouveau" style="padding-top:0">
     <div class="wrap">
       <div class="section-head">
-        <p class="eyebrow" data-i18n="new.eyebrow">Nouveau dans la 4.1</p>
-        <h2 data-i18n="new.title">Tes labos, bien rangés et vérifiés.</h2>
-        <p class="lead" data-i18n="new.lead">La 4.1 range tes expériences comme des documents et surveille tes ajustements pour toi.</p>
+        <p class="eyebrow" data-i18n="new.eyebrow">Nouveau dans la 4.3</p>
+        <h2 data-i18n="new.title">Filme, mesure, rédige : le TP entier dans Regline.</h2>
+        <p class="lead" data-i18n="new.lead">La plus grande mise à jour de Regline : de nouvelles façons de prendre tes mesures, un rapport qui s'écrit pendant le labo et une app plus agréable partout.</p>
       </div>
       <div class="features news">
         <div class="feature reveal">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-5h4v5"/></svg>
-          <h3 data-i18n="n1.t">Mes labos</h3>
-          <p data-i18n="n1.p">Un écran d'accueil avec tous tes fichiers : un aperçu des mesures, la date, la recherche et les épingles.</p>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="13" height="12" rx="2.5"/><path d="M15.5 10.5l6-3.5v10l-6-3.5"/><circle cx="7" cy="12" r="1.6" fill="currentColor"/></svg>
+          <h3 data-i18n="n1.t">Analyse vidéo</h3>
+          <p data-i18n="n1.p">Filme un mouvement avec ton téléphone et envoie la vidéo par QR code. Étalonne sur une règle visible, pointe l'objet ou laisse Regline le suivre : le tableau t, x, y arrive avec ses incertitudes.</p>
         </div>
         <div class="feature reveal">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 15l2 2 4-4"/></svg>
-          <h3 data-i18n="n2.t">Un fichier par expérience</h3>
-          <p data-i18n="n2.p">Enregistrer et Enregistrer sous, comme dans Word : chaque onglet a son propre fichier .regline.</p>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M6 16l4-5 3 3 5-6"/><circle cx="17.5" cy="7.5" r="1" fill="currentColor"/></svg>
+          <h3 data-i18n="n2.t">Lire une image</h3>
+          <p data-i18n="n2.p">Reprends les points d'un graphique photographié ou scanné, même penché ou en échelle log, ou mesure une distance et un angle sur la photo de ton montage.</p>
         </div>
         <div class="feature reveal">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9h7l2-2.5h9"/></svg>
-          <h3 data-i18n="n3.t">Sous-expériences</h3>
-          <p data-i18n="n3.p">Partie 1, Partie 2… dans la même expérience. Un résultat calculé dans une partie s'utilise dans l'autre, avec son incertitude.</p>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 12h7M9 15.5h7M9 8.5h3"/></svg>
+          <h3 data-i18n="n3.t">Le rapport pendant le labo</h3>
+          <p data-i18n="n3.p">Les notes deviennent un vrai document : titres, images, formules, tableaux et graphiques qui se mettent à jour. Export PDF, Markdown ou LaTeX (.zip prêt à compiler), avec le modèle de ton cours.</p>
         </div>
         <div class="feature reveal">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.2" fill="currentColor"/></svg>
-          <h3 data-i18n="n4.t">Un voyant de fiabilité</h3>
-          <p data-i18n="n4.p">Regline essaie d'autres valeurs de départ et allume un voyant orange ou rouge quand un ajustement est douteux.</p>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h3l2.5-6 4 12 2.5-6h6"/></svg>
+          <h3 data-i18n="n4.t">Mesures en direct</h3>
+          <p data-i18n="n4.p">Lis un Arduino par son câble USB, suis un fichier en cours d'écriture ou ouvre les fichiers LabVIEW. Nouveau et encore peu testé sur du vrai matériel : les appareils de labo (VISA) et les cartes National Instruments. Tes retours sont bienvenus !</p>
+        </div>
+        <div class="feature reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M5 17c3-1 4-9 7-9s4 8 7 9"/><circle cx="12" cy="8" r="1.2" fill="currentColor"/></svg>
+          <h3 data-i18n="n5.t">Des ajustements plus complets</h3>
+          <p data-i18n="n5.p">Comptages (Poisson), profil du χ², paramètres imposés ou liés, incertitudes « stat ± syst », séries de pics et cartes z = f(x, y). Regline signale aussi une formule dont les unités ne collent pas.</p>
+        </div>
+        <div class="feature reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M3 15h18M9.5 4v16"/></svg>
+          <h3 data-i18n="n6.t">Un vrai tableur</h3>
+          <p data-i18n="n6.p">Duplique un tableau pour refaire le même TP avec d'autres mesures, coupe, recherche et remplace, clique une colonne pour l'écrire dans une formule. Les anciens fichiers .xls et les très gros fichiers s'ouvrent aussi.</p>
+        </div>
+        <div class="feature reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="12.5" rx="2"/><path d="M12 16.5V20M8 20h8"/><path d="M10 8l4.5 2.25L10 12.5z" fill="currentColor"/></svg>
+          <h3 data-i18n="n7.t">Mode présentation</h3>
+          <p data-i18n="n7.p">Touche F5 : plein écran avec seulement ton graphique et ton tableau, pour montrer ton résultat au projecteur.</p>
+        </div>
+        <div class="feature reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/></svg>
+          <h3 data-i18n="n8.t">Plus agréable partout</h3>
+          <p data-i18n="n8.p">Des fenêtres cohérentes, « Annuler » après chaque suppression, l'historique des étapes, le zoom avec Ctrl + molette, la feuille des raccourcis et une visite guidée d'une minute.</p>
         </div>
       </div>
     </div>
@@ -508,7 +528,7 @@ footer a { color: var(--muted); }
             <div class="unc">± 2,7070</div>
           </div>
           <div class="row">
-            <div class="who">Regline 4.1<small data-i18n="prec.regline.s">ajustement personnalisé</small></div>
+            <div class="who">Regline 4.3<small data-i18n="prec.regline.s">ajustement personnalisé</small></div>
             <div class="digits" data-value="238.94212918" data-ref="238.94212918">238,94212918</div>
             <div class="unc">± 2,7070</div>
           </div>
@@ -525,7 +545,7 @@ footer a { color: var(--muted); }
         <div class="fact reveal"><div class="big">26 <small data-i18n="prec.f2.u">problèmes NIST</small></div><p data-i18n="prec.f2">Les valeurs certifiées retrouvées dans 50 essais sur 52, avec 5 à 11 chiffres justes. Les 2 autres sont signalés par le voyant rouge, jamais en silence.</p></div>
         <div class="fact reveal"><div class="big">68 <small>%</small></div><p data-i18n="prec.f3">Des incertitudes honnêtes : sur des milliers de simulations, la vraie valeur tombe dans ±1σ environ 68 % du temps, comme le veut la théorie.</p></div>
       </div>
-      <p class="footnote"><span data-i18n="prec.note">Excel 365 (Solveur GRG non linéaire) : essai du 30 octobre 2026. Regline 4.1 : vérifié le 23 novembre 2026. Quand le point de départ du NIST est volontairement très éloigné, Regline essaie d'autres départs ; s'il ne trouve pas la bonne solution, le voyant rouge « Douteux » le dit.</span> <a href="verification.html" data-i18n="prec.more">Voir toute la vérification →</a></p>
+      <p class="footnote"><span data-i18n="prec.note">Excel 365 (Solveur GRG non linéaire) : essai du 30 octobre 2026. Regline 4.3 : vérifié le 27 novembre 2026. Quand le point de départ du NIST est volontairement très éloigné, Regline essaie d'autres départs ; s'il ne trouve pas la bonne solution, le voyant rouge « Douteux » le dit.</span> <a href="verification.html" data-i18n="prec.more">Voir toute la vérification →</a></p>
     </div>
   </section>
 
@@ -552,7 +572,7 @@ footer a { color: var(--muted); }
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow" data-i18n="gal.eyebrow">Exemples inclus</p>
-        <h2 data-i18n="gal.title">Dix-neuf expériences prêtes à explorer.</h2>
+        <h2 data-i18n="gal.title">Vingt et une expériences prêtes à explorer.</h2>
         <p class="lead" data-i18n="gal.lead">Chaque exemple s'ouvre avec ses notes : ce qui est mesuré, comment c'est ajusté, et ce qu'il faut regarder.</p>
       </div>
       <div class="tabs" role="tablist" id="gal-tabs"></div>
@@ -615,12 +635,13 @@ footer a { color: var(--muted); }
       </div>
       <div class="faq">
         <details><summary data-i18n="q1">C'est vraiment gratuit ?</summary><p data-i18n="a1">Oui. Pas de publicité, pas de compte, pas de version payante. Si Regline t'aide, tu peux soutenir le projet par un don, mais ce n'est jamais obligatoire.</p></details>
-        <details><summary data-i18n="q2">Mes mesures quittent-elles mon ordinateur ?</summary><p data-i18n="a2">Non. Regline fonctionne entièrement hors ligne. La seule connexion est la recherche de mises à jour, une fois par jour au plus, que tu peux désactiver.</p></details>
+        <details><summary data-i18n="q2">Mes mesures quittent-elles mon ordinateur ?</summary><p data-i18n="a2">Non. Tes mesures restent sur ton ordinateur. Regline se connecte à Internet seulement pour chercher les mises à jour (une fois par jour au plus, désactivable) et, si tu analyses une vidéo, pour télécharger une fois le module vidéo.</p></details>
         <details><summary data-i18n="q3">Faut-il savoir programmer ?</summary><p data-i18n="a3">Non, tout se fait à la souris et au clavier. Si tu veux aller plus loin, Regline peut générer le code Python matplotlib de ton graphique.</p></details>
         <details><summary data-i18n="q4">Ça remplace Excel ?</summary><p data-i18n="a4">Pour les TP, oui : tableau, formules dans les cellules, tri, filtres, graphiques et ajustements avec incertitudes. Tu peux toujours exporter tes données en .xlsx.</p></details>
         <details><summary data-i18n="q5">Ça marche en chimie ou en biologie ?</summary><p data-i18n="a5">Oui. La bibliothèque contient Michaelis-Menten, Hill, Arrhenius, croissance logistique, Beer-Lambert et d'autres, et les tests statistiques servent dans toutes les sciences.</p></details>
         <details><summary data-i18n="q6">Pourquoi Windows ou macOS m'avertit-il ?</summary><p data-i18n="a6">Regline est développé par un étudiant, sans certificat payant d'éditeur. Les étapes de la section Installation expliquent comment l'ouvrir quand même.</p></details>
-        <details><summary data-i18n="q7">Mes anciens fichiers .regline s'ouvrent-ils ?</summary><p data-i18n="a7">Oui. Les fichiers des versions précédentes s'ouvrent dans la 4.1, tels quels.</p></details>
+        <details><summary data-i18n="q7">Mes anciens fichiers .regline s'ouvrent-ils ?</summary><p data-i18n="a7">Oui. Les fichiers des versions précédentes s'ouvrent dans la 4.3, tels quels.</p></details>
+        <details><summary data-i18n="q9">De quoi ai-je besoin pour l'analyse vidéo ?</summary><p data-i18n="a9">D'une vidéo (MP4, MOV…), par exemple filmée avec ton téléphone, et d'un objet de longueur connue visible dans l'image, comme une règle, pour l'étalonnage. Pour lire les images, Regline utilise le logiciel libre FFmpeg : la version téléchargée ici te propose de le télécharger la première fois que tu ouvres une vidéo, et la version du Microsoft Store l'inclut déjà.</p></details>
         <details><summary data-i18n="q8">J'ai trouvé un bug ou j'ai une idée.</summary><p data-i18n="a8">Écris-moi à l'adresse en bas de la page, avec si possible une capture d'écran ou ton fichier .regline. Chaque message est lu.</p></details>
       </div>
     </div>

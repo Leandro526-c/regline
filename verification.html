@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Regline · Les calculs de Regline sont-ils justes ?</title>
-<meta name="description" content="Regline 4.1 vérifié sur les 26 problèmes certifiés du NIST, comparé à Excel, à SciPy et à des simulations Monte-Carlo. Tous les résultats, même ceux qui ne sont pas parfaits.">
+<meta name="description" content="Regline 4.3 vérifié sur les 26 problèmes certifiés du NIST, comparé à Excel, à SciPy et à des simulations Monte-Carlo. Tous les résultats, même ceux qui ne sont pas parfaits.">
 <link rel="canonical" href="https://regline.ch/verification.html">
 <link rel="alternate" hreflang="fr" href="https://regline.ch/verification.html">
 <link rel="alternate" hreflang="en" href="https://regline.ch/en/verification.html">
@@ -13,7 +13,7 @@
 <link rel="alternate" hreflang="es" href="https://regline.ch/es/verification.html">
 <link rel="alternate" hreflang="x-default" href="https://regline.ch/verification.html">
 <meta property="og:title" content="Regline · Les calculs de Regline sont-ils justes ?">
-<meta property="og:description" content="Regline 4.1 vérifié sur les 26 problèmes certifiés du NIST, comparé à Excel, à SciPy et à des simulations Monte-Carlo. Tous les résultats, même ceux qui ne sont pas parfaits.">
+<meta property="og:description" content="Regline 4.3 vérifié sur les 26 problèmes certifiés du NIST, comparé à Excel, à SciPy et à des simulations Monte-Carlo. Tous les résultats, même ceux qui ne sont pas parfaits.">
 <meta property="og:image" content="https://regline.ch/apercu-lien.png">
 <meta property="og:url" content="https://regline.ch/verification.html">
 <meta property="og:locale" content="fr_CH">
@@ -33,7 +33,7 @@
 
 <main class="wrap wide">
 <h1>Les calculs de Regline sont-ils justes ?</h1>
-<p class="meta">Vérifié le 23 novembre 2026 sur Regline 4.1.0</p>
+<p class="meta">Vérifié le 27 novembre 2026 sur Regline 4.3.0</p>
 <p class="lead">Un logiciel de labo doit donner des résultats justes, et dire quand il n'est pas sûr. Voici comment
   Regline a été mis à l'épreuve, avec tous les résultats, y compris ceux qui ne sont pas parfaits.</p>
 
@@ -78,6 +78,7 @@
     presque parfaitement, et Regline le dit. Une alerte de trop vaut mieux qu'un résultat faux en silence.</li>
   <li><strong>BoxBOD, départ 1</strong> : depuis ce départ, l'ajustement seul n'aboutit pas. Regline trouve la bonne solution
     depuis un autre départ, l'affiche et le signale en orange (« Valeurs initiales corrigées »).</li>
+  <li><strong>Une recherche limitée dans le temps</strong> : les autres départs sont essayés pendant une demi-seconde au plus. Sur un ordinateur rapide, Regline 4.3 retrouve parfois aussi la bonne solution de Lanczos1 depuis le départ 1. Le tableau garde le résultat le moins bon des essais.</li>
 </ul>
 
 <h2>Face à Excel</h2>
@@ -87,7 +88,7 @@
   <thead><tr><th scope="col"></th><th scope="col">b₁</th><th scope="col">b₂</th><th scope="col">Incertitudes</th></tr></thead>
   <tbody>
     <tr><th scope="row">Valeurs certifiées (NIST)</th><td class="mono">238,94212918</td><td class="mono">5,5015643181·10⁻⁴</td><td class="mono">2,7070 et 7,2669·10⁻⁶</td></tr>
-    <tr><th scope="row">Regline 4.1</th><td class="mono digits"><span class="ok">238,94212918</span></td><td class="mono digits"><span class="ok">5,5015643181</span>·10⁻⁴</td><td class="mono digits"><span class="ok">2,7070</span> et <span class="ok">7,2669</span>·10⁻⁶</td></tr>
+    <tr><th scope="row">Regline 4.3</th><td class="mono digits"><span class="ok">238,94212918</span></td><td class="mono digits"><span class="ok">5,5015643181</span>·10⁻⁴</td><td class="mono digits"><span class="ok">2,7070</span> et <span class="ok">7,2669</span>·10⁻⁶</td></tr>
     <tr><th scope="row">Excel 365, Solveur</th><td class="mono digits"><span class="ok">238,</span><span class="ko">868566</span></td><td class="mono digits"><span class="ok">5,50</span><span class="ko">34736</span>·10⁻⁴</td><td>aucune</td></tr>
   </tbody>
 </table></div>
@@ -97,10 +98,10 @@
 
 <h2>Autres vérifications</h2>
 <div class="table-scroll"><table>
-  <thead><tr><th scope="col">Calcul</th><th scope="col">Regline 4.1</th><th scope="col">Référence</th></tr></thead>
+  <thead><tr><th scope="col">Calcul</th><th scope="col">Regline 4.3</th><th scope="col">Référence</th></tr></thead>
   <tbody>
     <tr><th scope="row">Droite, X de 1 000 000 à 1 000 009 (mal conditionnée)</th><td>15 chiffres justes</td><td>calcul exact en fractions</td></tr>
-    <tr><th scope="row">Droite avec ΔX et ΔY</th><td class="mono">1,55430962 ± 0,044562</td><td>SciPy (ODR) : <span class="mono">1,55430918 ± 0,044562</span></td></tr>
+    <tr><th scope="row">Droite avec ΔX et ΔY</th><td class="mono">1,55430963 ± 0,044562</td><td>SciPy (ODR) : <span class="mono">1,55430918 ± 0,044562</span></td></tr>
     <tr><th scope="row">Propagation g = 4π²L/T²</th><td class="mono">9,80586 ± 0,03925</td><td>Monte-Carlo, 400 000 tirages : <span class="mono">9,80601 ± 0,03923</span></td></tr>
     <tr><th scope="row">Propagation corrélée a/b (ρ = 0,6)</th><td class="mono">2,50000 ± 0,01505</td><td>Monte-Carlo : <span class="mono">2,50006 ± 0,01506</span></td></tr>
     <tr><th scope="row">Test de Welch</th><td class="mono">t = 0,651771 ; p = 0,524413</td><td>SciPy : identique</td></tr>
@@ -126,6 +127,7 @@
   <a href="https://www.itl.nist.gov/div898/strd/nls/nls_main.shtml" rel="noopener">site du NIST</a>, colle les colonnes
   x et y dans Regline, tape la formule et les valeurs de départ du document dans un ajustement avec ta propre formule,
   et compare avec les valeurs certifiées.</p>
+<p>Ou, plus simple : dans Regline 4.3, le menu <strong>Aide → Validation (jeux certifiés du NIST)</strong> refait les 26 problèmes sur ton ordinateur et compare chaque résultat aux valeurs certifiées.</p>
 <p class="small muted">Ces vérifications sont faites par l'auteur de Regline avec des scripts automatiques, relancés à
   chaque version importante. Elles ne remplacent pas un audit indépendant, et ne dispensent pas de vérifier que le
   modèle choisi convient à ton expérience.</p>

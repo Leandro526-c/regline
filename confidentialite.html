@@ -33,7 +33,7 @@
 
 <main class="wrap">
 <h1>Confidentialité</h1>
-<p class="meta">Dernière mise à jour : 23 novembre 2026 · Regline 4.1</p>
+<p class="meta">Dernière mise à jour : 27 novembre 2026 · Regline 4.3</p>
 
 <div class="summary">
   <strong>En bref</strong>
@@ -41,8 +41,8 @@
     <li>Regline ne demande aucun compte et ne collecte aucune donnée personnelle.</li>
     <li>Tes mesures, tableaux et fichiers restent sur ton ordinateur. Rien n'est envoyé ailleurs.</li>
     <li>Pas de publicité, pas de statistiques d'utilisation, pas de traceurs.</li>
-    <li>La seule connexion à Internet est la recherche de mises à jour, que tu peux couper.</li>
-    <li>La saisie au téléphone passe uniquement par ton réseau local, seulement quand tu l'ouvres.</li>
+    <li>Regline se connecte à Internet pour deux choses seulement : la recherche de mises à jour, que tu peux couper, et le téléchargement du module vidéo, une seule fois et seulement si tu le demandes.</li>
+    <li>Le téléphone (mesures, photos, vidéos) passe uniquement par ton réseau local, et seulement quand tu ouvres sa fenêtre.</li>
   </ul>
 </div>
 
@@ -68,13 +68,32 @@
   se trouvent les liens de don). L'app ne paie rien, n'encaisse rien et n'envoie aucune donnée elle-même ; ce qui se
   passe ensuite sur le site est décrit plus bas.</p>
 
-<h2>La saisie au téléphone</h2>
-<p>La fenêtre <strong>Saisir au téléphone</strong> permet d'envoyer des mesures tapées ou scannées sur ton téléphone
-  vers ton ordinateur. Seulement tant que cette fenêtre est ouverte, Regline fait tourner un petit serveur sur
-  ton réseau local (ton Wi-Fi), à une adresse secrète et aléatoire transmise par le QR code. Les envois sont limités
-  à 1 Mo et le serveur s'arrête dès que tu fermes la fenêtre.</p>
+<h2>Le téléphone</h2>
+<p>Les fenêtres <strong>Saisir au téléphone</strong>, <strong>Photo depuis le téléphone</strong> (dans les notes et
+  « Lire une image ») et la vidéo « depuis le téléphone » d'<strong>Analyser une vidéo</strong> permettent d'envoyer des
+  mesures, une photo ou une vidéo de ton téléphone vers ton ordinateur. Seulement tant que la fenêtre est ouverte,
+  Regline fait tourner un petit serveur sur ton réseau local (ton Wi-Fi), à une adresse secrète et aléatoire transmise
+  par le QR code. Les envois sont limités (1 Mo pour un texte, 12 Mo pour une photo, 2 Go pour une vidéo) et le serveur
+  s'arrête dès que tu fermes la fenêtre.</p>
 <p>Les échanges restent entre ton téléphone et ton ordinateur : rien ne passe par Internet ni par un serveur externe.
-  Rien n'est conservé, sauf le texte que tu choisis d'importer dans ton tableau.</p>
+  Le texte et les photos vont seulement là où tu les importes (ton tableau, ta note). Une vidéo reçue est gardée dans le
+  dossier de données de Regline, sur ton ordinateur, le temps de l'analyse ; elle est effacée quand tu envoies la vidéo
+  suivante depuis le téléphone.</p>
+
+<h2>Le module vidéo</h2>
+<p>Pour lire une vidéo, Regline utilise le logiciel libre FFmpeg (voir <a href="bibliotheques.html">Logiciels libres
+  utilisés</a>). Dans la version téléchargée depuis regline.ch, s'il n'est pas déjà sur ton ordinateur, Regline te
+  propose de le télécharger la première fois que tu ouvres une vidéo. Rien n'est téléchargé tant que tu n'as pas cliqué
+  sur <strong>Télécharger le module vidéo</strong>.</p>
+<p>Le module vient de GitHub (GitHub, Inc., filiale de Microsoft, aux États-Unis), qui reçoit alors ton adresse IP et des informations techniques de base,
+  comme pour la recherche de mises à jour. Son empreinte (SHA-256) est vérifiée avant l'installation. Tes vidéos, elles,
+  ne quittent jamais ton ordinateur : FFmpeg les lit sur place.</p>
+
+<h2>Les appareils de mesure</h2>
+<p><strong>Mesure en direct</strong> lit un Arduino par son câble USB. L'acquisition avec les appareils de labo (VISA)
+  ou les cartes National Instruments passe par les pilotes installés sur ton ordinateur. Un appareil branché en réseau
+  est joint seulement à l'adresse que tu indiques, en général sur le réseau du labo. Les mesures arrivent dans ton
+  tableau et ne sont envoyées nulle part ailleurs.</p>
 
 <h2>La recherche de mises à jour</h2>
 <p>Dans la version téléchargée depuis regline.ch, Regline vérifie au plus une fois par jour s'il existe
@@ -84,9 +103,7 @@
   Aucune autre donnée n'est envoyée, et Regline ne reçoit ni ne garde ces informations.</p>
 <p>Tu peux désactiver cette vérification à tout moment dans <strong>Paramètres</strong>. Si tu acceptes une mise
   à jour, le fichier d'installation est téléchargé depuis GitHub et son empreinte (SHA-256) est vérifiée avant l'installation.</p>
-<p>La version distribuée par le Microsoft Store ne fait aucune recherche de mise à jour : c'est le Store qui
-  s'en charge. Elle ne se connecte donc jamais à Internet ; elle utilise seulement ton réseau local pour la saisie au
-  téléphone, et uniquement quand tu ouvres cette fenêtre. Le Microsoft Store applique sa propre
+<p>La version distribuée par le Microsoft Store ne fait aucune recherche de mise à jour : c'est le Store qui s'en charge. Elle contient déjà le module vidéo et ne télécharge donc rien. Elle ne se connecte jamais à Internet ; elle utilise seulement ton réseau local pour le téléphone et pour un appareil de mesure en réseau, et uniquement quand tu ouvres ces fenêtres. Le Microsoft Store applique sa propre
   <a href="https://privacy.microsoft.com/fr-ch/privacystatement" rel="noopener">déclaration de confidentialité</a>.</p>
 
 <h2>Le site regline.ch</h2>
@@ -122,6 +139,7 @@
 <ul>
   <li><strong>Recherche de mises à jour et hébergement du site</strong> : intérêt légitime à fournir une app à jour
     et un site sûr et fonctionnel. Regline ne conserve rien ; GitHub garde ses journaux techniques selon ses propres règles.</li>
+  <li><strong>Téléchargement du module vidéo</strong> : fait à ta demande, pour la fonction que tu utilises. Regline ne conserve rien ; GitHub garde ses journaux techniques selon ses propres règles.</li>
   <li><strong>Langue choisie sur le site</strong> : stockée uniquement dans ton navigateur, tu peux l'effacer à tout moment.</li>
   <li><strong>E-mails</strong> : ton message sert à te répondre (intérêt légitime, ou traitement de ta demande).
     Je le garde le temps de l'échange, puis au plus deux ans pour le suivi des bugs, avant de le supprimer.</li>

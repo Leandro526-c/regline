@@ -32,7 +32,7 @@
 
 <main class="wrap">
 <h1>Privacy</h1>
-<p class="meta">Ultimo aggiornamento: 23 novembre 2026 · Regline 4.1</p>
+<p class="meta">Ultimo aggiornamento: 27 novembre 2026 · Regline 4.3</p>
 <p class="note-lang">Traduzione della versione francese, che fa fede in caso di differenze.</p>
 
 <div class="summary">
@@ -41,8 +41,8 @@
     <li>Regline non chiede nessun account e non raccoglie nessun dato personale.</li>
     <li>Le tue misure, tabelle e file restano sul tuo computer. Nulla viene inviato altrove.</li>
     <li>Niente pubblicità, niente statistiche d'uso, niente tracker.</li>
-    <li>L'unica connessione a Internet è la ricerca di aggiornamenti, che puoi disattivare.</li>
-    <li>«Inserisci dal telefono» passa solo dalla tua rete locale, e solo quando apri quella finestra.</li>
+    <li>Regline si connette a Internet solo per due cose: la ricerca di aggiornamenti, che puoi disattivare, e il download del modulo video, una sola volta e solo se lo chiedi.</li>
+    <li>Il telefono (misure, foto, video) passa solo dalla tua rete locale, e solo quando apri la sua finestra.</li>
   </ul>
 </div>
 
@@ -67,13 +67,32 @@
   si trovano i link per le donazioni). L'app non paga nulla, non incassa nulla e non invia dati da sola; ciò che
   succede poi sul sito è descritto più sotto.</p>
 
-<h2>Inserisci dal telefono</h2>
-<p>La finestra <strong>Inserisci dal telefono</strong> permette di inviare al computer misure digitate o scansionate sul
-  telefono. Solo finché questa finestra è aperta, Regline fa funzionare un piccolo server sulla tua rete locale (il tuo
-  Wi-Fi), a un indirizzo segreto e casuale trasmesso dal codice QR. Gli invii sono limitati a 1 MB e il server si ferma
-  appena chiudi la finestra.</p>
-<p>Gli scambi restano tra il telefono e il computer: nulla passa da Internet o da un server esterno. Nulla viene
-  conservato, tranne il testo che scegli di importare nella tabella.</p>
+<h2>Il telefono</h2>
+<p>Le finestre <strong>Inserisci dal telefono</strong> e <strong>Foto dal telefono</strong> (nelle note e in «Leggere
+  un'immagine») e il video «dal telefono» di <strong>Analizza un video</strong> permettono di inviare misure, una foto o
+  un video dal tuo telefono al tuo computer. Solo finché la finestra è aperta, Regline fa funzionare un piccolo server
+  sulla tua rete locale (il tuo Wi-Fi), a un indirizzo segreto e casuale trasmesso dal codice QR. Gli invii sono
+  limitati (1 MB per un testo, 12 MB per una foto, 2 GB per un video) e il server si ferma appena chiudi la
+  finestra.</p>
+<p>Gli scambi restano tra il tuo telefono e il tuo computer: nulla passa da Internet né da un server esterno. Il testo e
+  le foto finiscono solo dove li importi (la tua tabella, la tua nota). Un video ricevuto viene conservato nella cartella
+  dei dati di Regline, sul tuo computer, per l'analisi; viene cancellato quando invii il video successivo dal
+  telefono.</p>
+
+<h2>Il modulo video</h2>
+<p>Per leggere un video, Regline usa il programma libero FFmpeg (vedi <a href="bibliotheques.html">Software open source
+  utilizzato</a>). Nella versione scaricata da regline.ch, se non è già sul tuo computer, Regline ti propone di
+  scaricarlo la prima volta che apri un video. Non viene scaricato nulla finché non clicchi su <strong>Scarica il modulo
+  video</strong>.</p>
+<p>Il modulo proviene da GitHub (GitHub, Inc., filiale di Microsoft, negli Stati Uniti), che riceve così il tuo indirizzo IP e informazioni tecniche di base, come
+  per la ricerca di aggiornamenti. La sua impronta (SHA-256) viene verificata prima dell'installazione. I tuoi video non
+  lasciano mai il tuo computer: FFmpeg li legge sul posto.</p>
+
+<h2>Gli strumenti di misura</h2>
+<p><strong>Misura in diretta</strong> legge un Arduino tramite il suo cavo USB. L'acquisizione con gli strumenti di
+  laboratorio (VISA) o le schede National Instruments passa dai driver installati sul tuo computer. Uno strumento
+  collegato in rete viene contattato solo all'indirizzo che indichi, di solito sulla rete del laboratorio. Le misure
+  arrivano nella tua tabella e non vengono inviate da nessun'altra parte.</p>
 
 <h2>La ricerca di aggiornamenti</h2>
 <p>Nella versione scaricata da regline.ch, Regline controlla al massimo una volta al giorno se esiste una nuova
@@ -84,9 +103,7 @@
 <p>Puoi disattivare questo controllo in qualsiasi momento nelle <strong>Impostazioni</strong>. Se accetti un
   aggiornamento, il file di installazione viene scaricato da GitHub e la sua impronta (SHA-256) viene verificata prima
   dell'installazione.</p>
-<p>La versione distribuita dal Microsoft Store non cerca aggiornamenti: se ne occupa lo Store. Non si connette quindi
-  mai a Internet; usa solo la rete locale per «Inserisci dal telefono», e solo quando apri quella finestra. Il
-  Microsoft Store applica la propria
+<p>La versione distribuita dal Microsoft Store non cerca aggiornamenti: se ne occupa lo Store. Contiene già il modulo video e quindi non scarica nulla. Non si connette mai a Internet; usa solo la rete locale per il telefono e per uno strumento di misura in rete, e solo quando apri queste finestre. Il Microsoft Store applica la propria
   <a href="https://privacy.microsoft.com/it-ch/privacystatement" rel="noopener">informativa sulla privacy</a>.</p>
 
 <h2>Il sito regline.ch</h2>
@@ -120,6 +137,7 @@
 <ul>
   <li><strong>Ricerca di aggiornamenti e hosting del sito</strong>: interesse legittimo a fornire un'app aggiornata e un
     sito sicuro e funzionante. Regline non conserva nulla; GitHub conserva i propri log tecnici secondo le proprie regole.</li>
+  <li><strong>Download del modulo video</strong>: fatto su tua richiesta, per la funzione che usi. Regline non conserva nulla; GitHub conserva i propri registri tecnici secondo le sue regole.</li>
   <li><strong>Lingua scelta sul sito</strong>: salvata solo nel tuo browser, puoi cancellarla in qualsiasi momento.</li>
   <li><strong>E-mail</strong>: il tuo messaggio serve a risponderti (interesse legittimo, o trattamento della tua
     richiesta). Lo conservo per la durata dello scambio, poi al massimo due anni per il seguito dei bug, prima di cancellarlo.</li>

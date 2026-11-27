@@ -167,7 +167,8 @@ async function loadRelease() {
   try {
     // Liste des versions (et pas seulement « latest ») : les pré-versions comptent aussi.
     const response = await fetch(`https://api.github.com/repos/${REPO}/releases?per_page=10`);
-    release = response.ok ? (await response.json()).find(r => !r.draft && r.assets.length) || null : null;
+    // 4.3 : seulement les versions de Regline (vX.Y.Z), jamais la publication « module-video-N » du module vidéo.
+    release = response.ok ? (await response.json()).find(r => !r.draft && /^v\d+\.\d+/.test(r.tag_name) && r.assets.length) || null : null;
     if (release) {
       for (const [key, target] of Object.entries(TARGETS)) {
         const asset = release.assets.find(a => target.match.test(a.name));

@@ -32,7 +32,7 @@
 
 <main class="wrap">
 <h1>Privacidad</h1>
-<p class="meta">Última actualización: 23 de noviembre de 2026 · Regline 4.1</p>
+<p class="meta">Última actualización: 27 de noviembre de 2026 · Regline 4.3</p>
 <p class="note-lang">Traducción de la versión francesa, que prevalece en caso de diferencia.</p>
 
 <div class="summary">
@@ -41,8 +41,8 @@
     <li>Regline no pide ninguna cuenta y no recoge ningún dato personal.</li>
     <li>Tus medidas, tablas y archivos se quedan en tu ordenador. No se envía nada a ningún otro sitio.</li>
     <li>Sin publicidad, sin estadísticas de uso, sin rastreadores.</li>
-    <li>La única conexión a Internet es la búsqueda de actualizaciones, que puedes desactivar.</li>
-    <li>«Introducir desde el móvil» pasa solo por tu red local, y solo cuando abres esa ventana.</li>
+    <li>Regline se conecta a Internet solo para dos cosas: la búsqueda de actualizaciones, que puedes desactivar, y la descarga del módulo de vídeo, una sola vez y solo si la pides.</li>
+    <li>El móvil (medidas, fotos, vídeos) pasa solo por tu red local, y solo cuando abres su ventana.</li>
   </ul>
 </div>
 
@@ -67,13 +67,31 @@
   están los enlaces de donación). La app no paga nada, no cobra nada y no envía datos por sí misma; lo que ocurre
   después en el sitio web se describe más abajo.</p>
 
-<h2>Introducir desde el móvil</h2>
-<p>La ventana <strong>Introducir desde el móvil</strong> permite enviar al ordenador medidas escritas o escaneadas en el
-  móvil. Solo mientras esa ventana está abierta, Regline ejecuta un pequeño servidor en tu red local (tu wifi), en una
-  dirección secreta y aleatoria transmitida por el código QR. Los envíos están limitados a 1 MB y el servidor se
-  detiene en cuanto cierras la ventana.</p>
-<p>Los intercambios quedan entre tu móvil y tu ordenador: nada pasa por Internet ni por un servidor externo. No se
-  guarda nada, salvo el texto que decides importar en tu tabla.</p>
+<h2>El móvil</h2>
+<p>Las ventanas <strong>Introducir desde el móvil</strong> y <strong>Foto desde el teléfono</strong> (en las notas y en
+  «Leer una imagen») y el vídeo «desde el móvil» de <strong>Analizar un vídeo</strong> permiten enviar medidas, una foto
+  o un vídeo de tu móvil a tu ordenador. Solo mientras la ventana está abierta, Regline mantiene un pequeño servidor en
+  tu red local (tu wifi), en una dirección secreta y aleatoria que transmite el código QR. Los envíos están limitados
+  (1 MB para un texto, 12 MB para una foto, 2 GB para un vídeo) y el servidor se detiene en cuanto cierras la
+  ventana.</p>
+<p>Los intercambios se quedan entre tu móvil y tu ordenador: nada pasa por Internet ni por un servidor externo. El texto
+  y las fotos solo van adonde los importas (tu tabla, tu nota). Un vídeo recibido se guarda en la carpeta de datos de
+  Regline, en tu ordenador, para el análisis; se borra cuando envías el siguiente vídeo desde el móvil.</p>
+
+<h2>El módulo de vídeo</h2>
+<p>Para leer un vídeo, Regline usa el programa libre FFmpeg (ver <a href="bibliotheques.html">Software libre
+  utilizado</a>). En la versión descargada de regline.ch, si no está ya en tu ordenador, Regline te propone descargarlo
+  la primera vez que abres un vídeo. No se descarga nada hasta que haces clic en <strong>Descargar el módulo de
+  vídeo</strong>.</p>
+<p>El módulo viene de GitHub (GitHub, Inc., filial de Microsoft, en Estados Unidos), que recibe entonces tu dirección IP e información técnica básica, como en la
+  búsqueda de actualizaciones. Su huella (SHA-256) se comprueba antes de instalarlo. Tus vídeos nunca salen de tu
+  ordenador: FFmpeg los lee en el propio equipo.</p>
+
+<h2>Los aparatos de medida</h2>
+<p><strong>Medida en directo</strong> lee un Arduino por su cable USB. La adquisición con aparatos de laboratorio (VISA)
+  o tarjetas de National Instruments pasa por los controladores instalados en tu ordenador. Un aparato conectado en red
+  solo se contacta en la dirección que indicas, normalmente en la red del laboratorio. Las medidas llegan a tu tabla y
+  no se envían a ningún otro sitio.</p>
 
 <h2>La búsqueda de actualizaciones</h2>
 <p>En la versión descargada de regline.ch, Regline comprueba como mucho una vez al día si existe una nueva versión.
@@ -83,9 +101,7 @@
   Regline no recibe ni guarda esta información.</p>
 <p>Puedes desactivar esta comprobación en cualquier momento en <strong>Ajustes</strong>. Si aceptas una actualización,
   el archivo de instalación se descarga de GitHub y se verifica su huella (SHA-256) antes de instalarlo.</p>
-<p>La versión distribuida por Microsoft Store no busca actualizaciones: de eso se encarga la tienda. Por eso nunca se
-  conecta a Internet; solo usa tu red local para «Introducir desde el móvil», y únicamente cuando abres esa ventana.
-  Microsoft Store aplica su propia
+<p>La versión distribuida por Microsoft Store no busca actualizaciones: de eso se encarga la tienda. Ya contiene el módulo de vídeo, así que no descarga nada. Nunca se conecta a Internet; solo usa tu red local para el móvil y para un aparato de medida en red, y únicamente cuando abres esas ventanas. Microsoft Store aplica su propia
   <a href="https://privacy.microsoft.com/es-es/privacystatement" rel="noopener">declaración de privacidad</a>.</p>
 
 <h2>El sitio regline.ch</h2>
@@ -119,6 +135,7 @@
 <ul>
   <li><strong>Búsqueda de actualizaciones y alojamiento del sitio</strong>: interés legítimo en ofrecer una app al día y
     un sitio seguro y funcional. Regline no guarda nada; GitHub conserva sus registros técnicos según sus propias normas.</li>
+  <li><strong>Descarga del módulo de vídeo</strong>: se hace a petición tuya, para la función que usas. Regline no guarda nada; GitHub conserva sus registros técnicos según sus propias normas.</li>
   <li><strong>Idioma elegido en el sitio</strong>: guardado solo en tu navegador, puedes borrarlo en cualquier momento.</li>
   <li><strong>Correos</strong>: tu mensaje sirve para responderte (interés legítimo, o tramitación de tu solicitud). Lo
     guardo mientras dura el intercambio y luego como máximo dos años para el seguimiento de errores, antes de borrarlo.</li>

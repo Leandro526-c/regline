@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Regline · Software open source utilizzato</title>
-<meta name="description" content="Il software open source con cui è fatto Regline (Qt, NumPy, SciPy, SymPy, matplotlib…), le sue licenze e i tuoi diritti.">
+<meta name="description" content="Il software open source con cui è fatto Regline (Qt, NumPy, SciPy, SymPy, matplotlib, FFmpeg…), le sue licenze e i tuoi diritti.">
 <link rel="canonical" href="https://regline.ch/it/bibliotheques.html">
 <link rel="alternate" hreflang="fr" href="https://regline.ch/bibliotheques.html">
 <link rel="alternate" hreflang="en" href="https://regline.ch/en/bibliotheques.html">
@@ -13,7 +13,7 @@
 <link rel="alternate" hreflang="es" href="https://regline.ch/es/bibliotheques.html">
 <link rel="alternate" hreflang="x-default" href="https://regline.ch/bibliotheques.html">
 <meta property="og:title" content="Regline · Software open source utilizzato">
-<meta property="og:description" content="Il software open source con cui è fatto Regline (Qt, NumPy, SciPy, SymPy, matplotlib…), le sue licenze e i tuoi diritti.">
+<meta property="og:description" content="Il software open source con cui è fatto Regline (Qt, NumPy, SciPy, SymPy, matplotlib, FFmpeg…), le sue licenze e i tuoi diritti.">
 <meta property="og:image" content="https://regline.ch/apercu-lien.png">
 <meta property="og:url" content="https://regline.ch/it/bibliotheques.html">
 <meta property="og:locale" content="it_CH">
@@ -32,7 +32,7 @@
 
 <main class="wrap">
 <h1>Software open source utilizzato</h1>
-<p class="meta">Regline 4.1 · Windows, Mac e Linux</p>
+<p class="meta">Regline 4.3 · Windows, Mac e Linux</p>
 <p class="lead">Regline è costruito con software open source di grande qualità, usato da scienziati in tutto il mondo. Grazie ai loro autori.</p>
 
 <div class="summary">
@@ -58,6 +58,9 @@
     <tr><th scope="row">OpenBLAS / LAPACK</th><td>BSD-3-Clause</td><td>Algebra lineare, inclusi in NumPy e SciPy.</td></tr>
     <tr><th scope="row">Librerie di esecuzione di GCC</th><td>GPL v3 con l'eccezione «GCC Runtime Library», LGPL</td><td>A seconda del sistema, incluse in NumPy e SciPy (libgfortran, libquadmath).</td></tr>
     <tr><th scope="row">Caratteri dei grafici</th><td>Bitstream Vera (DejaVu), SIL OFL 1.1 (STIX), licenza BaKoMa</td><td>Caratteri DejaVu, STIX e Computer Modern forniti con matplotlib.</td></tr>
+    <tr><th scope="row">pyserial<small>3.5</small></th><td>BSD-3-Clause</td><td>Misura in diretta con un Arduino, tramite il cavo USB (porta seriale). <a href="https://github.com/pyserial/pyserial" rel="noopener">github.com/pyserial</a></td></tr>
+    <tr><th scope="row">PyVISA<small>1.16</small></th><td>MIT</td><td>Dialogo con gli strumenti di laboratorio (multimetri, alimentatori…) tramite VISA. Con typing_extensions (PSF). <a href="https://pyvisa.readthedocs.io" rel="noopener">pyvisa.readthedocs.io</a></td></tr>
+    <tr><th scope="row">xlrd<small>2.0</small></th><td>BSD-3-Clause</td><td>Lettura delle vecchie cartelle di lavoro Excel (<code>.xls</code>). <a href="https://github.com/python-excel/xlrd" rel="noopener">github.com/python-excel/xlrd</a></td></tr>
     <tr><th scope="row">Nuitka</th><td>Apache 2.0</td><td>Trasforma Regline in un'applicazione da installare. <a href="https://nuitka.net" rel="noopener">nuitka.net</a></td></tr>
     <tr><th scope="row">Inno Setup</th><td>Licenza Inno Setup</td><td>Programma di installazione per Windows (.exe). <a href="https://jrsoftware.org/isinfo.php" rel="noopener">jrsoftware.org</a></td></tr>
   </tbody>
@@ -67,6 +70,28 @@
 <h2>Qt e la LGPL: i tuoi diritti</h2>
 <p>Le librerie Qt sono fornite come file separati nella cartella dell'applicazione (per esempio i file <code>Qt6*.dll</code> su Windows). La GNU LGPL v3 ti permette di sostituirle con una versione modificata e compatibile di Qt, e di fare il reverse engineering necessario per il debug di queste modifiche. Il contratto di licenza di Regline non lo vieta. Per sostituire facilmente questi file, usa il programma di installazione scaricato da regline.ch invece della versione del Microsoft Store, la cui cartella è protetta da Windows.</p>
 <p>Il codice sorgente di Qt e di Qt for Python è disponibile su <a href="https://download.qt.io" rel="noopener">download.qt.io</a> e <a href="https://code.qt.io" rel="noopener">code.qt.io</a>. Su semplice richiesta a <a href="mailto:contact@regline.ch">contact@regline.ch</a>, ti invio anche una copia del codice sorgente esatto delle versioni di Qt utilizzate, senza costi oltre a quelli di spedizione, per almeno tre anni dopo l'ultima distribuzione della versione di Regline interessata.</p>
+
+<h2>Il modulo video: FFmpeg</h2>
+<p>Per leggere le immagini di un video, Regline usa <a href="https://ffmpeg.org" rel="noopener">FFmpeg</a> 7.1, con
+  licenza GNU LGPL 2.1 o successiva. È un programma separato, non modificato, compilato senza alcun componente GPL o
+  «nonfree». Regline lo avvia per chiedergli le immagini: FFmpeg non fa parte di Regline e mantiene la propria
+  licenza.</p>
+<ul>
+  <li><strong>Versione scaricata da regline.ch</strong>: FFmpeg non è nel programma di installazione. La prima volta
+    che apri un video, Regline ti propone di scaricare il modulo video dalla pagina GitHub di Regline e ne verifica
+    l'impronta SHA-256 prima di installarlo. Se FFmpeg è già installato sul tuo computer, Regline usa quello e non
+    scarica nulla.</li>
+  <li><strong>Versione Microsoft Store</strong>: FFmpeg è incluso fin dall'installazione, non viene scaricato nulla.</li>
+  <li>Il testo della sua licenza si trova nella cartella del modulo e nella finestra <strong>Licenze</strong> dell'app.
+    Codice sorgente esatto della versione distribuita: <a href="https://ffmpeg.org/releases/ffmpeg-7.1.tar.xz" rel="noopener">ffmpeg-7.1.tar.xz</a>. Informazioni legali del progetto: <a href="https://ffmpeg.org/legal.html" rel="noopener">ffmpeg.org/legal.html</a>.</li>
+</ul>
+<p class="small muted">FFmpeg è un marchio di Fabrice Bellard, iniziatore del progetto FFmpeg. Regline non è affiliato
+  al progetto FFmpeg né approvato da esso.</p>
+
+<h2>Driver degli strumenti di misura</h2>
+<p>Per gli strumenti di laboratorio (VISA) e le schede National Instruments, Regline usa i driver già installati sul
+  tuo computer, per esempio NI-VISA o NI-DAQmx. Non sono forniti con Regline e restano soggetti alle condizioni del
+  loro produttore.</p>
 
 <h2>Questo sito</h2>
 <p>Il sito regline.ch usa i caratteri Bricolage Grotesque, IBM Plex Sans e IBM Plex Mono, sotto licenza SIL Open Font License 1.1. Sono ospitati su regline.ch: nessuna richiesta viene inviata a un altro servizio.</p>
